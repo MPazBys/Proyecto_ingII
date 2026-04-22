@@ -1,0 +1,19 @@
+Alumnas: 
+	Bys, Paz
+	Cardozo, Micaela
+
+Proyecto: libreria
+
+Administrador:
+	mail: paz250804@gmail.com
+	contraseña: Paz2508*
+
+	mail: micaelacardozo3794@gmail.com
+	contraseña: Mica3794*
+
+Usuarios:
+	mail: Soffer1@gmail.com
+	contraseña: Soffer1*
+
+	mail: lorenaGal@gmail.com
+	contraseña: loreG12*
