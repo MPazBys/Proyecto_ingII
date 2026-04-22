@@ -1,0 +1,10 @@
+CRITICAL - 2025-05-28 20:46:03 --> Error: Call to a member function hasError() on array
+in APPPATH\Views\contenido\login.php on line 26.
+ 1 SYSTEMPATH\View\View.php(228): include()
+ 2 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 3 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('contenido/login', [], true)
+ 4 APPPATH\Controllers\UsuarioController.php(67): view('contenido/login')
+ 5 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\UsuarioController->add_cliente()
+ 6 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UsuarioController))
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()

@@ -1,0 +1,398 @@
+INFO - 2025-06-12 12:22:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-06-12 12:24:06 --> mysqli_sql_exception: Table 'bd_bys_cardozo.libros' doesn't exist in C:\xampp\htdocs\proyecto\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\xampp\htdocs\proyecto\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\xampp\htdocs\proyecto\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\xampp\htdocs\proyecto\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\xampp\htdocs\proyecto\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\xampp\htdocs\proyecto\system\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\proyecto\system\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\xampp\htdocs\proyecto\app\Controllers\LibroController.php(240): CodeIgniter\BaseModel->findAll()
+#7 C:\xampp\htdocs\proyecto\system\CodeIgniter.php(941): App\Controllers\LibroController->listar_libros()
+#8 C:\xampp\htdocs\proyecto\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LibroController))
+#9 C:\xampp\htdocs\proyecto\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\proyecto\index.php(79): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2025-06-12 12:24:06 --> CodeIgniter\Database\Exceptions\DatabaseException: Table 'bd_bys_cardozo.libros' doesn't exist
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `libros`
+JOIN `categorias` ON `categorias`.`idCategoria` = `libros`.`idCategoria`
+WHERE `estado` = :estado:
+AND `stockLibro` > :stockLibro:', [...], false)
+ 2 SYSTEMPATH\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\LibroController.php(240): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\LibroController->listar_libros()
+ 6 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LibroController))
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-06-12 12:24:06 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Table 'bd_bys_cardozo.libros' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `libros`
+JOIN `categorias` ON `categorias`.`idCategoria` = `libros`.`idCategoria`
+WHERE `estado` = 1
+AND `stockLibro` > 0')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `libros`
+JOIN `categorias` ON `categorias`.`idCategoria` = `libros`.`idCategoria`
+WHERE `estado` = 1
+AND `stockLibro` > 0')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `libros`
+JOIN `categorias` ON `categorias`.`idCategoria` = `libros`.`idCategoria`
+WHERE `estado` = :estado:
+AND `stockLibro` > :stockLibro:', [...], false)
+ 4 SYSTEMPATH\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+ 6 APPPATH\Controllers\LibroController.php(240): CodeIgniter\BaseModel->findAll()
+ 7 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\LibroController->listar_libros()
+ 8 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LibroController))
+ 9 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-06-12 12:24:06 --> [Caused by] mysqli_sql_exception: Table 'bd_bys_cardozo.libros' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('SELECT *
+FROM `libros`
+JOIN `categorias` ON `categorias`.`idCategoria` = `libros`.`idCategoria`
+WHERE `estado` = 1
+AND `stockLibro` > 0', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `libros`
+JOIN `categorias` ON `categorias`.`idCategoria` = `libros`.`idCategoria`
+WHERE `estado` = 1
+AND `stockLibro` > 0')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `libros`
+JOIN `categorias` ON `categorias`.`idCategoria` = `libros`.`idCategoria`
+WHERE `estado` = 1
+AND `stockLibro` > 0')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `libros`
+JOIN `categorias` ON `categorias`.`idCategoria` = `libros`.`idCategoria`
+WHERE `estado` = :estado:
+AND `stockLibro` > :stockLibro:', [...], false)
+ 5 SYSTEMPATH\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH\Controllers\LibroController.php(240): CodeIgniter\BaseModel->findAll()
+ 8 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\LibroController->listar_libros()
+ 9 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LibroController))
+10 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2025-06-12 12:32:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-06-12 13:05:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-06-12 13:05:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-06-12 13:06:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-06-12 13:06:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-06-12 13:06:32 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "plantilla/hearder_view.php"
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 39.
+ 1 SYSTEMPATH\View\View.php(216): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('plantilla/hearder_view.php')
+ 2 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('plantilla/hearder_view', [], true)
+ 3 APPPATH\Controllers\CarritoController.php(14): view('plantilla/hearder_view', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\CarritoController->ver_carrito()
+ 5 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\CarritoController))
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-06-12 13:11:03 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "plantilla/hearder_view.php"
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 39.
+ 1 SYSTEMPATH\View\View.php(216): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('plantilla/hearder_view.php')
+ 2 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('plantilla/hearder_view', [], true)
+ 3 APPPATH\Controllers\CarritoController.php(14): view('plantilla/hearder_view', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\CarritoController->ver_carrito()
+ 5 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\CarritoController))
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2025-06-12 13:13:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-06-12 13:13:59 --> Error: Call to a member function contents() on null
+in APPPATH\Views\contenido\carrito.php on line 7.
+ 1 SYSTEMPATH\View\View.php(228): include()
+ 2 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 3 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('contenido/carrito', [], true)
+ 4 APPPATH\Controllers\CarritoController.php(16): view('contenido/carrito')
+ 5 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\CarritoController->ver_carrito()
+ 6 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\CarritoController))
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2025-06-12 13:30:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-06-12 13:30:01 --> Error: Call to a member function contents() on null
+in APPPATH\Views\contenido\carrito.php on line 7.
+ 1 SYSTEMPATH\View\View.php(228): include()
+ 2 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 3 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('contenido/carrito', [], true)
+ 4 APPPATH\Controllers\CarritoController.php(18): view('contenido/carrito')
+ 5 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\CarritoController->ver_carrito()
+ 6 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\CarritoController))
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-06-12 13:35:30 --> Error: Class 'Cart\BaseController' not found
+in APPPATH\Controllers\CarritoController.php on line 12.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(311): include_once()
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(290): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs\\proyecto\\app\\Controllers\\CarritoController.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(266): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Controllers\\CarritoController')
+ 4 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Controllers\\CarritoController')
+ 5 [internal function]: spl_autoload_call('App\\Controllers\\CarritoController')
+ 6 SYSTEMPATH\CodeIgniter.php(899): class_exists('\\App\\Controllers\\CarritoController', true)
+ 7 SYSTEMPATH\CodeIgniter.php(489): CodeIgniter\CodeIgniter->startController()
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2025-06-12 13:37:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-06-12 13:37:59 --> Error: Call to a member function contents() on null
+in APPPATH\Views\contenido\carrito.php on line 7.
+ 1 SYSTEMPATH\View\View.php(228): include()
+ 2 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 3 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('contenido/carrito', [], true)
+ 4 APPPATH\Controllers\CarritoController.php(19): view('contenido/carrito')
+ 5 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\CarritoController->ver_carrito()
+ 6 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\CarritoController))
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2025-06-12 13:38:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-06-12 13:38:18 --> Error: Call to a member function contents() on null
+in APPPATH\Views\contenido\carrito.php on line 7.
+ 1 SYSTEMPATH\View\View.php(228): include()
+ 2 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 3 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('contenido/carrito', [], true)
+ 4 APPPATH\Controllers\CarritoController.php(19): view('contenido/carrito')
+ 5 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\CarritoController->ver_carrito()
+ 6 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\CarritoController))
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-06-12 13:43:39 --> Error: Class 'CodeIgniterCart\Cart' not found
+in APPPATH\Config\Services.php on line 38.
+ 1 SYSTEMPATH\Config\BaseService.php(199): Config\Services::cart(false)
+ 2 APPPATH\Config\Services.php(35): CodeIgniter\Config\BaseService::getSharedInstance('cart')
+ 3 APPPATH\Controllers\CarritoController.php(14): Config\Services::cart()
+ 4 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\CarritoController->ver_carrito()
+ 5 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\CarritoController))
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2025-06-12 13:51:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-06-12 13:51:05 --> Error: Call to a member function contents() on null
+in APPPATH\Views\contenido\carrito.php on line 7.
+ 1 SYSTEMPATH\View\View.php(228): include()
+ 2 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 3 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('contenido/carrito', [], true)
+ 4 APPPATH\Controllers\CarritoController.php(18): view('contenido/carrito')
+ 5 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\CarritoController->ver_carrito()
+ 6 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\CarritoController))
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2025-06-12 13:52:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-06-12 13:52:36 --> Error: Call to a member function contents() on null
+in APPPATH\Views\contenido\carrito.php on line 7.
+ 1 SYSTEMPATH\View\View.php(228): include()
+ 2 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 3 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('contenido/carrito', [], true)
+ 4 APPPATH\Controllers\CarritoController.php(18): view('contenido/carrito')
+ 5 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\CarritoController->ver_carrito()
+ 6 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\CarritoController))
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2025-06-12 13:53:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-06-12 13:55:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-06-12 13:55:26 --> Cart Class Initialized
+INFO - 2025-06-12 13:55:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-06-12 13:56:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-06-12 13:56:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-06-12 13:56:11 --> Cart Class Initialized
+INFO - 2025-06-12 13:56:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-06-12 13:56:14 --> Cart Class Initialized
+CRITICAL - 2025-06-12 13:56:14 --> ErrorException: Undefined variable: cart1
+in APPPATH\Views\contenido\carrito.php on line 26.
+ 1 APPPATH\Views\contenido\carrito.php(26): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined variable: cart1', 'C:\\xampp\\htdocs\\proyecto\\app\\Views\\contenido\\carrito.php', 26, [...])
+ 2 SYSTEMPATH\View\View.php(228): include('C:\\xampp\\htdocs\\proyecto\\app\\Views\\contenido\\carrito.php')
+ 3 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('contenido/carrito', [], true)
+ 5 APPPATH\Controllers\CarritoController.php(18): view('contenido/carrito')
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\CarritoController->ver_carrito()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\CarritoController))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2025-06-12 13:56:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-06-12 13:56:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-06-12 13:56:24 --> Cart Class Initialized
+CRITICAL - 2025-06-12 13:56:24 --> ErrorException: Undefined variable: cart1
+in APPPATH\Views\contenido\carrito.php on line 26.
+ 1 APPPATH\Views\contenido\carrito.php(26): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined variable: cart1', 'C:\\xampp\\htdocs\\proyecto\\app\\Views\\contenido\\carrito.php', 26, [...])
+ 2 SYSTEMPATH\View\View.php(228): include('C:\\xampp\\htdocs\\proyecto\\app\\Views\\contenido\\carrito.php')
+ 3 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('contenido/carrito', [], true)
+ 5 APPPATH\Controllers\CarritoController.php(18): view('contenido/carrito')
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\CarritoController->ver_carrito()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\CarritoController))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2025-06-12 13:56:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-06-12 13:59:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-06-12 13:59:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-06-12 13:59:43 --> Cart Class Initialized
+CRITICAL - 2025-06-12 13:59:43 --> ErrorException: Undefined variable: cart1
+in APPPATH\Views\contenido\carrito.php on line 26.
+ 1 APPPATH\Views\contenido\carrito.php(26): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined variable: cart1', 'C:\\xampp\\htdocs\\proyecto\\app\\Views\\contenido\\carrito.php', 26, [...])
+ 2 SYSTEMPATH\View\View.php(228): include('C:\\xampp\\htdocs\\proyecto\\app\\Views\\contenido\\carrito.php')
+ 3 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('contenido/carrito', [], true)
+ 5 APPPATH\Controllers\CarritoController.php(18): view('contenido/carrito')
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\CarritoController->ver_carrito()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\CarritoController))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2025-06-12 13:59:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-06-12 13:59:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-06-12 13:59:48 --> Cart Class Initialized
+INFO - 2025-06-12 13:59:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-06-12 14:00:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-06-12 14:00:00 --> Cart Class Initialized
+CRITICAL - 2025-06-12 14:00:00 --> ErrorException: Undefined variable: cart1
+in APPPATH\Views\contenido\carrito.php on line 26.
+ 1 APPPATH\Views\contenido\carrito.php(26): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined variable: cart1', 'C:\\xampp\\htdocs\\proyecto\\app\\Views\\contenido\\carrito.php', 26, [...])
+ 2 SYSTEMPATH\View\View.php(228): include('C:\\xampp\\htdocs\\proyecto\\app\\Views\\contenido\\carrito.php')
+ 3 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('contenido/carrito', [], true)
+ 5 APPPATH\Controllers\CarritoController.php(18): view('contenido/carrito')
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\CarritoController->ver_carrito()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\CarritoController))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2025-06-12 14:02:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-06-12 14:02:10 --> Cart Class Initialized
+CRITICAL - 2025-06-12 14:02:10 --> ErrorException: Illegal string offset 'name'
+in APPPATH\Views\contenido\carrito.php on line 31.
+ 1 APPPATH\Views\contenido\carrito.php(31): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Illegal string offset \'name\'', 'C:\\xampp\\htdocs\\proyecto\\app\\Views\\contenido\\carrito.php', 31, [...])
+ 2 SYSTEMPATH\View\View.php(228): include('C:\\xampp\\htdocs\\proyecto\\app\\Views\\contenido\\carrito.php')
+ 3 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('contenido/carrito', [], true)
+ 5 APPPATH\Controllers\CarritoController.php(18): view('contenido/carrito')
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\CarritoController->ver_carrito()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\CarritoController))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2025-06-12 14:03:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-06-12 14:03:16 --> Cart Class Initialized
+INFO - 2025-06-12 14:03:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-06-12 14:03:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-06-12 14:03:36 --> Cart Class Initialized
+ERROR - 2025-06-12 14:03:36 --> An invalid name was submitted as the product name: CARRIE (50 aniversario) The name can only contain alpha-numeric characters, dashes, underscores, colons, and spaces
+INFO - 2025-06-12 14:03:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-06-12 14:03:36 --> Cart Class Initialized
+INFO - 2025-06-12 14:03:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-06-12 14:03:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-06-12 14:03:50 --> Cart Class Initialized
+INFO - 2025-06-12 14:03:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-06-12 14:03:50 --> Cart Class Initialized
+INFO - 2025-06-12 14:03:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-06-12 14:04:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-06-12 14:04:05 --> Cart Class Initialized
+INFO - 2025-06-12 14:04:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-06-12 14:04:05 --> Cart Class Initialized
+INFO - 2025-06-12 14:07:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-06-12 14:07:29 --> Cart Class Initialized
+INFO - 2025-06-12 14:07:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-06-12 14:07:35 --> Cart Class Initialized
+CRITICAL - 2025-06-12 14:07:39 --> ErrorException: unlink(C:\xampp\htdocs\proyecto\writable\debugbar/debugbar_1749736431.426796.json): No such file or directory
+in SYSTEMPATH\Debug\Toolbar\Collectors\History.php on line 80.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'unlink(C:\\xampp\\htdocs\\proyecto\\writable\\debugbar/debugbar_1749736431.426796.json): No such file or directory', 'C:\\xampp\\htdocs\\proyecto\\system\\Debug\\Toolbar\\Collectors\\History.php', 80, [...])
+ 2 SYSTEMPATH\Debug\Toolbar\Collectors\History.php(80): unlink('C:\\xampp\\htdocs\\proyecto\\writable\\debugbar/debugbar_1749736431.426796.json')
+ 3 SYSTEMPATH\Debug\Toolbar.php(498): CodeIgniter\Debug\Toolbar\Collectors\History->setFiles('1749737255.046005', 20)
+ 4 SYSTEMPATH\Debug\Toolbar.php(475): CodeIgniter\Debug\Toolbar->format([...], 'html')
+ 5 APPPATH\Config\Events.php(47): CodeIgniter\Debug\Toolbar->respond()
+ 6 SYSTEMPATH\Events\Events.php(154): CodeIgniter\Events\Events::Config\{closure}()
+ 7 SYSTEMPATH\CodeIgniter.php(442): CodeIgniter\Events\Events::trigger('pre_system')
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2025-06-12 14:07:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-06-12 14:07:41 --> Cart Class Initialized
+CRITICAL - 2025-06-12 14:07:41 --> Error: Class 'App\Models\venta_model' not found
+in APPPATH\Controllers\CarritoController.php on line 40.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\CarritoController->guardar_venta()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\CarritoController))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2025-06-12 14:07:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-06-12 14:07:44 --> Cart Class Initialized
+INFO - 2025-06-12 14:32:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-06-12 14:32:36 --> Cart Class Initialized
+INFO - 2025-06-12 14:33:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-06-12 14:33:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-06-12 14:33:06 --> Cart Class Initialized
+ERROR - 2025-06-12 14:33:06 --> An invalid name was submitted as the product name: CARRIE (50 aniversario) The name can only contain alpha-numeric characters, dashes, underscores, colons, and spaces
+INFO - 2025-06-12 14:33:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-06-12 14:33:06 --> Cart Class Initialized
+INFO - 2025-06-12 14:33:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-06-12 14:33:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-06-12 14:33:13 --> Cart Class Initialized
+ERROR - 2025-06-12 14:33:13 --> An invalid name was submitted as the product name: CARRIE (50 aniversario) The name can only contain alpha-numeric characters, dashes, underscores, colons, and spaces
+INFO - 2025-06-12 14:33:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-06-12 14:33:13 --> Cart Class Initialized
+INFO - 2025-06-12 14:33:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-06-12 14:33:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-06-12 14:33:23 --> Cart Class Initialized
+INFO - 2025-06-12 14:33:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-06-12 14:33:23 --> Cart Class Initialized
+INFO - 2025-06-12 14:33:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-06-12 14:33:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-06-12 14:33:30 --> Cart Class Initialized
+ERROR - 2025-06-12 14:33:30 --> An invalid name was submitted as the product name: CARRIE (50 aniversario) The name can only contain alpha-numeric characters, dashes, underscores, colons, and spaces
+INFO - 2025-06-12 14:33:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-06-12 14:33:30 --> Cart Class Initialized
+INFO - 2025-06-12 14:33:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-06-12 14:33:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-06-12 14:33:37 --> Cart Class Initialized
+INFO - 2025-06-12 14:33:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-06-12 14:33:37 --> Cart Class Initialized
+INFO - 2025-06-12 14:33:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-06-12 14:33:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-06-12 14:33:54 --> Cart Class Initialized
+ERROR - 2025-06-12 14:33:54 --> An invalid name was submitted as the product name: EL MONJE QUE VENDIÓ SU FERRARI (bolsillo) The name can only contain alpha-numeric characters, dashes, underscores, colons, and spaces
+INFO - 2025-06-12 14:33:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-06-12 14:33:54 --> Cart Class Initialized
+INFO - 2025-06-12 14:33:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-06-12 14:34:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-06-12 14:34:02 --> Cart Class Initialized
+ERROR - 2025-06-12 14:34:02 --> An invalid name was submitted as the product name: EL MONJE QUE VENDIÓ SU FERRARI (bolsillo) The name can only contain alpha-numeric characters, dashes, underscores, colons, and spaces
+INFO - 2025-06-12 14:34:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-06-12 14:34:02 --> Cart Class Initialized
+INFO - 2025-06-12 14:34:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-06-12 14:34:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-06-12 14:34:29 --> Cart Class Initialized
+INFO - 2025-06-12 14:34:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-06-12 14:34:29 --> Cart Class Initialized
+INFO - 2025-06-12 14:34:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-06-12 14:35:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-06-12 14:35:56 --> Cart Class Initialized
+INFO - 2025-06-12 14:35:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-06-12 14:35:56 --> Cart Class Initialized
+INFO - 2025-06-12 14:35:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-06-12 14:36:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-06-12 14:36:02 --> Cart Class Initialized
+ERROR - 2025-06-12 14:36:02 --> An invalid name was submitted as the product name: EL MONJE QUE VENDIÓ SU FERRARI (bolsillo) The name can only contain alpha-numeric characters, dashes, underscores, colons, and spaces
+INFO - 2025-06-12 14:36:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-06-12 14:36:02 --> Cart Class Initialized
+INFO - 2025-06-12 14:36:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-06-12 14:39:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-06-12 14:39:04 --> Cart Class Initialized
+INFO - 2025-06-12 14:39:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-06-12 14:39:04 --> Cart Class Initialized
+INFO - 2025-06-12 14:39:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-06-12 14:39:21 --> Cart Class Initialized
+CRITICAL - 2025-06-12 14:39:21 --> BadMethodCallException: Call to undefined method App\Models\libros_model::firts
+in SYSTEMPATH\Model.php on line 874.
+ 1 APPPATH\Controllers\CarritoController.php(47): CodeIgniter\Model->__call('firts', [])
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\CarritoController->guardar_venta()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\CarritoController))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2025-06-12 14:41:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-06-12 14:41:20 --> Cart Class Initialized
+INFO - 2025-06-12 14:41:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-06-12 14:41:21 --> Cart Class Initialized
+CRITICAL - 2025-06-12 14:41:21 --> BadMethodCallException: Call to undefined method App\Models\libros_model::firts
+in SYSTEMPATH\Model.php on line 874.
+ 1 APPPATH\Controllers\CarritoController.php(47): CodeIgniter\Model->__call('firts', [])
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\CarritoController->guardar_venta()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\CarritoController))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2025-06-12 14:46:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-06-12 14:46:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.

@@ -1,0 +1,9 @@
+CRITICAL - 2025-04-21 17:00:07 --> ParseError: syntax error, unexpected token ":", expecting "," or ";"
+in APPPATH\Views\contenido\nosotros.php on line 4.
+ 1 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 2 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('contenido/nosotros', [], true)
+ 3 APPPATH\Controllers\Home.php(21): view('contenido/nosotros')
+ 4 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Home->somos()
+ 5 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
