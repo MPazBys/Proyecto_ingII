@@ -1,0 +1,462 @@
+/* Tipografía personalizada */
+
+@font-face {
+    font-family: 'diplomata';
+    src: url('/fuentes/Diplomata-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+/*Estilos generales*/
+
+body {
+    font-size: 16px;
+    /*Tamaño base*/
+    font-family: 'Arial', sans-serif;
+    color: #333;
+    background-color: #dbe9ff;
+}
+
+.contenedor {
+    width: 85%;
+    /*ancho del contenedor*/
+    max-width: 120;
+    /*maximo ancho*/
+    height: auto;
+    /*altura automatica*/
+    margin: 1.5rem auto;
+    /*centrar contenido*/
+}
+
+
+/*Estilos del nav*/
+
+.navbar {
+    background-color: #470000;
+}
+
+.nav-link {
+    background-color: #470000;
+    border-radius: 10%;
+    cursor: pointer;
+    margin: 5px;
+    color: beige;
+    text-align: center;
+}
+
+.nav-link:hover,
+.nav-link:focus {
+    /*focus: se activa cuando un elemento recibe el enfoque del teclado o mouse*/
+    color: blanchedalmond;
+    background-color: #200000;
+}
+
+
+/*Estilos para el botón de nav*/
+
+.btn {
+    background-color: blanchedalmond;
+    color: #130000;
+    border-color: #130000;
+    padding: 5px 10px;
+    margin: 5px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.btn:hover,
+.btn:focus,
+.btn:active,
+.btn-check:checked + .btn,
+.btn.active,
+.btn.show,
+.btn:first-child:active,
+:not(.btn-check) + .btn:active {
+    border-color: #130000;
+    background-color: #200000;
+    color: blanchedalmond;
+}
+
+
+/* Contenedor principal */
+
+.contenedor-wrapper {
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+
+/*ESTILO DE NOSOTROS*/
+.texto-nosotros {
+    font-size: 1rem;
+    text-align: justify;
+}
+
+/*ESTILO DE COMERCIALIZACION*/
+/* Título principal */
+
+.titulo-nosotros,
+.titulo-seccion {
+    font-family: 'diplomata';
+    font-size: 2rem;
+    letter-spacing: 2px;
+    color: #5a2e3a;
+    margin-bottom: 20px;
+}
+
+
+/* Texto introductorio */
+
+.texto-seccion {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    text-align: justify;
+    margin: 20px 15px;
+}
+
+
+/* Subtítulos */
+
+.titulos {
+    margin: 20px 15px 10px;
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #5a2e3a;
+    letter-spacing: 1px;
+}
+
+.oracion {
+    margin: 10px 38px;
+    font-size: 1.1rem;
+}
+
+/* Lista general estilizada */
+
+.custom-list {
+    margin: 25px 0;
+}
+
+
+/* Items con estilo de tarjeta */
+
+.list-group-item {
+    background: #ffffff;
+    border-radius: 10px;
+    border: none;
+    padding: 15px 20px;
+    margin: 10px 0;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+    transition: all 0.2s ease;
+}
+
+
+/* Efecto hover para las listas*/
+
+.list-group-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+}
+
+
+/* Texto informativo final */
+
+.texto-info {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    text-align: justify;
+    margin: 15px 15px 5px;
+}
+
+.entrega-img {
+    border: 2px solid #e3d5dc;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.entrega-img:hover {
+    transform: scale(1.02);
+}
+
+
+/*ESTILO DE INFORMACION DE CONTACTO*/
+
+.titulo-terminos-usos,
+.titulo-contacto,
+.titulo-catalogo {
+    font-family: 'diplomata';
+    font-size: 2rem;
+    letter-spacing: 1px;
+    color: #5a2e3a;
+    margin-bottom: 20px;
+}
+
+.titulo-consulta {
+    font-size: 2rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+    color: #181717;
+    margin-bottom: 20px;
+}
+
+.info-contacto {
+    font-size: 1.2rem;
+}
+
+
+/*Estilos de acordeon en Terminos y Usos*/
+
+.accordion-body {
+    background-color: bisque;
+    font-size: 1rem;
+}
+
+.accordion-button {
+    color: #130000;
+    background-color: rgb(255, 251, 243);
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+
+.accordion-button:not(.collapsed) {
+    background-color: #130000;
+    color: blanchedalmond;
+}
+
+
+
+/*ESTILO FOOTER*/
+
+footer {
+    color: rgb(219, 216, 216);
+    background-color: #470000;
+}
+
+.titulo-footer {
+    font-size: 1.5rem;
+    color: #d4d4d4;
+    margin-bottom: 1rem;
+}
+
+.footer-lista li {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.img-pago {
+    width: 50px;
+    height: auto;
+    object-fit: contain;
+}
+
+a {
+    color: #d4d4d4;
+}
+
+a:hover {
+    color: #b0ceff;
+}
+
+
+/*ESTILO DE INICIO*/
+
+.custom-carousel-btn {
+    width: 50px;
+    height: 50px;
+    background-color: rgba(0, 0, 0, 0.4);
+    /* semitransparente */
+    border: none;
+    border-radius: 50%;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: background-color 0.3s ease;
+}
+
+.custom-carousel-btn:hover {
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-size: 100% 100%;
+    width: 20px;
+    height: 20px;
+    filter: invert(1);
+    /* Hace blanco el ícono si está en fondo oscuro */
+}
+
+/*Estilos de texto en el carrusel*/
+.texto-superpuesto-izquierda {
+    position: absolute;
+    top: 17%; 
+    left: 30%;
+    transform: translateX(-50%);
+    color: white; 
+    font-family: Arial, sans-serif;
+    font-size: clamp(0.5rem, 1.8vw, 1.5rem);
+    padding: 2%;
+}
+ 
+.texto-superpuesto-derecha {
+    position: absolute;
+    top: 17%; 
+    right: 30%;
+    transform: translateX(50%); 
+    color: black; 
+    font-family: Arial, sans-serif; 
+    font-size: clamp(0.5rem, 1.8vw, 1.5rem); 
+    padding: 2%; 
+}
+
+/*Estilos para el muestrario de libros*/
+
+.libro-card {
+    width: 190px;
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+  }
+  
+.libro-card:hover {
+    transform: scale(1.05);
+}
+
+.libro-card img {
+    width: 100%;
+    height: auto;               
+    object-fit: contain;        /* Asegura que la imagen se vea entera, sin recortes */
+    aspect-ratio: 2/3;          /* Relación típica de portadas de libros */
+    background-color: #f9f9f9;  
+    padding: 5px;              
+    border-radius: 8px 8px 0 0;
+}
+
+
+.libro-card .card-title {
+    font-size: 1.05rem;
+    font-weight: 600;
+}
+
+.libro-card .card-text {
+    line-height: 80%;
+}
+
+.libro-card span {
+    background-color: #7f5539;
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease;
+    padding: 8px;
+}
+
+.tooltip-inner {
+    background-color: #273646 !important; 
+    color: #ffffff !important;            
+    font-size: 1rem;    
+    padding: 10px 15px;
+    border-radius: 8px;
+    max-width: 300px;
+    text-align: center;
+}
+
+/* Cambiar flecha del tooltip */
+.tooltip.bs-tooltip-top .tooltip-arrow::before {
+    border-top-color: #343a40 !important;
+}
+.tooltip.bs-tooltip-bottom .tooltip-arrow::before {
+    border-bottom-color: #343a40 !important;
+}
+.tooltip.bs-tooltip-left .tooltip-arrow::before {
+    border-left-color: #343a40 !important;
+}
+.tooltip.bs-tooltip-right .tooltip-arrow::before {
+    border-right-color: #343a40 !important;
+}
+  
+/*estilos de LOGIN*/
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+
+.library-auth {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #fefae0, #d4a373);
+  font-family: 'Inter', sans-serif;
+  padding: 2rem;
+}
+
+.auth-card {
+  background-color: #fff;
+  padding: 2rem 2.5rem;
+  border-radius: 1rem;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+  max-width: 400px;
+  width: 100%;
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.auth-card h2 {
+  margin-bottom: 0.5rem;
+  color: #5f3d26;
+}
+
+.auth-card p {
+  font-size: 0.95rem;
+  margin-bottom: 1.5rem;
+  color: #444;
+}
+
+.auth-card form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.auth-card input {
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+}
+
+.auth-card button {
+  padding: 0.75rem;
+  border: none;
+  border-radius: 0.5rem;
+  background-color: #7f5539;
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.auth-card button:hover {
+  background-color: #9c6644;
+}
+
+.auth-card a {
+  color: #7f5539;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.auth-card a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 500px) {
+  .auth-card {
+    padding: 1.5rem;
+  }
+
+  .library-auth {
+    padding: 1rem;
+  }
+}
