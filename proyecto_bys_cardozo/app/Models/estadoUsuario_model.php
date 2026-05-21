@@ -6,7 +6,7 @@ use CodeIgniter\Model;
 
 class estadoUsuario_model extends Model
 {
-    protected $table      = 'estadoUsuario';
+    protected $table      = 'estadousuario';
     protected $primaryKey = 'idEstado';
 
     protected $useAutoIncrement = true;

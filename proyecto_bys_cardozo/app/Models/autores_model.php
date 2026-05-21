@@ -14,7 +14,7 @@ class autores_model extends Model
     protected $returnType     = 'array';
     protected $useSoftDeletes = false;
 
-    protected $allowedFields = ['nombreAutor'];
+    protected $allowedFields = ['nombreAutor', 'apellidoAutor'];
 
     protected bool $allowEmptyInserts = false;
     protected bool $updateOnlyChanged = true;

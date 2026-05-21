@@ -14,7 +14,7 @@ class libros_model extends Model
     protected $returnType     = 'array';
     protected $useSoftDeletes = false;
 
-    protected $allowedFields = ['nombreLibro', 'idCategoria', 'precioLibro', 'stockLibro', 'estado', 'descripcionLibro', 'imagenLibro', 'etiquetaLibro', 'idAutor'];
+    protected $allowedFields = ['nombreLibro', 'idCategoria', 'precioLibro', 'stockLibro', 'estado', 'descripcionLibro', 'imagenLibro', 'idEtiqueta', 'idAutor', 'fechaEdicion'];
 
     protected bool $allowEmptyInserts = false;
     protected bool $updateOnlyChanged = true;
