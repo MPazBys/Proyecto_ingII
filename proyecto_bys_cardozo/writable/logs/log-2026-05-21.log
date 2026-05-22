@@ -1,0 +1,691 @@
+ERROR - 2026-05-21 22:43:03 --> mysqli_sql_exception: Unknown column 'libros.etiquetaLibro' in 'on clause' in C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `libros`...', 0)
+#1 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `libros`...')
+#2 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `libros`...')
+#3 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `libros`...', Array, false)
+#4 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\app\Controllers\LibroController.php(143): CodeIgniter\BaseModel->findAll()
+#7 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\CodeIgniter.php(941): App\Controllers\LibroController->gestionar_libros()
+#8 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LibroController))
+#9 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\index.php(79): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2026-05-21 22:43:03 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'libros.etiquetaLibro' in 'on clause'
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `libros`.*, `categorias`.`nombreCategoria`, `etiqueta`.`nombre` as `nombreEtiqueta`, `autores`.`nombreAutor`
+FROM `libros`
+JOIN `categorias` ON `categorias`.`idCategoria` = `libros`.`idCategoria`
+JOIN `etiqueta` ON `etiqueta`.`idEtiqueta` = `libros`.`etiquetaLibro`
+JOIN `autores` ON `autores`.`idAutor` = `libros`.`idAutor`', [], false)
+ 2 SYSTEMPATH\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\LibroController.php(143): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\LibroController->gestionar_libros()
+ 6 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LibroController))
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-05-21 22:43:03 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'libros.etiquetaLibro' in 'on clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `libros`.*, `categorias`.`nombreCategoria`, `etiqueta`.`nombre` as `nombreEtiqueta`, `autores`.`nombreAutor`
+FROM `libros`
+JOIN `categorias` ON `categorias`.`idCategoria` = `libros`.`idCategoria`
+JOIN `etiqueta` ON `etiqueta`.`idEtiqueta` = `libros`.`etiquetaLibro`
+JOIN `autores` ON `autores`.`idAutor` = `libros`.`idAutor`')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `libros`.*, `categorias`.`nombreCategoria`, `etiqueta`.`nombre` as `nombreEtiqueta`, `autores`.`nombreAutor`
+FROM `libros`
+JOIN `categorias` ON `categorias`.`idCategoria` = `libros`.`idCategoria`
+JOIN `etiqueta` ON `etiqueta`.`idEtiqueta` = `libros`.`etiquetaLibro`
+JOIN `autores` ON `autores`.`idAutor` = `libros`.`idAutor`')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `libros`.*, `categorias`.`nombreCategoria`, `etiqueta`.`nombre` as `nombreEtiqueta`, `autores`.`nombreAutor`
+FROM `libros`
+JOIN `categorias` ON `categorias`.`idCategoria` = `libros`.`idCategoria`
+JOIN `etiqueta` ON `etiqueta`.`idEtiqueta` = `libros`.`etiquetaLibro`
+JOIN `autores` ON `autores`.`idAutor` = `libros`.`idAutor`', [], false)
+ 4 SYSTEMPATH\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+ 6 APPPATH\Controllers\LibroController.php(143): CodeIgniter\BaseModel->findAll()
+ 7 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\LibroController->gestionar_libros()
+ 8 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LibroController))
+ 9 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-05-21 22:43:03 --> [Caused by] mysqli_sql_exception: Unknown column 'libros.etiquetaLibro' in 'on clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `libros`.*, `categorias`.`nombreCategoria`, `etiqueta`.`nombre` as `nombreEtiqueta`, `autores`.`nombreAutor`
+FROM `libros`
+JOIN `categorias` ON `categorias`.`idCategoria` = `libros`.`idCategoria`
+JOIN `etiqueta` ON `etiqueta`.`idEtiqueta` = `libros`.`etiquetaLibro`
+JOIN `autores` ON `autores`.`idAutor` = `libros`.`idAutor`', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `libros`.*, `categorias`.`nombreCategoria`, `etiqueta`.`nombre` as `nombreEtiqueta`, `autores`.`nombreAutor`
+FROM `libros`
+JOIN `categorias` ON `categorias`.`idCategoria` = `libros`.`idCategoria`
+JOIN `etiqueta` ON `etiqueta`.`idEtiqueta` = `libros`.`etiquetaLibro`
+JOIN `autores` ON `autores`.`idAutor` = `libros`.`idAutor`')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `libros`.*, `categorias`.`nombreCategoria`, `etiqueta`.`nombre` as `nombreEtiqueta`, `autores`.`nombreAutor`
+FROM `libros`
+JOIN `categorias` ON `categorias`.`idCategoria` = `libros`.`idCategoria`
+JOIN `etiqueta` ON `etiqueta`.`idEtiqueta` = `libros`.`etiquetaLibro`
+JOIN `autores` ON `autores`.`idAutor` = `libros`.`idAutor`')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `libros`.*, `categorias`.`nombreCategoria`, `etiqueta`.`nombre` as `nombreEtiqueta`, `autores`.`nombreAutor`
+FROM `libros`
+JOIN `categorias` ON `categorias`.`idCategoria` = `libros`.`idCategoria`
+JOIN `etiqueta` ON `etiqueta`.`idEtiqueta` = `libros`.`etiquetaLibro`
+JOIN `autores` ON `autores`.`idAutor` = `libros`.`idAutor`', [], false)
+ 5 SYSTEMPATH\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH\Controllers\LibroController.php(143): CodeIgniter\BaseModel->findAll()
+ 8 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\LibroController->gestionar_libros()
+ 9 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LibroController))
+10 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ERROR - 2026-05-21 22:43:13 --> mysqli_sql_exception: Unknown column 'libros.etiquetaLibro' in 'on clause' in C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\app\Controllers\LibroController.php(357): CodeIgniter\BaseModel->findAll()
+#7 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\CodeIgniter.php(941): App\Controllers\LibroController->inicio()
+#8 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LibroController))
+#9 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\index.php(79): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2026-05-21 22:43:13 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'libros.etiquetaLibro' in 'on clause'
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `libros`
+JOIN `categorias` ON `categorias`.`idCategoria` = `libros`.`idCategoria`
+JOIN `etiqueta` ON `etiqueta`.`idEtiqueta` = `libros`.`etiquetaLibro`
+JOIN `autores` ON `autores`.`idAutor` = `libros`.`idAutor`
+WHERE `estado` = :estado:
+AND `stockLibro` > :stockLibro:', [...], false)
+ 2 SYSTEMPATH\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\LibroController.php(357): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\LibroController->inicio()
+ 6 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LibroController))
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-05-21 22:43:13 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'libros.etiquetaLibro' in 'on clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `libros`
+JOIN `categorias` ON `categorias`.`idCategoria` = `libros`.`idCategoria`
+JOIN `etiqueta` ON `etiqueta`.`idEtiqueta` = `libros`.`etiquetaLibro`
+JOIN `autores` ON `autores`.`idAutor` = `libros`.`idAutor`
+WHERE `estado` = 1
+AND `stockLibro` > 0')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `libros`
+JOIN `categorias` ON `categorias`.`idCategoria` = `libros`.`idCategoria`
+JOIN `etiqueta` ON `etiqueta`.`idEtiqueta` = `libros`.`etiquetaLibro`
+JOIN `autores` ON `autores`.`idAutor` = `libros`.`idAutor`
+WHERE `estado` = 1
+AND `stockLibro` > 0')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `libros`
+JOIN `categorias` ON `categorias`.`idCategoria` = `libros`.`idCategoria`
+JOIN `etiqueta` ON `etiqueta`.`idEtiqueta` = `libros`.`etiquetaLibro`
+JOIN `autores` ON `autores`.`idAutor` = `libros`.`idAutor`
+WHERE `estado` = :estado:
+AND `stockLibro` > :stockLibro:', [...], false)
+ 4 SYSTEMPATH\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+ 6 APPPATH\Controllers\LibroController.php(357): CodeIgniter\BaseModel->findAll()
+ 7 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\LibroController->inicio()
+ 8 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LibroController))
+ 9 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-05-21 22:43:13 --> [Caused by] mysqli_sql_exception: Unknown column 'libros.etiquetaLibro' in 'on clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('SELECT *
+FROM `libros`
+JOIN `categorias` ON `categorias`.`idCategoria` = `libros`.`idCategoria`
+JOIN `etiqueta` ON `etiqueta`.`idEtiqueta` = `libros`.`etiquetaLibro`
+JOIN `autores` ON `autores`.`idAutor` = `libros`.`idAutor`
+WHERE `estado` = 1
+AND `stockLibro` > 0', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `libros`
+JOIN `categorias` ON `categorias`.`idCategoria` = `libros`.`idCategoria`
+JOIN `etiqueta` ON `etiqueta`.`idEtiqueta` = `libros`.`etiquetaLibro`
+JOIN `autores` ON `autores`.`idAutor` = `libros`.`idAutor`
+WHERE `estado` = 1
+AND `stockLibro` > 0')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `libros`
+JOIN `categorias` ON `categorias`.`idCategoria` = `libros`.`idCategoria`
+JOIN `etiqueta` ON `etiqueta`.`idEtiqueta` = `libros`.`etiquetaLibro`
+JOIN `autores` ON `autores`.`idAutor` = `libros`.`idAutor`
+WHERE `estado` = 1
+AND `stockLibro` > 0')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `libros`
+JOIN `categorias` ON `categorias`.`idCategoria` = `libros`.`idCategoria`
+JOIN `etiqueta` ON `etiqueta`.`idEtiqueta` = `libros`.`etiquetaLibro`
+JOIN `autores` ON `autores`.`idAutor` = `libros`.`idAutor`
+WHERE `estado` = :estado:
+AND `stockLibro` > :stockLibro:', [...], false)
+ 5 SYSTEMPATH\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH\Controllers\LibroController.php(357): CodeIgniter\BaseModel->findAll()
+ 8 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\LibroController->inicio()
+ 9 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LibroController))
+10 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ERROR - 2026-05-21 22:46:21 --> mysqli_sql_exception: Unknown column 'libros.etiquetaLibro' in 'on clause' in C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\app\Controllers\LibroController.php(357): CodeIgniter\BaseModel->findAll()
+#7 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\CodeIgniter.php(941): App\Controllers\LibroController->inicio()
+#8 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LibroController))
+#9 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\index.php(79): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2026-05-21 22:46:21 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'libros.etiquetaLibro' in 'on clause'
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `libros`
+JOIN `categorias` ON `categorias`.`idCategoria` = `libros`.`idCategoria`
+JOIN `etiqueta` ON `etiqueta`.`idEtiqueta` = `libros`.`etiquetaLibro`
+JOIN `autores` ON `autores`.`idAutor` = `libros`.`idAutor`
+WHERE `estado` = :estado:
+AND `stockLibro` > :stockLibro:', [...], false)
+ 2 SYSTEMPATH\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\LibroController.php(357): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\LibroController->inicio()
+ 6 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LibroController))
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-05-21 22:46:21 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'libros.etiquetaLibro' in 'on clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `libros`
+JOIN `categorias` ON `categorias`.`idCategoria` = `libros`.`idCategoria`
+JOIN `etiqueta` ON `etiqueta`.`idEtiqueta` = `libros`.`etiquetaLibro`
+JOIN `autores` ON `autores`.`idAutor` = `libros`.`idAutor`
+WHERE `estado` = 1
+AND `stockLibro` > 0')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `libros`
+JOIN `categorias` ON `categorias`.`idCategoria` = `libros`.`idCategoria`
+JOIN `etiqueta` ON `etiqueta`.`idEtiqueta` = `libros`.`etiquetaLibro`
+JOIN `autores` ON `autores`.`idAutor` = `libros`.`idAutor`
+WHERE `estado` = 1
+AND `stockLibro` > 0')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `libros`
+JOIN `categorias` ON `categorias`.`idCategoria` = `libros`.`idCategoria`
+JOIN `etiqueta` ON `etiqueta`.`idEtiqueta` = `libros`.`etiquetaLibro`
+JOIN `autores` ON `autores`.`idAutor` = `libros`.`idAutor`
+WHERE `estado` = :estado:
+AND `stockLibro` > :stockLibro:', [...], false)
+ 4 SYSTEMPATH\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+ 6 APPPATH\Controllers\LibroController.php(357): CodeIgniter\BaseModel->findAll()
+ 7 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\LibroController->inicio()
+ 8 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LibroController))
+ 9 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-05-21 22:46:21 --> [Caused by] mysqli_sql_exception: Unknown column 'libros.etiquetaLibro' in 'on clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('SELECT *
+FROM `libros`
+JOIN `categorias` ON `categorias`.`idCategoria` = `libros`.`idCategoria`
+JOIN `etiqueta` ON `etiqueta`.`idEtiqueta` = `libros`.`etiquetaLibro`
+JOIN `autores` ON `autores`.`idAutor` = `libros`.`idAutor`
+WHERE `estado` = 1
+AND `stockLibro` > 0', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `libros`
+JOIN `categorias` ON `categorias`.`idCategoria` = `libros`.`idCategoria`
+JOIN `etiqueta` ON `etiqueta`.`idEtiqueta` = `libros`.`etiquetaLibro`
+JOIN `autores` ON `autores`.`idAutor` = `libros`.`idAutor`
+WHERE `estado` = 1
+AND `stockLibro` > 0')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `libros`
+JOIN `categorias` ON `categorias`.`idCategoria` = `libros`.`idCategoria`
+JOIN `etiqueta` ON `etiqueta`.`idEtiqueta` = `libros`.`etiquetaLibro`
+JOIN `autores` ON `autores`.`idAutor` = `libros`.`idAutor`
+WHERE `estado` = 1
+AND `stockLibro` > 0')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `libros`
+JOIN `categorias` ON `categorias`.`idCategoria` = `libros`.`idCategoria`
+JOIN `etiqueta` ON `etiqueta`.`idEtiqueta` = `libros`.`etiquetaLibro`
+JOIN `autores` ON `autores`.`idAutor` = `libros`.`idAutor`
+WHERE `estado` = :estado:
+AND `stockLibro` > :stockLibro:', [...], false)
+ 5 SYSTEMPATH\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH\Controllers\LibroController.php(357): CodeIgniter\BaseModel->findAll()
+ 8 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\LibroController->inicio()
+ 9 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LibroController))
+10 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ERROR - 2026-05-21 22:47:21 --> mysqli_sql_exception: Unknown column 'libros.etiquetaLibro' in 'on clause' in C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\app\Controllers\LibroController.php(357): CodeIgniter\BaseModel->findAll()
+#7 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\CodeIgniter.php(941): App\Controllers\LibroController->inicio()
+#8 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LibroController))
+#9 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\index.php(79): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2026-05-21 22:47:21 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'libros.etiquetaLibro' in 'on clause'
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `libros`
+JOIN `categorias` ON `categorias`.`idCategoria` = `libros`.`idCategoria`
+JOIN `etiqueta` ON `etiqueta`.`idEtiqueta` = `libros`.`etiquetaLibro`
+JOIN `autores` ON `autores`.`idAutor` = `libros`.`idAutor`
+WHERE `estado` = :estado:
+AND `stockLibro` > :stockLibro:', [...], false)
+ 2 SYSTEMPATH\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\LibroController.php(357): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\LibroController->inicio()
+ 6 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LibroController))
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-05-21 22:47:21 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'libros.etiquetaLibro' in 'on clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `libros`
+JOIN `categorias` ON `categorias`.`idCategoria` = `libros`.`idCategoria`
+JOIN `etiqueta` ON `etiqueta`.`idEtiqueta` = `libros`.`etiquetaLibro`
+JOIN `autores` ON `autores`.`idAutor` = `libros`.`idAutor`
+WHERE `estado` = 1
+AND `stockLibro` > 0')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `libros`
+JOIN `categorias` ON `categorias`.`idCategoria` = `libros`.`idCategoria`
+JOIN `etiqueta` ON `etiqueta`.`idEtiqueta` = `libros`.`etiquetaLibro`
+JOIN `autores` ON `autores`.`idAutor` = `libros`.`idAutor`
+WHERE `estado` = 1
+AND `stockLibro` > 0')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `libros`
+JOIN `categorias` ON `categorias`.`idCategoria` = `libros`.`idCategoria`
+JOIN `etiqueta` ON `etiqueta`.`idEtiqueta` = `libros`.`etiquetaLibro`
+JOIN `autores` ON `autores`.`idAutor` = `libros`.`idAutor`
+WHERE `estado` = :estado:
+AND `stockLibro` > :stockLibro:', [...], false)
+ 4 SYSTEMPATH\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+ 6 APPPATH\Controllers\LibroController.php(357): CodeIgniter\BaseModel->findAll()
+ 7 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\LibroController->inicio()
+ 8 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LibroController))
+ 9 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-05-21 22:47:21 --> [Caused by] mysqli_sql_exception: Unknown column 'libros.etiquetaLibro' in 'on clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('SELECT *
+FROM `libros`
+JOIN `categorias` ON `categorias`.`idCategoria` = `libros`.`idCategoria`
+JOIN `etiqueta` ON `etiqueta`.`idEtiqueta` = `libros`.`etiquetaLibro`
+JOIN `autores` ON `autores`.`idAutor` = `libros`.`idAutor`
+WHERE `estado` = 1
+AND `stockLibro` > 0', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `libros`
+JOIN `categorias` ON `categorias`.`idCategoria` = `libros`.`idCategoria`
+JOIN `etiqueta` ON `etiqueta`.`idEtiqueta` = `libros`.`etiquetaLibro`
+JOIN `autores` ON `autores`.`idAutor` = `libros`.`idAutor`
+WHERE `estado` = 1
+AND `stockLibro` > 0')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `libros`
+JOIN `categorias` ON `categorias`.`idCategoria` = `libros`.`idCategoria`
+JOIN `etiqueta` ON `etiqueta`.`idEtiqueta` = `libros`.`etiquetaLibro`
+JOIN `autores` ON `autores`.`idAutor` = `libros`.`idAutor`
+WHERE `estado` = 1
+AND `stockLibro` > 0')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `libros`
+JOIN `categorias` ON `categorias`.`idCategoria` = `libros`.`idCategoria`
+JOIN `etiqueta` ON `etiqueta`.`idEtiqueta` = `libros`.`etiquetaLibro`
+JOIN `autores` ON `autores`.`idAutor` = `libros`.`idAutor`
+WHERE `estado` = :estado:
+AND `stockLibro` > :stockLibro:', [...], false)
+ 5 SYSTEMPATH\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH\Controllers\LibroController.php(357): CodeIgniter\BaseModel->findAll()
+ 8 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\LibroController->inicio()
+ 9 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LibroController))
+10 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ERROR - 2026-05-21 22:48:41 --> mysqli_sql_exception: Unknown column 'libros.etiquetaLibro' in 'on clause' in C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\app\Controllers\LibroController.php(357): CodeIgniter\BaseModel->findAll()
+#7 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\CodeIgniter.php(941): App\Controllers\LibroController->inicio()
+#8 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LibroController))
+#9 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\index.php(79): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2026-05-21 22:48:41 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'libros.etiquetaLibro' in 'on clause'
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `libros`
+JOIN `categorias` ON `categorias`.`idCategoria` = `libros`.`idCategoria`
+JOIN `etiqueta` ON `etiqueta`.`idEtiqueta` = `libros`.`etiquetaLibro`
+JOIN `autores` ON `autores`.`idAutor` = `libros`.`idAutor`
+WHERE `estado` = :estado:
+AND `stockLibro` > :stockLibro:', [...], false)
+ 2 SYSTEMPATH\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\LibroController.php(357): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\LibroController->inicio()
+ 6 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LibroController))
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-05-21 22:48:41 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'libros.etiquetaLibro' in 'on clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `libros`
+JOIN `categorias` ON `categorias`.`idCategoria` = `libros`.`idCategoria`
+JOIN `etiqueta` ON `etiqueta`.`idEtiqueta` = `libros`.`etiquetaLibro`
+JOIN `autores` ON `autores`.`idAutor` = `libros`.`idAutor`
+WHERE `estado` = 1
+AND `stockLibro` > 0')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `libros`
+JOIN `categorias` ON `categorias`.`idCategoria` = `libros`.`idCategoria`
+JOIN `etiqueta` ON `etiqueta`.`idEtiqueta` = `libros`.`etiquetaLibro`
+JOIN `autores` ON `autores`.`idAutor` = `libros`.`idAutor`
+WHERE `estado` = 1
+AND `stockLibro` > 0')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `libros`
+JOIN `categorias` ON `categorias`.`idCategoria` = `libros`.`idCategoria`
+JOIN `etiqueta` ON `etiqueta`.`idEtiqueta` = `libros`.`etiquetaLibro`
+JOIN `autores` ON `autores`.`idAutor` = `libros`.`idAutor`
+WHERE `estado` = :estado:
+AND `stockLibro` > :stockLibro:', [...], false)
+ 4 SYSTEMPATH\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+ 6 APPPATH\Controllers\LibroController.php(357): CodeIgniter\BaseModel->findAll()
+ 7 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\LibroController->inicio()
+ 8 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LibroController))
+ 9 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-05-21 22:48:41 --> [Caused by] mysqli_sql_exception: Unknown column 'libros.etiquetaLibro' in 'on clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('SELECT *
+FROM `libros`
+JOIN `categorias` ON `categorias`.`idCategoria` = `libros`.`idCategoria`
+JOIN `etiqueta` ON `etiqueta`.`idEtiqueta` = `libros`.`etiquetaLibro`
+JOIN `autores` ON `autores`.`idAutor` = `libros`.`idAutor`
+WHERE `estado` = 1
+AND `stockLibro` > 0', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `libros`
+JOIN `categorias` ON `categorias`.`idCategoria` = `libros`.`idCategoria`
+JOIN `etiqueta` ON `etiqueta`.`idEtiqueta` = `libros`.`etiquetaLibro`
+JOIN `autores` ON `autores`.`idAutor` = `libros`.`idAutor`
+WHERE `estado` = 1
+AND `stockLibro` > 0')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `libros`
+JOIN `categorias` ON `categorias`.`idCategoria` = `libros`.`idCategoria`
+JOIN `etiqueta` ON `etiqueta`.`idEtiqueta` = `libros`.`etiquetaLibro`
+JOIN `autores` ON `autores`.`idAutor` = `libros`.`idAutor`
+WHERE `estado` = 1
+AND `stockLibro` > 0')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `libros`
+JOIN `categorias` ON `categorias`.`idCategoria` = `libros`.`idCategoria`
+JOIN `etiqueta` ON `etiqueta`.`idEtiqueta` = `libros`.`etiquetaLibro`
+JOIN `autores` ON `autores`.`idAutor` = `libros`.`idAutor`
+WHERE `estado` = :estado:
+AND `stockLibro` > :stockLibro:', [...], false)
+ 5 SYSTEMPATH\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH\Controllers\LibroController.php(357): CodeIgniter\BaseModel->findAll()
+ 8 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\LibroController->inicio()
+ 9 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LibroController))
+10 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2026-05-21 22:49:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-05-21 22:49:21 --> ErrorException: Undefined array key "etiquetaLibro"
+in APPPATH\Views\contenido\inicio.php on line 66.
+ 1 APPPATH\Views\contenido\inicio.php(66): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "etiquetaLibro"', 'C:\\xampp\\htdocs\\Proyecto_ingII\\proyecto_bys_cardozo\\app\\Views\\contenido\\inicio.php', 66)
+ 2 SYSTEMPATH\View\View.php(228): include('C:\\xampp\\htdocs\\Proyecto_ingII\\proyecto_bys_cardozo\\app\\Views\\contenido\\inicio.php')
+ 3 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('contenido/inicio', [], true)
+ 5 APPPATH\Controllers\LibroController.php(363): view('contenido/inicio')
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\LibroController->inicio()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LibroController))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2026-05-21 22:51:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-05-21 22:52:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-05-21 23:12:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-05-21 23:15:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-05-21 23:18:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-05-21 23:19:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-05-21 23:19:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-05-21 23:22:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-05-21 23:22:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-05-21 23:37:22 --> mysqli_sql_exception: Unknown column 'etiqueta.nombreEtiqueta' in 'field list' in C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `libros`...', 0)
+#1 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `libros`...')
+#2 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `libros`...')
+#3 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `libros`...', Array, false)
+#4 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\app\Controllers\LibroController.php(358): CodeIgniter\BaseModel->findAll()
+#7 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\CodeIgniter.php(941): App\Controllers\LibroController->inicio()
+#8 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LibroController))
+#9 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\index.php(79): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2026-05-21 23:37:23 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'etiqueta.nombreEtiqueta' in 'field list'
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `libros`.*, `categorias`.`nombreCategoria`, `etiqueta`.`nombreEtiqueta`, `autores`.`nombreAutor`, `autores`.`apellidoAutor`, CONCAT(autores.apellidoAutor, ", ", autores.nombreAutor) AS autor_formateado
+FROM `libros`
+JOIN `categorias` ON `categorias`.`idCategoria` = `libros`.`idCategoria`
+JOIN `etiqueta` ON `etiqueta`.`idEtiqueta` = `libros`.`idEtiqueta`
+JOIN `autores` ON `autores`.`idAutor` = `libros`.`idAutor`
+WHERE `libros`.`estado` = :libros.estado:
+AND `libros`.`stockLibro` > :libros.stockLibro:', [...], false)
+ 2 SYSTEMPATH\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\LibroController.php(358): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\LibroController->inicio()
+ 6 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LibroController))
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-05-21 23:37:23 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'etiqueta.nombreEtiqueta' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `libros`.*, `categorias`.`nombreCategoria`, `etiqueta`.`nombreEtiqueta`, `autores`.`nombreAutor`, `autores`.`apellidoAutor`, CONCAT(autores.apellidoAutor, ", ", autores.nombreAutor) AS autor_formateado
+FROM `libros`
+JOIN `categorias` ON `categorias`.`idCategoria` = `libros`.`idCategoria`
+JOIN `etiqueta` ON `etiqueta`.`idEtiqueta` = `libros`.`idEtiqueta`
+JOIN `autores` ON `autores`.`idAutor` = `libros`.`idAutor`
+WHERE `libros`.`estado` = 1
+AND `libros`.`stockLibro` > 0')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `libros`.*, `categorias`.`nombreCategoria`, `etiqueta`.`nombreEtiqueta`, `autores`.`nombreAutor`, `autores`.`apellidoAutor`, CONCAT(autores.apellidoAutor, ", ", autores.nombreAutor) AS autor_formateado
+FROM `libros`
+JOIN `categorias` ON `categorias`.`idCategoria` = `libros`.`idCategoria`
+JOIN `etiqueta` ON `etiqueta`.`idEtiqueta` = `libros`.`idEtiqueta`
+JOIN `autores` ON `autores`.`idAutor` = `libros`.`idAutor`
+WHERE `libros`.`estado` = 1
+AND `libros`.`stockLibro` > 0')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `libros`.*, `categorias`.`nombreCategoria`, `etiqueta`.`nombreEtiqueta`, `autores`.`nombreAutor`, `autores`.`apellidoAutor`, CONCAT(autores.apellidoAutor, ", ", autores.nombreAutor) AS autor_formateado
+FROM `libros`
+JOIN `categorias` ON `categorias`.`idCategoria` = `libros`.`idCategoria`
+JOIN `etiqueta` ON `etiqueta`.`idEtiqueta` = `libros`.`idEtiqueta`
+JOIN `autores` ON `autores`.`idAutor` = `libros`.`idAutor`
+WHERE `libros`.`estado` = :libros.estado:
+AND `libros`.`stockLibro` > :libros.stockLibro:', [...], false)
+ 4 SYSTEMPATH\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+ 6 APPPATH\Controllers\LibroController.php(358): CodeIgniter\BaseModel->findAll()
+ 7 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\LibroController->inicio()
+ 8 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LibroController))
+ 9 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-05-21 23:37:23 --> [Caused by] mysqli_sql_exception: Unknown column 'etiqueta.nombreEtiqueta' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `libros`.*, `categorias`.`nombreCategoria`, `etiqueta`.`nombreEtiqueta`, `autores`.`nombreAutor`, `autores`.`apellidoAutor`, CONCAT(autores.apellidoAutor, ", ", autores.nombreAutor) AS autor_formateado
+FROM `libros`
+JOIN `categorias` ON `categorias`.`idCategoria` = `libros`.`idCategoria`
+JOIN `etiqueta` ON `etiqueta`.`idEtiqueta` = `libros`.`idEtiqueta`
+JOIN `autores` ON `autores`.`idAutor` = `libros`.`idAutor`
+WHERE `libros`.`estado` = 1
+AND `libros`.`stockLibro` > 0', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `libros`.*, `categorias`.`nombreCategoria`, `etiqueta`.`nombreEtiqueta`, `autores`.`nombreAutor`, `autores`.`apellidoAutor`, CONCAT(autores.apellidoAutor, ", ", autores.nombreAutor) AS autor_formateado
+FROM `libros`
+JOIN `categorias` ON `categorias`.`idCategoria` = `libros`.`idCategoria`
+JOIN `etiqueta` ON `etiqueta`.`idEtiqueta` = `libros`.`idEtiqueta`
+JOIN `autores` ON `autores`.`idAutor` = `libros`.`idAutor`
+WHERE `libros`.`estado` = 1
+AND `libros`.`stockLibro` > 0')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `libros`.*, `categorias`.`nombreCategoria`, `etiqueta`.`nombreEtiqueta`, `autores`.`nombreAutor`, `autores`.`apellidoAutor`, CONCAT(autores.apellidoAutor, ", ", autores.nombreAutor) AS autor_formateado
+FROM `libros`
+JOIN `categorias` ON `categorias`.`idCategoria` = `libros`.`idCategoria`
+JOIN `etiqueta` ON `etiqueta`.`idEtiqueta` = `libros`.`idEtiqueta`
+JOIN `autores` ON `autores`.`idAutor` = `libros`.`idAutor`
+WHERE `libros`.`estado` = 1
+AND `libros`.`stockLibro` > 0')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `libros`.*, `categorias`.`nombreCategoria`, `etiqueta`.`nombreEtiqueta`, `autores`.`nombreAutor`, `autores`.`apellidoAutor`, CONCAT(autores.apellidoAutor, ", ", autores.nombreAutor) AS autor_formateado
+FROM `libros`
+JOIN `categorias` ON `categorias`.`idCategoria` = `libros`.`idCategoria`
+JOIN `etiqueta` ON `etiqueta`.`idEtiqueta` = `libros`.`idEtiqueta`
+JOIN `autores` ON `autores`.`idAutor` = `libros`.`idAutor`
+WHERE `libros`.`estado` = :libros.estado:
+AND `libros`.`stockLibro` > :libros.stockLibro:', [...], false)
+ 5 SYSTEMPATH\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH\Controllers\LibroController.php(358): CodeIgniter\BaseModel->findAll()
+ 8 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\LibroController->inicio()
+ 9 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LibroController))
+10 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ERROR - 2026-05-21 23:39:07 --> mysqli_sql_exception: Unknown column 'etiqueta.nombreEtiqueta' in 'field list' in C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `libros`...', 0)
+#1 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `libros`...')
+#2 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `libros`...')
+#3 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `libros`...', Array, false)
+#4 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\app\Controllers\LibroController.php(358): CodeIgniter\BaseModel->findAll()
+#7 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\CodeIgniter.php(941): App\Controllers\LibroController->inicio()
+#8 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LibroController))
+#9 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\index.php(79): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2026-05-21 23:39:07 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'etiqueta.nombreEtiqueta' in 'field list'
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `libros`.*, `categorias`.`nombreCategoria`, `etiqueta`.`nombreEtiqueta`, `autores`.`nombreAutor`, `autores`.`apellidoAutor`, CONCAT(autores.apellidoAutor, ", ", autores.nombreAutor) AS autor_formateado
+FROM `libros`
+JOIN `categorias` ON `categorias`.`idCategoria` = `libros`.`idCategoria`
+JOIN `etiqueta` ON `etiqueta`.`idEtiqueta` = `libros`.`idEtiqueta`
+JOIN `autores` ON `autores`.`idAutor` = `libros`.`idAutor`
+WHERE `libros`.`estado` = :libros.estado:
+AND `libros`.`stockLibro` > :libros.stockLibro:', [...], false)
+ 2 SYSTEMPATH\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\LibroController.php(358): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\LibroController->inicio()
+ 6 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LibroController))
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-05-21 23:39:07 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'etiqueta.nombreEtiqueta' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `libros`.*, `categorias`.`nombreCategoria`, `etiqueta`.`nombreEtiqueta`, `autores`.`nombreAutor`, `autores`.`apellidoAutor`, CONCAT(autores.apellidoAutor, ", ", autores.nombreAutor) AS autor_formateado
+FROM `libros`
+JOIN `categorias` ON `categorias`.`idCategoria` = `libros`.`idCategoria`
+JOIN `etiqueta` ON `etiqueta`.`idEtiqueta` = `libros`.`idEtiqueta`
+JOIN `autores` ON `autores`.`idAutor` = `libros`.`idAutor`
+WHERE `libros`.`estado` = 1
+AND `libros`.`stockLibro` > 0')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `libros`.*, `categorias`.`nombreCategoria`, `etiqueta`.`nombreEtiqueta`, `autores`.`nombreAutor`, `autores`.`apellidoAutor`, CONCAT(autores.apellidoAutor, ", ", autores.nombreAutor) AS autor_formateado
+FROM `libros`
+JOIN `categorias` ON `categorias`.`idCategoria` = `libros`.`idCategoria`
+JOIN `etiqueta` ON `etiqueta`.`idEtiqueta` = `libros`.`idEtiqueta`
+JOIN `autores` ON `autores`.`idAutor` = `libros`.`idAutor`
+WHERE `libros`.`estado` = 1
+AND `libros`.`stockLibro` > 0')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `libros`.*, `categorias`.`nombreCategoria`, `etiqueta`.`nombreEtiqueta`, `autores`.`nombreAutor`, `autores`.`apellidoAutor`, CONCAT(autores.apellidoAutor, ", ", autores.nombreAutor) AS autor_formateado
+FROM `libros`
+JOIN `categorias` ON `categorias`.`idCategoria` = `libros`.`idCategoria`
+JOIN `etiqueta` ON `etiqueta`.`idEtiqueta` = `libros`.`idEtiqueta`
+JOIN `autores` ON `autores`.`idAutor` = `libros`.`idAutor`
+WHERE `libros`.`estado` = :libros.estado:
+AND `libros`.`stockLibro` > :libros.stockLibro:', [...], false)
+ 4 SYSTEMPATH\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+ 6 APPPATH\Controllers\LibroController.php(358): CodeIgniter\BaseModel->findAll()
+ 7 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\LibroController->inicio()
+ 8 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LibroController))
+ 9 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-05-21 23:39:07 --> [Caused by] mysqli_sql_exception: Unknown column 'etiqueta.nombreEtiqueta' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `libros`.*, `categorias`.`nombreCategoria`, `etiqueta`.`nombreEtiqueta`, `autores`.`nombreAutor`, `autores`.`apellidoAutor`, CONCAT(autores.apellidoAutor, ", ", autores.nombreAutor) AS autor_formateado
+FROM `libros`
+JOIN `categorias` ON `categorias`.`idCategoria` = `libros`.`idCategoria`
+JOIN `etiqueta` ON `etiqueta`.`idEtiqueta` = `libros`.`idEtiqueta`
+JOIN `autores` ON `autores`.`idAutor` = `libros`.`idAutor`
+WHERE `libros`.`estado` = 1
+AND `libros`.`stockLibro` > 0', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `libros`.*, `categorias`.`nombreCategoria`, `etiqueta`.`nombreEtiqueta`, `autores`.`nombreAutor`, `autores`.`apellidoAutor`, CONCAT(autores.apellidoAutor, ", ", autores.nombreAutor) AS autor_formateado
+FROM `libros`
+JOIN `categorias` ON `categorias`.`idCategoria` = `libros`.`idCategoria`
+JOIN `etiqueta` ON `etiqueta`.`idEtiqueta` = `libros`.`idEtiqueta`
+JOIN `autores` ON `autores`.`idAutor` = `libros`.`idAutor`
+WHERE `libros`.`estado` = 1
+AND `libros`.`stockLibro` > 0')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `libros`.*, `categorias`.`nombreCategoria`, `etiqueta`.`nombreEtiqueta`, `autores`.`nombreAutor`, `autores`.`apellidoAutor`, CONCAT(autores.apellidoAutor, ", ", autores.nombreAutor) AS autor_formateado
+FROM `libros`
+JOIN `categorias` ON `categorias`.`idCategoria` = `libros`.`idCategoria`
+JOIN `etiqueta` ON `etiqueta`.`idEtiqueta` = `libros`.`idEtiqueta`
+JOIN `autores` ON `autores`.`idAutor` = `libros`.`idAutor`
+WHERE `libros`.`estado` = 1
+AND `libros`.`stockLibro` > 0')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `libros`.*, `categorias`.`nombreCategoria`, `etiqueta`.`nombreEtiqueta`, `autores`.`nombreAutor`, `autores`.`apellidoAutor`, CONCAT(autores.apellidoAutor, ", ", autores.nombreAutor) AS autor_formateado
+FROM `libros`
+JOIN `categorias` ON `categorias`.`idCategoria` = `libros`.`idCategoria`
+JOIN `etiqueta` ON `etiqueta`.`idEtiqueta` = `libros`.`idEtiqueta`
+JOIN `autores` ON `autores`.`idAutor` = `libros`.`idAutor`
+WHERE `libros`.`estado` = :libros.estado:
+AND `libros`.`stockLibro` > :libros.stockLibro:', [...], false)
+ 5 SYSTEMPATH\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH\Controllers\LibroController.php(358): CodeIgniter\BaseModel->findAll()
+ 8 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\LibroController->inicio()
+ 9 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LibroController))
+10 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2026-05-21 23:40:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-05-21 23:41:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-05-21 23:42:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-05-21 23:49:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-05-21 23:50:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-05-21 23:50:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-05-21 23:57:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.

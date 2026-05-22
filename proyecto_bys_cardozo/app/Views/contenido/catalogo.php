@@ -34,7 +34,7 @@
             <img src="<?php echo base_url('assets/upload/'.$row['imagenLibro']); ?>" alt="Portada" class="card-img-top">
             <div class="card-body text-center">
                 <h6 class="card-title"><?php echo $row['nombreLibro']; ?></h6>
-                <p class="card-text text-muted"><?php echo $row['nombreAutor']; ?></p>
+                <p class="card-text text-muted"><?php echo $row['autor_formateado']; ?></p>
                 <p class="card-text text-muted"><?php echo "$" . $row['precioLibro']; ?></p>
                 <p class="card-text text-muted"><?php echo "Categoría: " . $row['nombreCategoria']; ?></p>
                 <p class="card-text text-muted"><?php echo "Disponibles: " . $row['stockLibro']; ?></p>

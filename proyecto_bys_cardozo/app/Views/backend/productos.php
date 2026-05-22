@@ -3,7 +3,7 @@
 
     <div class="table-responsive">
         <?php if (!empty($libro) && is_array($libro)): ?>
-            <table class="table table-bordered table-striped">
+             <table class="table table-bordered table-striped">
                 <thead class="table-dark">
                     <tr>
                         <th>Nombre</th>
@@ -12,6 +12,7 @@
                         <th>Precio</th>
                         <th>Stock</th>
                         <th>Categoria</th>
+                        <th>Edición</th>
                         <th>Imagen</th>
                     </tr>
                 </thead>
@@ -19,11 +20,12 @@
                     <?php foreach ($libro as $row): ?>
                         <tr>
                             <td><?php echo $row['nombreLibro']; ?></td>
-                            <td><?php echo $row['nombreAutor']; ?></td>
+                            <td><?php echo $row['autor_formateado']; ?></td>
                             <td><?php echo $row['descripcionLibro']; ?></td>
                             <td>$<?php echo $row['precioLibro']; ?></td>
                             <td><?php echo $row['stockLibro']; ?></td>
                             <td><?php echo $row['nombreCategoria']; ?></td>
+                            <td><?php echo $row['fechaEdicion']; ?></td>
                             <td><img src="<?php echo base_url('assets/upload/'.$row['imagenLibro']); ?>" alt="" height="125" width="100"></td>
                         </tr>
                     <?php endforeach; ?>

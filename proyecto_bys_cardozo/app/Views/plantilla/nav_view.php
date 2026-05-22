@@ -13,19 +13,19 @@
           <a class="nav-link" aria-current="page" href="<?php echo base_url(''); ?>">Inicio</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="<?= ('nosotros'); ?>">Nosotros</a>
+          <a class="nav-link" href="<?= base_url('nosotros'); ?>">Nosotros</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="<?= ('contactos'); ?>">Contacto</a>
+          <a class="nav-link" href="<?= base_url('contactos'); ?>">Contacto</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="<?= ('comercializacion'); ?>">Informacion</a>
+          <a class="nav-link" href="<?= base_url('comercializacion'); ?>">Informacion</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="<?= ('terminos_usos'); ?>">Terminos y usos</a>
+          <a class="nav-link" href="<?= base_url('terminos_usos'); ?>">Terminos y usos</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="<?= ('productos'); ?>">Catalogo</a>
+          <a class="nav-link" href="<?= base_url('productos'); ?>">Catalogo</a>
         </li>
       </ul>
     </div>

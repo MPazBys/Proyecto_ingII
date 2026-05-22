@@ -9,13 +9,20 @@ use App\Models\venta_model;
 use App\Models\detalle_venta_model;
 use App\Models\formapago_model; 
 use App\Models\persona_model;
+use App\Models\provincias_model;
+use App\Models\localidades_model;
 
 class CarritoController extends BaseController {
 
     public function ver_carrito(){
+        if (!session('login')) {
+            return redirect()->to(base_url('login'))->with('error_login', 'Debes iniciar sesión para ver tu carrito.');
+        }
         $cart = \Config\Services::cart();
         $formaPagoModel = new formapago_model();
         $personaModel = new persona_model();
+        $provinciaModel = new provincias_model();
+        $localidadModel = new localidades_model();
 
         $formasPago = $formaPagoModel->findAll();
         $data['items'] = $cart->contents();
@@ -27,6 +34,8 @@ class CarritoController extends BaseController {
         }
 
         $data['formasPago'] = $formasPago;
+        $data['provincias'] = $provinciaModel->orderBy('nombreProvincia', 'ASC')->findAll();
+        $data['localidades'] = $localidadModel->orderBy('nombreLocalidad', 'ASC')->findAll();
         $data['titulo'] = 'Carrito de compras';
 
         return view('plantilla/header_view', $data).
@@ -36,6 +45,9 @@ class CarritoController extends BaseController {
     }
 
     public function agregar_carrito(){
+        if (!session('login')) {
+            return redirect()->to(base_url('login'))->with('error_login', 'Debes iniciar sesión para agregar productos al carrito.');
+        }
         $cart = \Config\Services::cart();
         $request = \Config\Services::request();
         $productoModel = new libros_model(); 
@@ -91,6 +103,9 @@ class CarritoController extends BaseController {
     }
 
     public function aumentar_cantidad($rowid) {
+        if (!session('login')) {
+            return redirect()->to(base_url('login'))->with('error_login', 'Debes iniciar sesión para modificar tu carrito.');
+        }
         $cart = \Config\Services::cart();
         $items = $cart->contents();
 
@@ -118,6 +133,9 @@ class CarritoController extends BaseController {
 
 
     public function disminuir_cantidad($rowid) {
+        if (!session('login')) {
+            return redirect()->to(base_url('login'))->with('error_login', 'Debes iniciar sesión para modificar tu carrito.');
+        }
         $cart = \Config\Services::cart();
         $items = $cart->contents();
 
@@ -144,6 +162,9 @@ class CarritoController extends BaseController {
     }
 
     public function borrar ($rowid = null) {
+        if (!session('login')) {
+            return redirect()->to(base_url('login'))->with('error_login', 'Debes iniciar sesión para modificar tu carrito.');
+        }
         $cart = \Config\Services::cart();
 
         if ($rowid !== null) {
@@ -154,6 +175,9 @@ class CarritoController extends BaseController {
     }
 
     public function borrar_todo() {
+        if (!session('login')) {
+            return redirect()->to(base_url('login'))->with('error_login', 'Debes iniciar sesión para vaciar el carrito.');
+        }
         $cart = \Config\Services::cart();
         $cart->destroy(); 
 
@@ -161,6 +185,9 @@ class CarritoController extends BaseController {
     }
 
     public function procesar_finalizar_compra() {
+        if (!session('login')) {
+            return redirect()->to(base_url('login'))->with('error_login', 'Debes iniciar sesión para finalizar la compra.');
+        }
         $cart = \Config\Services::cart();
         $venta = new venta_model();
         $detalle = new detalle_venta_model();
@@ -203,8 +230,8 @@ class CarritoController extends BaseController {
         //Reglas condicionales para ENVÍO A DOMICILIO
         if ($formaEnvio == '2') { // '2' = Envío a domicilio
             $rules['domicilio'] = 'required|min_length[5]|max_length[100]';
-            $rules['ciudad'] = 'required|alpha_space|min_length[2]|max_length[50]';
-            $rules['provincia'] = 'required|alpha_space|min_length[2]|max_length[50]';
+            $rules['ciudad'] = 'required|regex_match[/^[a-zA-ZáéíóúÁÉÍÓÚñÑüÜ\s\.\-]+$/]|min_length[2]|max_length[50]';
+            $rules['provincia'] = 'required|regex_match[/^[a-zA-ZáéíóúÁÉÍÓÚñÑüÜ\s\.\-]+$/]|min_length[2]|max_length[50]';
 
             $messages['domicilio'] = [
                 'required' => 'El domicilio es obligatorio.',
@@ -213,13 +240,13 @@ class CarritoController extends BaseController {
             ];
             $messages['ciudad'] = [
                 'required' => 'La ciudad es obligatoria.',
-                'alpha_space' => 'Solo se permiten letras y espacios en la ciudad.',
+                'regex_match' => 'Solo se permiten letras, espacios, puntos o guiones en la ciudad.',
                 'min_length' => 'La ciudad debe tener al menos 2 caracteres.',
                 'max_length' => 'La ciudad no puede superar los 50 caracteres.',
             ];
             $messages['provincia'] = [
                 'required' => 'La provincia es obligatoria.',
-                'alpha_space' => 'Solo se permiten letras y espacios en la provincia.',
+                'regex_match' => 'Solo se permiten letras, espacios, puntos o guiones en la provincia.',
                 'min_length' => 'La provincia debe tener al menos 2 caracteres.',
                 'max_length' => 'La provincia no puede superar los 50 caracteres.',
             ];

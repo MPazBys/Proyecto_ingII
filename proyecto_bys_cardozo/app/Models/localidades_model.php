@@ -4,7 +4,7 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class localidad_model extends Model
+class localidades_model extends Model
 {
     protected $table      = 'localidades';
     protected $primaryKey = 'idLocalidad';

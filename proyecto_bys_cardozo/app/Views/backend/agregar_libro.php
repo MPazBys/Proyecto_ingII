@@ -28,14 +28,16 @@
                 <div class="form-group">
                 <label for="autor">Autor</label>
                     <?php 
-                        $lista['0'] = 'Seleccione autor';
+                        // Cargar listado de autores en formato 'Nombres Apellidos' y conservar la selección si falla la validación
+                        $listaAutores['0'] = 'Seleccione autor';
                         foreach ($autores as $row) {
                             $idAutor = $row['idAutor'];
-                            $nombreAutor = $row['nombreAutor'];
-                            $lista[$idAutor] = $nombreAutor;
+                            $nombreCompleto = $row['nombreAutor'] . ' ' . $row['apellidoAutor'];
+                            $listaAutores[$idAutor] = $nombreCompleto;
                         }
-                        echo form_dropdown('autor', $lista, '0', 'class="form-control"');
-                        ?>
+                        $selectedAutor = set_value('autor') ?: '0';
+                        echo form_dropdown('autor', $listaAutores, $selectedAutor, 'class="form-control" id="autor"');
+                    ?>
                     <?php if (isset($validation) && $validation->hasError('autor')): ?>
                     <div class="mt-1 fw-bold text-danger alert alert-danger">
                         <?= $validation->getError('autor'); ?>
@@ -95,6 +97,26 @@
                 </div>
 
                 <div class="form-group">
+                <label for="fechaedicion">Fecha de Edición</label>
+                    <?php 
+                        // Crear listado de años desde el actual hasta 1900 para selección
+                        $years = [];
+                        $currentYear = (int)date('Y');
+                        for ($y = $currentYear; $y >= 1900; $y--) {
+                            $years[$y] = $y;
+                        }
+                        // Conservar el año seleccionado si la validación falla
+                        $selectedYear = set_value('fechaedicion') ?: $currentYear;
+                        echo form_dropdown('fechaedicion', $years, $selectedYear, 'class="form-control" id="fechaedicion"');
+                    ?>
+                    <?php if (isset($validation) && $validation->hasError('fechaedicion')): ?>
+                    <div class="mt-1 fw-bold text-danger alert alert-danger">
+                        <?= $validation->getError('fechaedicion'); ?>
+                    </div>
+                    <?php endif; ?>
+                </div>
+
+                <div class="form-group">
                 <label for="imagen">Imagen</label>
                     <?php echo form_input([
                         'name'        => 'imagen',
@@ -119,14 +141,16 @@
                 <div class="form-group">
                 <label for="categoria">Categoria</label>
                     <?php 
-                        $lista['0'] = 'Seleccione categoria';
+                        // Cargar listado de categorías y conservar la selección tras fallar la validación
+                        $listaCat['0'] = 'Seleccione categoria';
                         foreach ($categorias as $row) {
                             $idCategoria = $row['idCategoria'];
                             $nombreCategoria = $row['nombreCategoria'];
-                            $lista[$idCategoria] = $nombreCategoria;
+                            $listaCat[$idCategoria] = $nombreCategoria;
                         }
-                        echo form_dropdown('categoria', $lista, '0', 'class="form-control"');
-                        ?>
+                        $selectedCategoria = set_value('categoria') ?: '0';
+                        echo form_dropdown('categoria', $listaCat, $selectedCategoria, 'class="form-control" id="categoria"');
+                    ?>
                     <?php if (isset($validation) && $validation->hasError('categoria')): ?>
                     <div class="mt-1 fw-bold text-danger alert alert-danger">
                         <?= $validation->getError('categoria'); ?>

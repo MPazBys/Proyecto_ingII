@@ -19,29 +19,20 @@ $routes->get('login', 'Home::acceso');
 
 $routes->get('registro', 'Home::crearcuenta');
 
-$routes->get('carrito', 'Home::carro');
+$routes->get('carrito', 'CarritoController::ver_carrito');
 
 $routes->get('catalogo', 'Home::libros');
 
-//RUTAS DE USUARIOCONTROLLER
+//RUTAS DE AUTENTICACIÓN Y CONSULTAS
+$routes->post('registro_usuario', 'AuthController::add_cliente');
+$routes->post('verificar_usuario', 'AuthController::buscar_usuario');
+$routes->get('logout', 'AuthController::cerrar_sesion');
 
-$routes->post('registro_usuario', 'UsuarioController::add_cliente');
-
-$routes->get('login', 'UsuarioController::login');
-
-$routes->post('verificar_usuario', 'UsuarioController::buscar_usuario');
-
-$routes->get('logout', 'UsuarioController::cerrar_sesion');
-
-$routes->get('user_admin', 'UsuarioController::admin');
-
-$routes->post('consulta', 'UsuarioController::add_consulta');
-
-$routes->get('consultas', 'UsuarioController::admin');
-
-$routes->get('responder/(:num)', 'UsuarioController::responder/$1');
-
-$routes->get('eliminarConsulta/(:num)', 'UsuarioController::eliminar/$1');
+$routes->post('consulta', 'ConsultaController::add_consulta');
+$routes->get('user_admin', 'ConsultaController::admin');
+$routes->get('consultas', 'ConsultaController::admin');
+$routes->get('responder/(:num)', 'ConsultaController::responder/$1');
+$routes->get('eliminarConsulta/(:num)', 'ConsultaController::eliminar/$1');
 
 //RUTAS DE LIBROCONTROLLER
 

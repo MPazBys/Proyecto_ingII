@@ -10,7 +10,7 @@
                 <select name="filtro_por" class="form-select w-auto">
                     <option value="nombre" <?= (isset($_GET['filtro_por']) && $_GET['filtro_por'] == 'nombre') ? 'selected' : '' ?>>Nombre</option>
                     <option value="autor" <?= (isset($_GET['filtro_por']) && $_GET['filtro_por'] == 'autor') ? 'selected' : '' ?>>Autor</option>
-                    <option value="genero" <?= (isset($_GET['filtro_por']) && $_GET['filtro_por'] == 'genero') ? 'selected' : '' ?>>Género</option>
+                    <option value="genero" <?= (isset($_GET['filtro_por']) && $_GET['filtro_por'] == 'genero') ? 'selected' : '' ?>>Categoría</option>
                 </select>
 
                 <?= form_input([
@@ -42,7 +42,7 @@
                 <p class="fs-4 fw-bold text-danger alert alert-danger">No se encontraron libros con esos criterios.</p>
             </div>
         <?php else: ?>
-            <table id="mytable" class="table table-bordered table-striped table-hover">
+             <table id="mytable" class="table table-bordered table-striped table-hover">
                 <thead class="text-center table-dark">
                     <tr>
                         <th>Nombre</th>
@@ -52,6 +52,7 @@
                         <th>Stock</th>
                         <th>Categoria</th>
                         <th>Etiqueta</th>
+                        <th>Edición</th>
                         <th>Imagen</th>
                         <th>Editar</th>
                         <th>Eliminar/Activar</th>
@@ -61,7 +62,7 @@
                     <?php foreach($libro as $row) { ?>
                         <tr>
                             <td><?php echo $row['nombreLibro']; ?></td>
-                            <td><?php echo $row['nombreAutor']; ?></td>
+                            <td><?php echo $row['autor_formateado']; ?></td>
                             <td style="max-width: 200px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
                                 <?php echo $row['descripcionLibro']; ?>
                             </td>
@@ -69,6 +70,7 @@
                             <td><?php echo $row['stockLibro']; ?></td>
                             <td><?php echo $row['nombreCategoria']; ?></td>
                             <td><?php echo $row['nombreEtiqueta']; ?></td>
+                            <td><?php echo $row['fechaEdicion']; ?></td>
                             <td class="text-center">
                                 <img src="<?php echo base_url('assets/upload/'.$row['imagenLibro']); ?>" alt="" height="80" width="60">
                             </td>

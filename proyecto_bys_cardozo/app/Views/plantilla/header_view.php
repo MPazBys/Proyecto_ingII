@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title><?= $titulo ?></title>
+    <title><?= $titulo ?? 'Librería B&S Cardozo' ?></title>
     <link href="<?php echo base_url('assets/css/bootstrap.min.css'); ?>" rel="stylesheet">
     <link rel="stylesheet" href="<?php echo base_url('assets/css/estilos.css'); ?>">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -45,7 +45,7 @@
               <?php if(session('login')) { ?>
               
                   <span class="text-white fw-bold"><?= session('apellido'); ?></span>
-                  <a class="btn" href="<?= ('ver_carrito'); ?>" data-bs-toggle="tooltip" data-bs-placement="top" title="Carrito">
+                  <a class="btn" href="<?= base_url('ver_carrito'); ?>" data-bs-toggle="tooltip" data-bs-placement="top" title="Carrito">
                     <i class="fa-solid fa-cart-shopping"></i>
                   </a>
 
@@ -54,11 +54,11 @@
                   </a>
 
                 <?php } else { ?>
-                  <a class="btn" href="<?= ('login'); ?>" data-bs-toggle="tooltip" data-bs-placement="top" title="Iniciar sesión">
+                  <a class="btn" href="<?= base_url('login'); ?>" data-bs-toggle="tooltip" data-bs-placement="top" title="Iniciar sesión">
                     <i class="fa-solid fa-lock"></i>
                   </a>
 
-                  <a class="btn" href="<?= ('registro'); ?>" data-bs-toggle="tooltip" data-bs-placement="top" title="Registrarte">
+                  <a class="btn" href="<?= base_url('registro'); ?>" data-bs-toggle="tooltip" data-bs-placement="top" title="Registrarte">
                     <i class="fa-solid fa-user" ></i>
                   </a>
                 <?php } ?> 

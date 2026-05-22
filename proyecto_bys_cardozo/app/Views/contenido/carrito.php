@@ -3,17 +3,7 @@
 <div class="contenedor-wrapper">
     <p class="titulo-seccion">Carrito de compras</p>
 
-    <div class="container mt-5">
-    <div class="alert alert-info shadow-sm d-flex align-items-center rounded-pill p-3" role="alert">
-        <i class="fa-solid fa-person-digging fs-3 me-3 text-primary"></i>
-        <div>
-            <h4 class="alert-heading mb-1 fw-bold text-primary">¡Sección en proceso!</h4>
-            <p class="mb-0 text-muted">Estamos trabajando para traerte esta funcionalidad muy pronto. ¡Gracias por tu paciencia!</p>
-        </div>
-    </div>
-    </div>
-
-    <!-- <a href="<?= base_url('productos') ?>" class="btn btn-success" role="button">Continuar comprando</a>
+    <a href="<?= base_url('productos') ?>" class="btn btn-success" role="button">Continuar comprando</a>
 
     <?php if ($cart->contents() == NULL) { ?>
         <p class="titulos text-center alert alert-danger">El carrito está vacío</p>
@@ -136,31 +126,31 @@
                             <?php endif; ?>
                         </div>
                         <div class="mb-3">
-                            <label for="modal_ciudad">Ciudad</label>
-                            <?php echo form_input([
-                                'name'        => 'ciudad',
-                                'id'          => 'modal_ciudad', 
-                                'type'        => 'text',
-                                'class'       => 'form-control',
-                                'placeholder' => 'Ingrese su ciudad',
-                                'value'       => set_value('ciudad', $persona['ciudad'] ?? '')
-                            ]); ?>
-                            <?php if (session('errors.ciudad')): ?>
-                                <div class="mt-1 fw-bold text-danger alert alert-danger"><?= session('errors.ciudad'); ?></div>
+                            <label for="modal_provincia">Provincia</label>
+                            <select name="provincia" id="modal_provincia" class="form-select">
+                                <option value="">Seleccione su provincia</option>
+                                <?php foreach ($provincias as $prov): ?>
+                                    <option value="<?= esc($prov['nombreProvincia']) ?>" data-id="<?= esc($prov['idProvincia']) ?>" <?= set_select('provincia', $prov['nombreProvincia'], ($persona['provincia'] ?? '') == $prov['nombreProvincia']) ?>>
+                                        <?= esc($prov['nombreProvincia']) ?>
+                                    </option>
+                                <?php endforeach; ?>
+                            </select>
+                            <?php if (session('errors.provincia')): ?>
+                                <div class="mt-1 fw-bold text-danger alert alert-danger"><?= session('errors.provincia'); ?></div>
                             <?php endif; ?>
                         </div>
                         <div class="mb-3">
-                            <label for="modal_provincia">Provincia</label>
-                            <?php echo form_input([
-                                'name'        => 'provincia',
-                                'id'          => 'modal_provincia', 
-                                'type'        => 'text',
-                                'class'       => 'form-control',
-                                'placeholder' => 'Ingrese su provincia',
-                                'value'       => set_value('provincia', $persona['provincia'] ?? '')
-                            ]); ?>
-                            <?php if (session('errors.provincia')): ?>
-                                <div class="mt-1 fw-bold text-danger alert alert-danger"><?= session('errors.provincia'); ?></div>
+                            <label for="modal_ciudad">Ciudad</label>
+                            <select name="ciudad" id="modal_ciudad" class="form-select">
+                                <option value="">Seleccione su ciudad</option>
+                                <?php foreach ($localidades as $loc): ?>
+                                    <option value="<?= esc($loc['nombreLocalidad']) ?>" data-provincia="<?= esc($loc['idProvincia']) ?>" <?= set_select('ciudad', $loc['nombreLocalidad'], ($persona['ciudad'] ?? '') == $loc['nombreLocalidad']) ?>>
+                                        <?= esc($loc['nombreLocalidad']) ?>
+                                    </option>
+                                <?php endforeach; ?>
+                            </select>
+                            <?php if (session('errors.ciudad')): ?>
+                                <div class="mt-1 fw-bold text-danger alert alert-danger"><?= session('errors.ciudad'); ?></div>
                             <?php endif; ?>
                         </div>
                     </div>
@@ -216,7 +206,7 @@
                 </div>
             </form>
         </div> 
-    </div>-->
+    </div>
 </div>
 
 <?php if (session()->getFlashdata('mensaje')): ?>
@@ -260,6 +250,65 @@ document.addEventListener('DOMContentLoaded', function() {
     const selectedFormaEnvioInput = document.getElementById('selectedFormaEnvio');
     const selectedFormaPagoInput = document.getElementById('selectedFormaPago');
 
+    // Guardar una copia de todas las opciones de localidades al inicio para poder filtrarlas
+    const allLocalidades = [];
+    Array.from(ciudadInput.options).forEach(function(option) {
+        if (option.value !== '') {
+            allLocalidades.push({
+                value: option.value,
+                text: option.textContent.trim(),
+                provinciaId: option.getAttribute('data-provincia')
+            });
+        }
+    });
+
+    function filterCiudades() {
+        const selectedProvOption = provinciaInput.options[provinciaInput.selectedIndex];
+        const selectedProvId = selectedProvOption ? selectedProvOption.getAttribute('data-id') : '';
+
+        // Guardamos el valor seleccionado actual de la ciudad para intentar conservarlo
+        const currentCiudadValue = ciudadInput.value;
+
+        // Limpiamos las opciones del select de ciudad
+        ciudadInput.innerHTML = '';
+
+        // Añadimos la opción por defecto
+        const defaultOption = document.createElement('option');
+        defaultOption.value = '';
+        defaultOption.textContent = 'Seleccione su ciudad';
+        ciudadInput.appendChild(defaultOption);
+
+        // Si no hay provincia seleccionada, deshabilitar el dropdown de ciudades
+        if (!selectedProvId) {
+            ciudadInput.disabled = true;
+            return;
+        }
+
+        ciudadInput.disabled = false;
+
+        // Filtramos y añadimos las localidades correspondientes
+        let optionSelected = false;
+        allLocalidades.forEach(function(loc) {
+            if (loc.provinciaId === selectedProvId) {
+                const opt = document.createElement('option');
+                opt.value = loc.value;
+                opt.textContent = loc.text;
+                opt.setAttribute('data-provincia', loc.provinciaId);
+                // Si coincide con el valor seleccionado anteriormente, lo marcamos como seleccionado
+                if (loc.value === currentCiudadValue) {
+                    opt.selected = true;
+                    optionSelected = true;
+                }
+                ciudadInput.appendChild(opt);
+            }
+        });
+
+        // Si el valor guardado no pertenecía a la provincia seleccionada, se selecciona la opción vacía
+        if (!optionSelected) {
+            ciudadInput.value = '';
+        }
+    }
+
     function toggleFieldsVisibility() {
         // Asegura que se usan los valores del formulario principal
         const currentFormaEnvio = formaEnvioSelect.value;
@@ -292,6 +341,9 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
+    // Registrar escuchadores de eventos
+    provinciaInput.addEventListener('change', filterCiudades);
+
     // Cuando el modal está a punto de mostrarse, se transfieren los valores seleccionados
     // Los campos internos del modal se actualicen antes de mostrarse.
     const confirmarCompraModal = document.getElementById('confirmarCompraModal');
@@ -301,6 +353,7 @@ document.addEventListener('DOMContentLoaded', function() {
         selectedFormaPagoInput.value = formaPagoSelect.value;
 
         toggleFieldsVisibility();
+        filterCiudades();
     });
 
     // Si se hacen cambios en los selectores principales para actualizar los campos del modal dinámicamente
@@ -317,6 +370,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // correctamente al cargar la página, especialmente si hay valores antiguos 
     // que restaurar en los selectores.
     toggleFieldsVisibility();
+    filterCiudades();
 
 });
 </script>

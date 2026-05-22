@@ -1,3 +1,6 @@
+<?= $this->extend('plantilla/layout') ?>
+
+<?= $this->section('contenido') ?>
 <div class="library-auth" id="authContainer">
     
   <div class="auth-card register">
@@ -83,3 +86,4 @@
     <p>¿Ya tenés cuenta? <a href="<?= ('login'); ?>" id="showRegister">Iniciar Sesion</a></p>
   </div>
 </div>
+<?= $this->endSection() ?>

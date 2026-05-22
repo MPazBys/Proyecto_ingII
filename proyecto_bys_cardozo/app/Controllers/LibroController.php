@@ -2,32 +2,95 @@
 
 namespace App\Controllers;
 
-use CodeIgniter\Controller;
 use App\Models\libros_model;
 use App\Models\categorias_model;
 use App\Models\etiqueta_model;
 use App\Models\autores_model;
 
-class LibroController extends BaseController {
+/**
+ * Controlador principal para la gestión de libros.
+ * Administra el catálogo público, las búsquedas y las operaciones CRUD administrativas.
+ */
+class LibroController extends BaseController 
+{
+    // Propiedades para almacenar las instancias de los modelos (Inyección de Dependencias)
+    protected $libroModel;
+    protected $categoriaModel;
+    protected $autorModel;
+    protected $etiquetaModel;
 
-    // Metodo privado para validar los datos del libro
-    private function validarDatos($esEdicion = false) {
+    public function __construct() 
+    {
+        // Cargar instancias de modelos una sola vez en el constructor
+        $this->libroModel = model(libros_model::class);
+        $this->categoriaModel = model(categorias_model::class);
+        $this->autorModel = model(autores_model::class);
+        $this->etiquetaModel = model(etiqueta_model::class);
+    }
+
+    // --- MÉTODOS DE RENDERIZADO AUXILIAR (Bajo Acoplamiento / DRY) ---
+
+    /**
+     * Helper para renderizar vistas administrativas con cabecera y pie de página de admin.
+     */
+    private function renderAdmin(string $viewName, array $data = []) 
+    {
+        return view('plantilla/nav_admin_view', $data) .
+               view($viewName, $data) .
+               view('plantilla/footer_admin_view');
+    }
+
+    /**
+     * Helper para renderizar vistas públicas con cabecera, navegación y pie de página estándar.
+     */
+    private function renderPublic(string $viewName, array $data = []) 
+    {
+        return view('plantilla/header_view', $data) .
+               view('plantilla/nav_view', $data) .
+               view($viewName, $data) .
+               view('plantilla/footer_view', $data);
+    }
+
+    /**
+     * Helper para cargar las opciones que rellenan los combos desplegables en formularios.
+     */
+    private function cargarDatosFormulario(string $titulo) 
+    {
+        return [
+            'categorias' => $this->categoriaModel->findAll(),
+            'autores'    => $this->autorModel->findAll(),
+            'etiquetas'  => $this->etiquetaModel->findAll(),
+            'titulo'     => $titulo
+        ];
+    }
+
+    // --- VALIDACIÓN DE FORMULARIOS ---
+
+    /**
+     * Valida los datos recibidos por POST mapeando las reglas a los inputs del formulario.
+     * Soporta validaciones condicionales tanto para registro como edición.
+     */
+    private function validarFormulario($esEdicion = false) 
+    {
         $validation = \Config\Services::validation();
 
+        // Reglas de validación aplicadas sobre los nombres de campos del formulario
         $reglas = [
             'titulo'      => 'required|min_length[3]|max_length[100]',
             'autor'       => 'required|is_not_unique[autores.idAutor]',
             'descripcion' => 'required|min_length[10]|max_length[1000]',
             'precio'      => 'required|decimal|greater_than[0]',
             'stock'       => 'required|integer|greater_than_equal_to[0]',
+            'fechaedicion'=> 'required|regex_match[/^[0-9]{4}$/]|greater_than_equal_to[1750]|less_than_equal_to[' . date('Y') . ']',
             'categoria'   => 'required|is_not_unique[categorias.idCategoria]',
         ];
 
+        // Regla requerida solo en la edición
         if ($esEdicion) {
             $reglas['etiqueta'] = 'required|is_not_unique[etiqueta.idEtiqueta]';
         }
 
-        // Validacion dinamica de la imagen
+        // Validación dinámica del archivo de imagen
         $img = $this->request->getFile('imagen');
         if (!$esEdicion || ($img && $img->isValid() && !$img->hasMoved())) {
             $reglaImagen = $esEdicion ? '' : 'uploaded[imagen]|';
@@ -35,6 +98,7 @@ class LibroController extends BaseController {
             $reglas['imagen'] = $reglaImagen;
         }
 
+        // Mensajes de error en español para mostrar al usuario en las vistas
         $mensajes = [
             'titulo' => [
                 'required'   => 'El título es obligatorio',
@@ -60,6 +124,12 @@ class LibroController extends BaseController {
                 'integer'               => 'El stock debe ser un número entero',
                 'greater_than_equal_to' => 'El stock no puede ser negativo'
             ],
+            'fechaedicion' => [
+                'required'              => 'La fecha de edición es obligatoria',
+                'regex_match'           => 'La fecha de edición debe ser un año válido (4 dígitos)',
+                'greater_than_equal_to' => 'La fecha de edición no puede ser anterior a 1750',
+                'less_than_equal_to'    => 'La fecha de edición no puede ser en el futuro'
+            ],
             'imagen' => [
                 'uploaded' => 'Seleccione una imagen',
                 'is_image' => 'El archivo debe ser una imagen válida',
@@ -77,290 +147,296 @@ class LibroController extends BaseController {
         ];
 
         $validation->setRules($reglas, $mensajes);
-        return $validation->withRequest(\Config\Services::request())->run();
+        return $validation->withRequest($this->request)->run();
     }
 
-    // Método privado para cargar los datos comunes de los formularios (combos)
-    private function cargarDatosFormulario($titulo) {
-        $categoria = new categorias_model();
-        $autor = new autores_model();
-        $etiquetas = new etiqueta_model();
+    // --- ACCIONES CRUD ADMINISTRATIVAS ---
 
-        return [
-            'categorias' => $categoria->findAll(),
-            'autores'    => $autor->findAll(),
-            'etiquetas'  => $etiquetas->findAll(),
-            'titulo'     => $titulo
-        ];
-    }
-
-    public function form_agregar_libro() {
+    /**
+     * Muestra el formulario para registrar un nuevo libro.
+     */
+    public function form_agregar_libro() 
+    {
         $data = $this->cargarDatosFormulario('Agregar libro');
-        return view('plantilla/nav_admin_view', $data) .
-               view('backend/agregar_libro') .
-               view('plantilla/footer_admin_view');
+        return $this->renderAdmin('backend/agregar_libro', $data);
     }
 
-    public function registrar_libro() {
-        if ($this->validarDatos(false)) {
+    /**
+     * Procesa el formulario de registro de un libro en la DB.
+     * Utiliza una transacción para asegurar que la imagen física sólo se guarde
+     * si la consulta SQL de inserción se realiza de forma exitosa.
+     */
+    public function registrar_libro() 
+    {
+        if ($this->validarFormulario(false)) {
             $img = $this->request->getFile('imagen');
             $nombre_aleatorio = $img->getRandomName();
-            $img->move(ROOTPATH.'assets/upload', $nombre_aleatorio);
 
+            // Mapeo de datos del post a las columnas reales del modelo libros_model
             $data = [
                 'nombreLibro'      => $this->request->getPost('titulo'),
                 'idAutor'          => $this->request->getPost('autor'),
                 'descripcionLibro' => $this->request->getPost('descripcion'),
                 'precioLibro'      => $this->request->getPost('precio'),
                 'stockLibro'       => $this->request->getPost('stock'),
+                'fechaEdicion'     => $this->request->getPost('fechaedicion'), // Corregido: Columna correcta
                 'imagenLibro'      => $nombre_aleatorio,
                 'idCategoria'      => $this->request->getPost('categoria'),
                 'estado'           => 1,
-                'etiquetaLibro'    => 1
+                'idEtiqueta'       => 1 // Corregido: Columna correcta (por defecto Ninguna en registros nuevos)
             ];
 
-            $libro = new libros_model();
-            $libro->insert($data);
-            return redirect()->route('gestionar')->with('mensaje', 'El libro se registró correctamente!');
+            // Iniciar Transacción de Base de Datos para asegurar atomicidad
+            $db = \Config\Database::connect();
+            $db->transBegin();
+
+            try {
+                // 1. Insertar el registro en la base de datos primero
+                $this->libroModel->insert($data);
+                
+                // 2. Si la inserción SQL fue exitosa, mover físicamente la imagen al directorio de cargas
+                $img->move(ROOTPATH . 'assets/upload', $nombre_aleatorio);
+
+                $db->transCommit();
+                return redirect()->route('gestionar')->with('mensaje', '¡El libro se registró correctamente!');
+            } catch (\Exception $e) {
+                // Revertir base de datos y evitar archivos huérfanos si ocurre algún fallo
+                $db->transRollback();
+                return redirect()->route('gestionar')->with('error', 'Ocurrió un error al registrar el libro: ' . $e->getMessage());
+            }
         } else {
+            // Recargar vista con errores de validación
             $data = $this->cargarDatosFormulario('Agregar libro');
             $data['validation'] = \Config\Services::validation();
 
-            return view('plantilla/nav_admin_view', $data) .
-                   view('backend/agregar_libro') .
-                   view('plantilla/footer_admin_view');
+            return $this->renderAdmin('backend/agregar_libro', $data);
         }
     }
 
-    public function gestionar_libros() {
-        $libro_Model = new libros_model();
+    /**
+     * Muestra la tabla de gestión interna de libros con todas sus relaciones cargadas.
+     */
+    public function gestionar_libros() 
+    {
         $data = $this->cargarDatosFormulario('Listar libro');
+        // Usar la consulta unificada del modelo
+        $data['libro'] = $this->libroModel->getLibrosConRelaciones();
 
-        $data['libro'] = $libro_Model->select('libros.*, categorias.nombreCategoria, etiqueta.nombre as nombreEtiqueta, autores.nombreAutor')
-            ->join('categorias', 'categorias.idCategoria = libros.idCategoria')
-            ->join('etiqueta', 'etiqueta.idEtiqueta = libros.etiquetaLibro')
-            ->join('autores', 'autores.idAutor = libros.idAutor')
-            ->findAll();
-
-        return view('plantilla/nav_admin_view', $data) . 
-               view('backend/listar_libros') . 
-               view('plantilla/footer_admin_view');
+        return $this->renderAdmin('backend/listar_libros', $data);
     }
 
-    public function editar_libro($id=null) {
-        $libro_Model = new libros_model();
+    /**
+     * Carga el formulario de edición con los datos del libro seleccionado.
+     */
+    public function editar_libro($id = null) 
+    {
         $data = $this->cargarDatosFormulario('Editar libro');
-        
-        $data['libro'] = $libro_Model->where('idLibro', $id)->first();
+        $data['libro'] = $this->libroModel->find($id);
 
-        return view('plantilla/nav_admin_view', $data) .
-               view('backend/editar_libro') .
-               view('plantilla/footer_admin_view');
+        if (!$data['libro']) {
+            return redirect()->route('gestionar')->with('error', 'El libro no existe.');
+        }
+
+        return $this->renderAdmin('backend/editar_libro', $data);
     }
 
-    public function actualizar_libro() {
-        if ($this->validarDatos(true)) {
+    /**
+     * Actualiza los datos del libro.
+     * En caso de subir una nueva imagen, se guarda en el servidor y se borra la anterior
+     * únicamente si la consulta de base de datos finaliza de forma exitosa.
+     */
+    public function actualizar_libro() 
+    {
+        if ($this->validarFormulario(true)) {
             $id = $this->request->getPost('id');
-            $libro = new libros_model();
-            $libro_actual = $libro->find($id);
+            $libro_actual = $this->libroModel->find($id);
 
-            $img = $this->request->getFile('imagen');
-            $nombre_aleatorio = $libro_actual['imagenLibro'];
-            
-            if ($img && $img->isValid() && !$img->hasMoved()) {
-                $nombre_aleatorio = $img->getRandomName();
-                $img->move(ROOTPATH . 'assets/upload', $nombre_aleatorio);
+            if (!$libro_actual) {
+                return redirect()->route('gestionar')->with('error', 'El libro no existe.');
             }
 
+            $img = $this->request->getFile('imagen');
+            $imagenAntigua = $libro_actual['imagenLibro'];
+            $imagenNueva = null;
+            $nombreImagenFinal = $imagenAntigua;
+
+            // Generar nuevo nombre aleatorio de imagen si fue cargada
+            if ($img && $img->isValid() && !$img->hasMoved()) {
+                $imagenNueva = $img->getRandomName();
+                $nombreImagenFinal = $imagenNueva;
+            }
+
+            // Datos a actualizar mapeados a las columnas reales en la DB
             $data = [
                 'nombreLibro'      => $this->request->getPost('titulo'),
                 'idAutor'          => $this->request->getPost('autor'),
                 'descripcionLibro' => $this->request->getPost('descripcion'),
                 'precioLibro'      => $this->request->getPost('precio'),
                 'stockLibro'       => $this->request->getPost('stock'),
-                'imagenLibro'      => $nombre_aleatorio,
+                'fechaEdicion'     => $this->request->getPost('fechaedicion'), // Agregado: Actualización de la fecha de edición
+                'imagenLibro'      => $nombreImagenFinal,
                 'idCategoria'      => $this->request->getPost('categoria'),
-                'etiquetaLibro'    => $this->request->getPost('etiqueta')
+                'idEtiqueta'       => $this->request->getPost('etiqueta') // Corregido: Columna correcta
             ];
 
-            $libro->update($id, $data);
-            return redirect()->route('gestionar')->with('mensaje', 'El libro se modificó correctamente!');
+            // Iniciar Transacción de Base de Datos para asegurar atomicidad
+            $db = \Config\Database::connect();
+            $db->transBegin();
+
+            try {
+                // 1. Modificar base de datos primero
+                $this->libroModel->update($id, $data);
+
+                // 2. Si es exitosa, gestionar la subida física y borrar el archivo anterior
+                if ($imagenNueva) {
+                    $img->move(ROOTPATH . 'assets/upload', $imagenNueva);
+                    
+                    // Borrar el archivo viejo del almacenamiento
+                    if (!empty($imagenAntigua) && file_exists(ROOTPATH . 'assets/upload/' . $imagenAntigua)) {
+                        unlink(ROOTPATH . 'assets/upload/' . $imagenAntigua);
+                    }
+                }
+
+                $db->transCommit();
+                return redirect()->route('gestionar')->with('mensaje', '¡El libro se modificó correctamente!');
+            } catch (\Exception $e) {
+                // Revertir actualización si ocurre un fallo en escritura o archivos
+                $db->transRollback();
+                return redirect()->route('gestionar')->with('error', 'Ocurrió un error al actualizar el libro: ' . $e->getMessage());
+            }
         } else {
+            // Volver a cargar el formulario con errores si la validación falla
             $id = $this->request->getPost('id');
-            $libro_Model = new libros_model();
-            
             $data = $this->cargarDatosFormulario('Editar libro');
-            $data['libro'] = $libro_Model->find($id);
+            $data['libro'] = $this->libroModel->find($id);
             $data['validation'] = \Config\Services::validation();
 
-            return view('plantilla/nav_admin_view', $data) .
-                   view('backend/editar_libro') .
-                   view('plantilla/footer_admin_view');
+            return $this->renderAdmin('backend/editar_libro', $data);
         }
     }
 
-    public function eliminar_libro($id=null) {
-        $data = array('estado'=>'0');
-        $libro = new libros_model();
-        $libro->update($id, $data);
+    /**
+     * Realiza una baja lógica (desactivación) estableciendo estado = 0.
+     */
+    public function eliminar_libro($id = null) 
+    {
+        $this->libroModel->update($id, ['estado' => '0']);
         return redirect()->route('gestionar');
     }
 
-    public function activar_libro($id=null) {
-        $data = array('estado'=>'1');
-        $libro = new libros_model();
-        $libro->update($id, $data);
+    /**
+     * Activa un libro estableciendo estado = 1.
+     */
+    public function activar_libro($id = null) 
+    {
+        $this->libroModel->update($id, ['estado' => '1']);
         return redirect()->route('gestionar');
     }
 
-    public function listar_libros() {
-        $libro_Model = new \App\Models\libros_model();
-        $categoriaModel = new \App\Models\categorias_model();
+    /**
+     * Muestra la lista de productos disponibles en el panel de administrador.
+     */
+    public function index() 
+    {
+        $data = $this->cargarDatosFormulario('Productos');
+        $data['libro'] = $this->libroModel->getLibrosConRelaciones();
 
+        return $this->renderAdmin('backend/productos', $data);
+    }
+
+    // --- ACCIONES DE CATÁLOGO PÚBLICO Y BÚSQUEDAS ---
+
+    /**
+     * Muestra la lista pública de libros aplicando filtros condicionales de catálogo.
+     */
+    public function listar_libros() 
+    {
         $filtro_por = $this->request->getGet('filtro_por');
         $clave = $this->request->getGet('clave');
 
-        $data['categorias'] = $categoriaModel->findAll();
-
-        $builder = $libro_Model->select('libros.*, categorias.nombreCategoria, autores.nombreAutor')
-            ->join('categorias', 'categorias.idCategoria = libros.idCategoria')
-            ->join('autores', 'autores.idAutor = libros.idAutor')
-            ->where('libros.estado', 1)
-            ->where('libros.stockLibro >', 0);
-
-        if (!empty($filtro_por) && !empty($clave)) {
-            switch ($filtro_por) {
-                case 'nombre':
-                    $builder->like('libros.nombreLibro', $clave);
-                    break;
-                case 'autor':
-                    $builder->like('autores.nombreAutor', $clave);
-                    break;
-                case 'genero':
-                    $builder->like('categorias.nombreCategoria', $clave);
-                    break;
-            }
-        }
-
-        $data['libro'] = $builder->findAll();
+        $data['categorias'] = $this->categoriaModel->findAll();
         $data['titulo'] = 'Catálogo de Libros';
         $data['filtrado'] = ['tipo' => $filtro_por, 'clave' => $clave];
 
-        return view('plantilla/header_view', $data).
-               view('plantilla/nav_view').
-               view('contenido/catalogo').
-               view('plantilla/footer_view');   
+        // Obtener solo libros activos y con stock usando la consulta unificada
+        $data['libro'] = $this->libroModel->getLibrosConRelaciones([
+            'soloActivos' => true,
+            'conStock'    => true,
+            'filtro_por'  => $filtro_por,
+            'clave'       => $clave
+        ]);
+
+        return $this->renderPublic('contenido/catalogo', $data);
     }
 
-    public function buscar() {
+    /**
+     * Procesa la barra de búsqueda global del catálogo público.
+     */
+    public function buscar() 
+    {
         $busqueda = $this->request->getGet('busqueda');
-        $libroModel = new libros_model();
-        $categoriaModel = new categorias_model();
-        $autorModel = new autores_model();
+        
+        $data['categorias'] = $this->categoriaModel->findAll();
+        $data['autores']    = $this->autorModel->findAll();
+        $data['libro']      = $this->libroModel->getLibrosConRelaciones([
+            'soloActivos' => true,
+            'conStock'    => true,
+            'busqueda'    => $busqueda
+        ]);
+        $data['titulo']     = 'Resultados de búsqueda: ' . esc($busqueda);
 
-        $libros = $libroModel
-            ->select('libros.*, categorias.nombreCategoria as nombreCategoria, autores.nombreAutor as nombreAutor')
-            ->join('categorias', 'categorias.idCategoria = libros.idCategoria')
-            ->join('autores', 'autores.idAutor = libros.idAutor')
-            ->groupStart()
-                ->like('libros.nombreLibro', $busqueda)
-                ->orLike('autores.nombreAutor', $busqueda)
-                ->orLike('categorias.nombreCategoria', $busqueda)
-            ->groupEnd()
-            ->findAll();
-
-        $data['categorias'] = $categoriaModel->findAll();
-        $data['autores'] = $autorModel->findAll();
-        $data['libro'] = $libros;
-        $data['titulo'] = 'Resultados de búsqueda: ' . esc($busqueda);
-
-        return view('plantilla/header_view', $data). 
-               view('plantilla/nav_view').
-               view('contenido/catalogo').
-               view('plantilla/footer_view');
+        return $this->renderPublic('contenido/catalogo', $data);
     }
 
-    public function buscar_admin() {
+    /**
+     * Procesa búsquedas de administrador por columnas en la tabla de listado interno.
+     */
+    public function buscar_admin() 
+    {
         $filtro_por = $this->request->getGet('filtro_por');
         $busqueda = $this->request->getGet('busqueda');
-        $libroModel = new libros_model();
-        
+
         $data = $this->cargarDatosFormulario('Listado de Libros');
+        $data['libro'] = $this->libroModel->getLibrosConRelaciones([
+            'filtro_por' => $filtro_por,
+            'clave'      => $busqueda
+        ]);
 
-        $builder = $libroModel->select('libros.*, categorias.nombreCategoria, etiqueta.nombre as nombreEtiqueta, autores.nombreAutor')
-            ->join('categorias', 'categorias.idCategoria = libros.idCategoria')
-            ->join('etiqueta', 'etiqueta.idEtiqueta = libros.etiquetaLibro')
-            ->join('autores', 'autores.idAutor = libros.idAutor');
-
-        if (!empty($filtro_por) && !empty($busqueda)) {
-            if ($filtro_por == 'nombre') {
-                $builder->like('libros.nombreLibro', $busqueda);
-            } elseif ($filtro_por == 'autor') {
-                $builder->like('autores.nombreAutor', $busqueda);
-            } elseif ($filtro_por == 'genero') {
-                $builder->like('categorias.nombreCategoria', $busqueda);
-            }
-        }
-
-        $data['libro'] = $builder->findAll();
-
-        return view('plantilla/nav_admin_view', $data). 
-               view('backend/listar_libros'). 
-               view('plantilla/footer_admin_view');
+        return $this->renderAdmin('backend/listar_libros', $data);
     }
 
-    public function listar_libros_admin() {
-        $libro_Model = new libros_model();
-        $data = $this->cargarDatosFormulario('Listar libro');
-
+    /**
+     * Lista y filtra libros en el panel administrativo basándose en categoría y autor.
+     */
+    public function listar_libros_admin() 
+    {
         $categoriaSeleccionada = $this->request->getGet('categoria');
         $autorSeleccionado = $this->request->getGet('autor');
 
-        $builder = $libro_Model
-            ->select('libros.*, categorias.nombreCategoria, etiqueta.nombre as nombreEtiqueta, autores.nombreAutor')
-            ->join('categorias', 'categorias.idCategoria = libros.idCategoria')
-            ->join('etiqueta', 'etiqueta.idEtiqueta = libros.etiquetaLibro')
-            ->join('autores', 'autores.idAutor = libros.idAutor')
-            ->where('libros.estado', 1)
-            ->where('libros.stockLibro >', 0);
+        $data = $this->cargarDatosFormulario('Listar libro');
+        
+        // Obtener usando relaciones correctas
+        $data['libro'] = $this->libroModel->getLibrosConRelaciones([
+            'soloActivos' => true,
+            'conStock'    => true,
+            'idCategoria' => $categoriaSeleccionada,
+            'idAutor'     => $autorSeleccionado
+        ]);
 
-        if (!empty($categoriaSeleccionada)) {
-            $builder->where('libros.idCategoria', $categoriaSeleccionada);
-            $builder->where('libros.idAutor', $autorSeleccionado);
-        }
-
-        $data['libro'] = $builder->findAll();
-
-        return view('plantilla/nav_admin_view', $data). 
-               view('backend/listar_libros'). 
-               view('plantilla/footer_admin_view');
+        return $this->renderAdmin('backend/listar_libros', $data);
     }
 
-    public function index() {
-        $libro_Model = new libros_model();
-        $data = $this->cargarDatosFormulario('Productos');
-
-        $data['libro'] = $libro_Model->join('categorias', 'categorias.idCategoria = libros.idCategoria')
-                                     ->join('autores', 'autores.idAutor = libros.idAutor')->findAll();
-
-        return view('plantilla/nav_admin_view', $data).
-               view('backend/productos').
-               view('plantilla/footer_admin_view');
-    }
-
-    public function inicio() {
-        $libro_Model = new libros_model();
-
-        $data['libro'] = $libro_Model->where('estado', 1)->where('stockLibro >', 0)
-            ->join('categorias', 'categorias.idCategoria = libros.idCategoria')
-            ->join('etiqueta', 'etiqueta.idEtiqueta = libros.etiquetaLibro')
-            ->join('autores', 'autores.idAutor = libros.idAutor')->findAll();
-
+    /**
+     * Carga los productos recomendados en la pantalla de bienvenida del catálogo general público.
+     */
+    public function inicio() 
+    {
+        $data['libro'] = $this->libroModel->getLibrosConRelaciones([
+            'soloActivos' => true,
+            'conStock'    => true
+        ]);
         $data['titulo'] = 'Bienvenidos';
 
-        return view('plantilla/header_view', $data).
-               view('plantilla/nav_view').
-               view('contenido/inicio').
-               view('plantilla/footer_view');
+        return $this->renderPublic('contenido/inicio', $data);
     }
 }

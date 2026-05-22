@@ -1,7 +1,6 @@
 <div class="form-wrapper">
     <h1 class="titulo-seccion">Edición de libros</h1>
 
-    <div class="w-5 mx-auto">
         <?php echo form_open_multipart("actualizar"); ?>
         <div class="form-group">
             <label for="titulo">Titulo</label>
@@ -11,7 +10,7 @@
                 'type'        => 'text',
                 'class'       => 'form-control',
                 'autofocus'   => 'autofocus',
-                'value'       => $libro['nombreLibro']
+                'value'       => set_value('titulo') ?: $libro['nombreLibro']
             ]); ?>
             <?php if (isset($validation) && $validation->hasError('titulo')): ?>
             <div class="mt-1 fw-bold text-danger alert alert-danger">
@@ -23,12 +22,13 @@
         <div class="form-group">
         <label for="autor">Autor</label>
             <?php 
-                $lista['0'] = 'Seleccione autor';
+                // Cargar autores en formato 'Nombres Apellidos' y conservar la selección si falla la validación
+                $listaAutores['0'] = 'Seleccione autor';
                 foreach ($autores as $row) {
-                    $lista[$row['idAutor']] = $row['nombreAutor'];
+                    $listaAutores[$row['idAutor']] = $row['nombreAutor'] . ' ' . $row['apellidoAutor'];
                 }
-                $sel = $libro['idAutor'];
-                echo form_dropdown('autor', $lista, $sel, 'class="form-control"'); ?>
+                $sel = set_value('autor') ?: $libro['idAutor'];
+                echo form_dropdown('autor', $listaAutores, $sel, 'class="form-control" id="autor"'); ?>
             <?php if (isset($validation) && $validation->hasError('autor')): ?>
             <div class="mt-1 fw-bold text-danger alert alert-danger">
                 <?= $validation->getError('autor'); ?>
@@ -44,7 +44,7 @@
                 'type'        => 'text',
                 'class'       => 'form-control',
                 'autofocus'   => 'autofocus',
-                'value'       => $libro['descripcionLibro']
+                'value'       => set_value('descripcion') ?: $libro['descripcionLibro']
             ]); ?>
             <?php if (isset($validation) && $validation->hasError('descripcion')): ?>
             <div class="mt-1 fw-bold text-danger alert alert-danger">
@@ -61,7 +61,7 @@
                 'type'        => 'number',
                 'class'       => 'form-control',
                 'autofocus'   => 'autofocus',
-                'value'       => $libro['precioLibro']
+                'value'       => set_value('precio') ?: $libro['precioLibro']
             ]); ?>
             <?php if (isset($validation) && $validation->hasError('precio')): ?>
             <div class="mt-1 fw-bold text-danger alert alert-danger">
@@ -78,11 +78,35 @@
                 'type'        => 'number',
                 'class'       => 'form-control',
                 'autofocus'   => 'autofocus',
-                'value'       => $libro['stockLibro']
+                'value'       => set_value('stock') ?: $libro['stockLibro']
             ]); ?>
             <?php if (isset($validation) && $validation->hasError('stock')): ?>
             <div class="mt-1 fw-bold text-danger alert alert-danger">
                 <?= $validation->getError('stock'); ?>
+            </div>
+            <?php endif; ?>
+        </div>
+
+        <div class="form-group">
+        <label for="fechaedicion">Fecha de Edición</label>
+            <?php 
+                // Crear listado de años para la edición del libro, soportando años históricos si fuera necesario
+                $years = [];
+                $currentYear = (int)date('Y');
+                $startYear = 1900;
+                $valYear = (isset($libro['fechaEdicion']) && is_numeric($libro['fechaEdicion'])) ? (int)$libro['fechaEdicion'] : $currentYear;
+                if ($valYear < $startYear) {
+                    $startYear = $valYear;
+                }
+                for ($y = $currentYear; $y >= $startYear; $y--) {
+                    $years[$y] = $y;
+                }
+                $selectedYear = set_value('fechaedicion') ?: $valYear;
+                echo form_dropdown('fechaedicion', $years, $selectedYear, 'class="form-control" id="fechaedicion"');
+            ?>
+            <?php if (isset($validation) && $validation->hasError('fechaedicion')): ?>
+            <div class="mt-1 fw-bold text-danger alert alert-danger">
+                <?= $validation->getError('fechaedicion'); ?>
             </div>
             <?php endif; ?>
         </div>
@@ -107,12 +131,13 @@
         <div class="form-group">
         <label for="categoria">Categoria</label>
             <?php 
-                $lista['0'] = 'Seleccione categoria';
+                // Cargar categorías y conservar la selección si falla la validación
+                $listaCat['0'] = 'Seleccione categoria';
                 foreach ($categorias as $row) {
-                    $lista[$row['idCategoria']] = $row['nombreCategoria'];
+                    $listaCat[$row['idCategoria']] = $row['nombreCategoria'];
                 }
-                $sel = $libro['idCategoria'];
-                echo form_dropdown('categoria', $lista, $sel, 'class="form-control"'); ?>
+                $sel = set_value('categoria') ?: $libro['idCategoria'];
+                echo form_dropdown('categoria', $listaCat, $sel, 'class="form-control" id="categoria"'); ?>
             <?php if (isset($validation) && $validation->hasError('categoria')): ?>
             <div class="mt-1 fw-bold text-danger alert alert-danger">
                 <?= $validation->getError('categoria'); ?>
@@ -123,12 +148,13 @@
         <div class="form-group">
         <label for="etiqueta">Etiqueta</label>
             <?php 
+                // Cargar etiquetas y conservar la selección si falla la validación
                 $listaEtiq['0'] = 'Seleccione etiqueta';
                 foreach ($etiquetas as $row) {
                     $listaEtiq[$row['idEtiqueta']] = $row['nombre'];
                 }
-                $sel = $libro['etiquetaLibro'];
-                echo form_dropdown('etiqueta', $listaEtiq, $sel, 'class="form-control"'); ?>
+                $sel = set_value('etiqueta') ?: $libro['idEtiqueta'];
+                echo form_dropdown('etiqueta', $listaEtiq, $sel, 'class="form-control" id="etiqueta"'); ?>
             <?php if (isset($validation) && $validation->hasError('etiqueta')): ?>
             <div class="mt-1 fw-bold text-danger alert alert-danger">
                 <?= $validation->getError('etiqueta'); ?>
@@ -142,10 +168,7 @@
             <?php echo form_submit('Modificar', 'Modificar', "class='btn btn-success'"); ?>
         </div>
 
-        
-
     <?php echo form_close(); ?>
-    </div>
 
 </div>
 

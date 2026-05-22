@@ -1,3 +1,6 @@
+<?= $this->extend('plantilla/layout') ?>
+
+<?= $this->section('contenido') ?>
 <div class="contenedor-wrapper"> 
 	<p class="titulo-contacto text-wrap text-break">Información de Contacto</p>
 
@@ -85,78 +88,81 @@
 
 		<div class="row">
 			<div class="col-md-6 mx-auto border border-dark text-center mt-5">
-
-			<?php echo form_open('consulta') ?>
-			<div class="mb-3">
-				<label for="nombreYapellido" class="form-label fw-bold">Nombre y apellido</label>
-				<?php echo form_input([
-					'name'        => 'nombreYapellido',
-					'id'          => 'nombreYapellido',
-					'type'        => 'text',
-					'class'       => 'form-control',
-					'placeholder' => 'Ingrese su nombre y apellido',
-					'value'       => set_value('nombreYapellido')
-				]); ?>
-
-				<?php if(! empty($validation['nombreYapellido'])): ?>
-				<div class="mt-1 fw-bold text-danger alert alert-danger">
-					<?= $validation['nombreYapellido']; ?>
+			<?php if (session('login')): ?>
+				<?php echo form_open('consulta') ?>
+				
+				<div class="mb-3">
+					<label for="nombreYapellido" class="form-label fw-bold">Nombre y apellido</label>
+					<?php echo form_input([
+						'name'        => 'nombreYapellido',
+						'id'          => 'nombreYapellido',
+						'type'        => 'text',
+						'class'       => 'form-control',
+						'value'       => esc(session('nombre')) . ' ' . esc(session('apellido')),
+						'readonly'    => 'readonly'
+					]); ?>
 				</div>
-				<?php endif; ?>
-			</div>
 
-			<div class="mb-3">
-				<label for="email" class="form-label  fw-bold">Correo Electrónico</label>
-				<?php echo form_input([
-					'name'        => 'correo',
-					'id'          => 'correo',
-					'type'        => 'email',
-					'class'       => 'form-control',
-					'placeholder' => 'juanperez@mail.com"',
-					'value'       => set_value('correo')
-				]); ?>
-
-				<?php if(! empty($validation['correo'])): ?>
-				<div class="mt-1 fw-bold text-danger alert alert-danger">
-					<?= $validation['correo']; ?>
+				<div class="mb-3">
+					<label for="correo" class="form-label fw-bold">Correo Electrónico</label>
+					<?php echo form_input([
+						'name'        => 'correo',
+						'id'          => 'correo',
+						'type'        => 'email',
+						'class'       => 'form-control',
+						'value'       => esc(session('correo')),
+						'readonly'    => 'readonly'
+					]); ?>
 				</div>
-				<?php endif; ?>
-			</div>
-			<div class="mb-3">
+
+				<div class="mb-3">
 					<label for="motivo" class="form-label fw-bold">Motivo</label>
-				<?php echo form_input([
-					'name'        => 'motivo',
-					'id'          => 'motivo',
-					'class'       => 'form-control',
-					'placeholder' => 'Ingrese el motivo de la consulta',
-					'value'       => set_value('motivo')
-				]); ?>
+					<?php echo form_input([
+						'name'        => 'motivo',
+						'id'          => 'motivo',
+						'class'       => 'form-control',
+						'placeholder' => 'Ingrese el motivo de la consulta',
+						'value'       => set_value('motivo')
+					]); ?>
 
-				<?php if(! empty($validation['motivo'])): ?>
-				<div class="mt-1 fw-bold text-danger alert alert-danger">
-					<?= $validation['motivo']; ?>
+					<?php if(! empty($validation['motivo'])): ?>
+					<div class="mt-1 fw-bold text-danger alert alert-danger">
+						<?= $validation['motivo']; ?>
+					</div>
+					<?php endif; ?>
 				</div>
-				<?php endif; ?>
-			</div>
-			<div class="mb-3">
-				<label for="consulta" class="form-label  fw-bold">Consulta</label>
-				<?php echo form_textarea([
-					'name'        => 'consulta',
-					'id'          => 'consulta',
-					'class'       => 'form-control',
-					'placeholder' => 'Ingrese su consulta', 'rows' => '3',
-					'value'       => set_value('consulta')
-				]); ?> 
 
-				<?php if(! empty($validation['consulta'])): ?>
-				<div class="mt-1 fw-bold text-danger alert alert-danger">
-					<?= $validation['consulta']; ?>
+				<div class="mb-3">
+					<label for="consulta" class="form-label fw-bold">Consulta</label>
+					<?php echo form_textarea([
+						'name'        => 'consulta',
+						'id'          => 'consulta',
+						'class'       => 'form-control',
+						'placeholder' => 'Ingrese su consulta', 
+						'rows'        => '3',
+						'value'       => set_value('consulta')
+					]); ?> 
+
+					<?php if(! empty($validation['consulta'])): ?>
+					<div class="mt-1 fw-bold text-danger alert alert-danger">
+						<?= $validation['consulta']; ?>
+					</div>
+					<?php endif; ?>
 				</div>
-				<?php endif; ?>
-			</div>
+
 				<?php echo form_submit ('Consulta', 'Enviar', "class= 'btn btn-primary mt-3'"); ?>
 
-			<?php echo form_close(); ?>
+				<?php echo form_close(); ?>
+			<?php else: ?>
+				<div class="py-4">
+					<h3 class="text-danger mt-3 fw-bold"><br><br>Acceso Restringido</h3>
+					<p class="text-muted mt-2">Para poder enviarnos una consulta, debés registrarte e iniciar sesión con tu cuenta.</p>
+					<div class="d-flex flex-column gap-2 mt-4 px-4">
+						<a href="<?= base_url('login') ?>" class="btn btn-primary w-100 py-2" style="background-color: #7f5539; border-color: #7f5539; color: #fff;">Iniciar Sesión</a>
+						<a href="<?= base_url('registro') ?>" class="btn btn-outline-secondary w-100 py-2">Crear Cuenta</a>
+					</div>
+				</div>
+			<?php endif; ?>
 			</div>
 			<div class="col-md-6">
 					<h2 class="titulo-consulta text-center">Donde estamos</h2>
@@ -176,3 +182,4 @@ Swal.fire({
 });
 </script>
 <?php endif; ?>
+<?= $this->endSection() ?>

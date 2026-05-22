@@ -4,13 +4,9 @@ namespace App\Controllers;
 
 class Home extends BaseController
 {
-    public function index(): string
+    public function index()
     {
-        $data['titulo'] = "Bienvenidos"; 
-        return view('plantilla/header_view', $data).
-            view('plantilla/nav_view').
-            view('contenido/inicio').
-            view('plantilla/footer_view');
+        return redirect()->to(base_url('/'));
     }
 
     public function somos()
@@ -34,10 +30,14 @@ class Home extends BaseController
     public function contacto()
     {
         $data['titulo'] = "Contactos"; 
-        return view('plantilla/header_view', $data).
-            view('plantilla/nav_view').
-            view('contenido/contactos').
-            view('plantilla/footer_view');
+        if (session('login') && !session('correo')) {
+            $userModel = new \App\Models\persona_model();
+            $user = $userModel->find(session('id'));
+            if ($user) {
+                session()->set('correo', $user['correoPersona']);
+            }
+        }
+        return view('contenido/contactos', $data);
     }
 
     public function terminos()
@@ -52,19 +52,13 @@ class Home extends BaseController
     public function acceso()
     {
         $data['titulo'] = "Iniciar Sesion"; 
-        return view('plantilla/header_view', $data).
-            view('plantilla/nav_view').
-            view('contenido/login').
-            view('plantilla/footer_view');
+        return view('contenido/login', $data);
     }
 
     public function crearcuenta()
     {
         $data['titulo'] = "Registro"; 
-        return view('plantilla/header_view', $data).
-            view('plantilla/nav_view').
-            view('contenido/registro').
-            view('plantilla/footer_view');
+        return view('contenido/registro', $data);
     }
 
     public function carro()

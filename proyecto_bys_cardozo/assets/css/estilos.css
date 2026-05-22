@@ -460,3 +460,87 @@ a:hover {
     padding: 1rem;
   }
 }
+
+/* Carrusel de Libros Responsivo */
+.carousel-libros-wrapper {
+    width: 100%;
+    position: relative;
+    padding: 0 40px; /* Espacio para los botones laterales */
+}
+
+.carousel-libros-container {
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    padding: 10px 5px;
+}
+
+/* Ocultar barra de scroll para un aspecto más limpio */
+.carousel-libros-container::-webkit-scrollbar {
+    display: none;
+}
+.carousel-libros-container {
+    -ms-overflow-style: none;  /* IE y Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
+/* Botones de navegación lateral (colores y efecto del carrusel principal, con tamaño y posición originales) */
+.carousel-libros-wrapper .btn-scroll {
+    width: 36px;
+    height: 36px;
+    background-color: rgba(0, 0, 0, 0.4); /* semitransparente oscuro */
+    border: none;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+}
+
+.carousel-libros-wrapper .btn-scroll:hover {
+    background-color: rgba(0, 0, 0, 0.7);
+    transform: scale(1.1) translateY(-50%);
+}
+
+.carousel-libros-wrapper .prev-scroll {
+    left: 0;
+}
+
+.carousel-libros-wrapper .next-scroll {
+    right: 0;
+}
+
+/* Comportamiento Responsivo */
+@media (min-width: 769px) {
+    /* Pantallas grandes: cuadrícula centrada (comportamiento original) */
+    .carousel-libros-container {
+        flex-wrap: wrap;
+        justify-content: center;
+        overflow-x: visible;
+    }
+    
+    .carousel-libros-wrapper .btn-scroll {
+        display: none !important; /* Ocultar botones en escritorio */
+    }
+    
+    .carousel-libros-wrapper {
+        padding: 0; /* Sin padding en los lados */
+    }
+}
+
+@media (max-width: 768px) {
+    /* Pantallas pequeñas: fila horizontal de deslizamiento */
+    .carousel-libros-container {
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+    }
+    
+    .carousel-libros-container .libro-card {
+        flex: 0 0 auto; /* Evita que las tarjetas se deformen o encojan */
+    }
+}

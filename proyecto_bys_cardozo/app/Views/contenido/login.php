@@ -1,11 +1,14 @@
+<?= $this->extend('plantilla/layout') ?>
+
+<?= $this->section('contenido') ?>
 <div class="library-auth" id="authContainer">
   <div class="auth-card login">
     <h2>📚 Bienvenido a Libros M&P</h2>
     <p>Iniciá sesión para seguir explorando historias</p>
     <?php echo form_open('verificar_usuario') ?>
-      <?php if (isset($error_login)) : ?>
+      <?php if (isset($error_login) || session()->getFlashdata('error_login')) : ?>
         <div class="fw-bold alert alert-danger">
-          <?= esc($error_login) ?>
+          <?= esc($error_login ?? session()->getFlashdata('error_login')) ?>
         </div>
       <?php endif; ?>
 
@@ -45,3 +48,4 @@ Swal.fire({
 });
 </script>
 <?php endif; ?>
+<?= $this->endSection() ?>

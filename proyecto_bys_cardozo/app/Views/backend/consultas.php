@@ -1,3 +1,6 @@
+<?= $this->extend('plantilla/layout_admin') ?>
+
+<?= $this->section('contenido') ?>
 <div class="container my-5">
 
     <h1 class="titulo-seccion text-center mb-4">Consultas</h1>
@@ -36,8 +39,16 @@
                                 <?php endif; ?>
                             </td>
                             <td>
-                                <a href="<?= base_url('responder/' . $consulta['idConsulta']) ?>" class="btn btn-sm btn-success">Marcar como Respondido</a>
-                                <a href="<?= base_url('eliminarConsulta/' . $consulta['idConsulta']) ?>" class="btn btn-sm btn-danger" onclick="return confirm('¿Estás seguro de eliminar esta consulta?')">Eliminar</a>
+                                <?php if ($consulta['respondido']): ?>
+                                    <span class="text-muted"><i class="fa-solid fa-check-double text-success me-1"></i> Resuelto</span>
+                                <?php else: ?>
+                                    <a href="<?= base_url('responder/' . $consulta['idConsulta']) ?>" 
+                                       target="_blank" 
+                                       class="btn btn-sm btn-primary" 
+                                       onclick="setTimeout(() => { window.location.reload(); }, 1000);">
+                                        <i class="fa-solid fa-reply me-1"></i> Responder
+                                    </a>
+                                <?php endif; ?>
                             </td>
                         </tr>
                     <?php endforeach; ?>
@@ -48,3 +59,4 @@
             <div class="alert alert-info">No hay consultas registradas.</div>
         <?php endif; ?>
     </div>
+<?= $this->endSection() ?>
