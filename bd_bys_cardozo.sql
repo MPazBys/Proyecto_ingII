@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 21-05-2026 a las 01:34:30
+-- Tiempo de generación: 29-05-2026 a las 03:39:42
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -147,9 +147,22 @@ CREATE TABLE `consultas` (
   `asunto` varchar(100) NOT NULL,
   `mensaje` text NOT NULL,
   `respondido` tinyint(4) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  `idPersona` int(11) NOT NULL
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `idPersona` int(11) NOT NULL,
+  `respuestaText` text DEFAULT NULL,
+  `idAdminResponde` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `consultas`
+--
+
+INSERT INTO `consultas` (`idConsulta`, `asunto`, `mensaje`, `respondido`, `created_at`, `idPersona`, `respuestaText`, `idAdminResponde`) VALUES
+(7, 'libelula', 'puta arrimame tu culo pero ya, son mas ricas las que no tienen papa', 1, '2026-05-22 03:50:51', 11, NULL, NULL),
+(8, 'libelula', 'ppppppppppppppppppppppppppppppppppppppppppppppppppppp', 1, '2026-05-28 18:20:51', 11, 'zorritaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', 2),
+(9, 'libelula', 'concha tu vieja puta deah skere', 1, '2026-05-28 18:51:49', 11, 'trolaaaaaaaaaaaa', 2),
+(10, 'libelula', 'prueba 5000000000000000000000', 1, '2026-05-28 20:04:00', 13, 'yyyyyyyyyyyyyyyyyyyyyyyy', 2),
+(11, 'libelula', 'putaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', 1, '2026-05-28 19:08:57', 15, 'asiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii', 2);
 
 -- --------------------------------------------------------
 
@@ -178,7 +191,13 @@ INSERT INTO `detalleventa` (`idDetalle`, `idVenta`, `idLibro`, `cantidad`, `prec
 (7, 7, 3, 1, 33199),
 (8, 7, 6, 1, 25899),
 (9, 8, 5, 1, 28000),
-(10, 8, 12, 1, 38100);
+(10, 8, 12, 1, 38100),
+(16, 12, 6, 1, 25899),
+(17, 13, 5, 1, 28000),
+(18, 14, 3, 1, 33199),
+(19, 15, 6, 1, 25899),
+(20, 15, 3, 1, 33199),
+(21, 16, 5, 2, 28000);
 
 -- --------------------------------------------------------
 
@@ -194,6 +213,14 @@ CREATE TABLE `direccion` (
   `consideraciones` varchar(500) DEFAULT NULL,
   `idLocalidad` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `direccion`
+--
+
+INSERT INTO `direccion` (`idDireccion`, `calle`, `altura`, `pisoDepto`, `consideraciones`, `idLocalidad`) VALUES
+(1, 'Francia', 3981, NULL, NULL, 25),
+(2, 'Independencia', 2355, NULL, NULL, 62);
 
 -- --------------------------------------------------------
 
@@ -278,12 +305,12 @@ CREATE TABLE `libros` (
 --
 
 INSERT INTO `libros` (`idLibro`, `nombreLibro`, `idCategoria`, `precioLibro`, `stockLibro`, `estado`, `descripcionLibro`, `imagenLibro`, `idEtiqueta`, `idAutor`, `fechaEdicion`) VALUES
-(2, 'CARRIE (50 aniversario)', 2, 38299, 30, 0, 'Carrie, una joven de apariencia insignificante, acosada por sus compañeras de instituto, vive con su madre, una fanática religiosa. Un día en las duchas, la primera menstruación de Carrie provoca las burlas de las demás chicas y desencadena una sucesión de hechos sobrenaturales y terroríficos.', '1749314510_240c40867348ddf7a44f.jpg', 1, 2, '2024'),
-(3, 'MR. MERCEDES', 16, 33199, 57, 1, 'Justo antes del amanecer, cientos de parados esperan la apertura de la oficina de empleo.  De pronto, un Mercedes surge de la fría niebla de la madrugada. Su conductor atropella y aplasta a todos los que encuentra a su alcance. El asesino huye dejando atrás ocho muertos y quince heridos.  Meses después, Bill Hodges, un policía jubilado, recibe una carta anónima de alguien que se declara culpable de la masacre.  Brady Hartsfield vive con su madre alcohólica en la casa donde nació. Disfrutó tanto de aquella sensación de muerte debajo de los neumáticos del Mercedes que ahora quiere recuperarla.  ¿Quién es el cazador y quién la presa?', '1749332832_9bc398b3ee848a0e437a.webp', 2, 2, '2014'),
-(4, 'LA DIOSA DE TRES CABEZAS', 1, 33500, 2, 1, 'Percy Jackson, Annabeth Chase y Grover Underwood emprenden una nueva aventura con el objetivo de conseguir que Percy entre a la universidad. La diosa Hécate, para dar a Percy su segunda carta de recomendación, le pide que cuide su mansión y sus mascotas, Hécuba (un perro del infierno) y Gale (un turón), durante una semana antes de Halloween. Percy se enfrenta a esta tarea, que promete ser divertida y peligrosa.', '1749353673_59809dfcbd21949a067c.jpg', 2, 1, '2024'),
-(5, 'TRONO DE CRISTAL', 1, 28000, 98, 1, 'En las tenebrosas minas de sal de Endovier, una muchacha de dieciocho años cumple cadena perpetua. Es una asesina profesional, la mejor en lo suyo, pero ha cometido un error fatal. La han capturado. El joven capitán Westfall le ofrece un trato: la libertad a cambio de un enorme sacrificio. Celaena debe representar al príncipe en un torneo a muerte, en el que deberá luchar con los asesinos y ladrones más peligrosos del reino. Viva o muerta, Celaena será libre. Tanto si gana como si pierde, está a punto de descubrir su verdadero destino. Pero ¿qué pasará entretanto con su corazón de asesina?', '1749353993_f510f82cacdcacf5d0e4.jpg', 2, 3, '2024'),
-(6, 'EL MISTERIO DEL ÚLTIMO STRADIVARIUS', 16, 25899, 89, 1, '\"El misterio del último Stradivarius\" cuenta dos historias paralelas: una histórica que sigue el viaje del último violín construido por Antonio Stradivari y otra contemporánea que investiga un doble asesinato en Paraguay. La historia del violín, que se presenta como un objeto con propiedades mágicas o, al menos, capaz de producir una música sublime, se desarrolla a través de diferentes épocas y personajes. La investigación policial, por otro lado, se centra en un crimen que parece estar relacionado con el violín y sus dueños a lo largo de la historia. ', '1749354223_2cd9f500789d3eca7ad7.webp', 2, 4, '2025'),
-(7, 'EL CIELO ES AZUL, LA TIERRA BLANCA', 5, 23999, 150, 1, 'Tsukiko tiene 38 años y lleva una vida solitaria. Considera que no está dotada para el amor. Hasta que un día encuentra en una taberna a su viejo maestro de japonés. Entre ambos se establece un pacto tácito para compartir la soledad. Escogen la misma comida, buscan la compañía del otro y les cuesta separarse, aunque a veces intenten escapar el uno del otro: el maestro, en el recuerdo de la mujer que un día lo abandonó; Tsukiko, en un antiguo compañero de clase.', '1749404843_31d72373e62e22933e64.webp', 1, 5, '2018'),
+(2, 'CARRIE (50 aniversario)', 2, 38299, 30, 1, 'Carrie, una joven de apariencia insignificante, acosada por sus compañeras de instituto, vive con su madre, una fanática religiosa. Un día en las duchas, la primera menstruación de Carrie provoca las burlas de las demás chicas y desencadena una sucesión de hechos sobrenaturales y terroríficos.', '1749314510_240c40867348ddf7a44f.jpg', 1, 2, '2024'),
+(3, 'MR. MERCEDES', 16, 33199, 55, 1, 'Justo antes del amanecer, cientos de parados esperan la apertura de la oficina de empleo.  De pronto, un Mercedes surge de la fría niebla de la madrugada. Su conductor atropella y aplasta a todos los que encuentra a su alcance. El asesino huye dejando atrás ocho muertos y quince heridos.  Meses después, Bill Hodges, un policía jubilado, recibe una carta anónima de alguien que se declara culpable de la masacre.  Brady Hartsfield vive con su madre alcohólica en la casa donde nació. Disfrutó tanto de aquella sensación de muerte debajo de los neumáticos del Mercedes que ahora quiere recuperarla.  ¿Quién es el cazador y quién la presa?', '1749332832_9bc398b3ee848a0e437a.webp', 2, 2, '2014'),
+(4, 'LA DIOSA DE TRES CABEZAS', 1, 33500, 5, 1, 'Percy Jackson, Annabeth Chase y Grover Underwood emprenden una nueva aventura con el objetivo de conseguir que Percy entre a la universidad. La diosa Hécate, para dar a Percy su segunda carta de recomendación, le pide que cuide su mansión y sus mascotas, Hécuba (un perro del infierno) y Gale (un turón), durante una semana antes de Halloween. Percy se enfrenta a esta tarea, que promete ser divertida y peligrosa.', '1749353673_59809dfcbd21949a067c.jpg', 2, 1, '2024'),
+(5, 'TRONO DE CRISTAL', 1, 28000, 95, 1, 'En las tenebrosas minas de sal de Endovier, una muchacha de dieciocho años cumple cadena perpetua. Es una asesina profesional, la mejor en lo suyo, pero ha cometido un error fatal. La han capturado. El joven capitán Westfall le ofrece un trato: la libertad a cambio de un enorme sacrificio. Celaena debe representar al príncipe en un torneo a muerte, en el que deberá luchar con los asesinos y ladrones más peligrosos del reino. Viva o muerta, Celaena será libre. Tanto si gana como si pierde, está a punto de descubrir su verdadero destino. Pero ¿qué pasará entretanto con su corazón de asesina?', '1749353993_f510f82cacdcacf5d0e4.jpg', 2, 3, '2024'),
+(6, 'EL MISTERIO DEL ÚLTIMO STRADIVARIUS', 16, 25899, 87, 1, '\"El misterio del último Stradivarius\" cuenta dos historias paralelas: una histórica que sigue el viaje del último violín construido por Antonio Stradivari y otra contemporánea que investiga un doble asesinato en Paraguay. La historia del violín, que se presenta como un objeto con propiedades mágicas o, al menos, capaz de producir una música sublime, se desarrolla a través de diferentes épocas y personajes. La investigación policial, por otro lado, se centra en un crimen que parece estar relacionado con el violín y sus dueños a lo largo de la historia. ', '1749354223_2cd9f500789d3eca7ad7.webp', 2, 4, '2025'),
+(7, 'EL CIELO ES AZUL, LA TIERRA BLANCA', 5, 23999, 8, 1, 'Tsukiko tiene 38 años y lleva una vida solitaria. Considera que no está dotada para el amor. Hasta que un día encuentra en una taberna a su viejo maestro de japonés. Entre ambos se establece un pacto tácito para compartir la soledad. Escogen la misma comida, buscan la compañía del otro y les cuesta separarse, aunque a veces intenten escapar el uno del otro: el maestro, en el recuerdo de la mujer que un día lo abandonó; Tsukiko, en un antiguo compañero de clase.', '1749404843_31d72373e62e22933e64.webp', 1, 5, '2018'),
 (8, 'FIVE NIGHTS AT FREDDY\'S: LOS OJOS DE PLATA', 2, 37499, 125, 1, 'Han pasado diez años desde los asesinatos en Freddy Fazbear\'s Pizza, y Charlie ha pasado esos diez años tratando de olvidar. Su padre fue el dueño de Freddy Fazbear\'s Pizza y el creador de estos cuatro animales animatrónicos, y ahora Charlie esta regresando a su ciudad natal para reunirse con sus amigos de infancia. La curiosidad lleva a Charlie y sus amigos a la vieja pizzería que se encuentra oculta y sellada. Descubrieron una entrada, pero las cosas no eran como solían ser: las cuatro mascotas que entretenían y encantaban a los niños habían cambiado. Los animatrónicos tenían un oscuro secreto y una agenda asesina.', '1749405093_0177cf15d0ee054dc367.webp', 3, 6, '2017'),
 (9, 'RUEDA DEL TIEMPO 3: EL DRAGÓN RENACIDO', 1, 42000, 74, 1, 'Rand, acosado por inquietantes sueños sobre una espada de cristal, decide abandonar a sus compañeros tras un ataque de Engendros de la Sombra y se encamina hacia Tear para descubrir quién es realmente. Mientras tanto, las tres jóvenes aspirantes a Aes Sedai viajan con Mat hacia Tar Valon para ingresar como novicias en la Torre Blanca, donde esperan que las hermanas sanen a Mat de la extraña enfermedad que padece. Poco tiempo después, la Amyrlin les encomienda una peligrosa misión. . .', '1749431708_9080787a2edd8dab3867.webp', 3, 7, '2019'),
 (10, 'LIBRO DE DESASOSIEGO', 16, 36000, 300, 1, 'Ésta es una obra inacabada e inacabable: un universo entero en expansión cuya pluralidad—literaria y vital—es infinita. Bernardo Soares, ayudante de tenedor de libros de contabilidad en la ciudad de Lisboa, autor ficticio de este libro, es, según Pessoa, «un semi-heterónimo, porque, no siendo mía la personalidad, es, no diferente de la mía, sino una simple mutilación de ella».', '1749432155_64bc963d6da5ddf1462b.webp', 3, 8, '2002'),
@@ -430,23 +457,27 @@ CREATE TABLE `persona` (
   `contrasenia` varchar(500) NOT NULL,
   `idEstado` int(11) NOT NULL,
   `idPerfil` int(11) NOT NULL,
-  `dni` int(11) NOT NULL,
-  `idDireccion` int(11) DEFAULT NULL
+  `dni` int(11) DEFAULT NULL,
+  `idDireccion` int(11) DEFAULT NULL,
+  `telefono` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `persona`
 --
 
-INSERT INTO `persona` (`idPersona`, `nombrePersona`, `apellidoPersona`, `correoPersona`, `contrasenia`, `idEstado`, `idPerfil`, `dni`, `idDireccion`) VALUES
-(1, 'Carlos', 'Gómez', 'carlosgomez123@gmail.com', '123Carlos456*', 1, 2, 123, NULL),
-(2, 'Paz', 'Bys', 'paz250804@gmail.com', '$2y$10$muOtEmClkWLGa1VjINuEU.wR2TjAV46h.hcIweaCYEHjvXnLlkQjW', 1, 1, 46242480, NULL),
-(3, 'Micaela', 'Cardozo', 'micaelacardozo3794@gmail.com', '$2y$10$IHpkC7DNWX3k6lyzfBUeLOWb4SlBN1II9euIzwECgzotDvTI0pMIG', 1, 1, 124, NULL),
-(4, 'Victoria', 'Lopez', 'victorialopez12345@gmail.com', '$2y$10$DtY91YzGs4Lo1iip15.OvusoqXfVFAGXkPOhD5bkBNn1h6ioNma7.', 1, 2, 126, NULL),
-(6, 'Alex', 'Martin', 'alexM@gmail.com', '$2y$10$KG8UKVi/LPXcYfiQ6me8seRY2c7zz0ONeLYlhUUoWzwOI7ZERiVly', 1, 2, 125, NULL),
-(7, 'Alejandro', 'Acosta', 'aleacosta@gmail.com', '$2y$10$YSe/n4uBS9t3vcRQms37xe3Mz5OvE4y9iigEo8EDfdalbhAgXUE5.', 1, 2, 128, NULL),
-(8, 'Sofia', 'Fernandez', 'Soffer1@gmail.com', '$2y$10$tZ1P6VjUBITRXIqSoWNYEu32qiZgV193EIS9ldR86XLGkOZU18PAm', 1, 2, 256, NULL),
-(9, 'Lorena', 'Galarza', 'lorenaGal@gmail.com', '$2y$10$TQfZj0UV9gjuCxUGQdYKLOL8RB.nuQVPg4DDrno6E9Sc7bRg5VGw6', 1, 2, 782, NULL);
+INSERT INTO `persona` (`idPersona`, `nombrePersona`, `apellidoPersona`, `correoPersona`, `contrasenia`, `idEstado`, `idPerfil`, `dni`, `idDireccion`, `telefono`) VALUES
+(1, 'Carlos', 'Gómez', 'carlosgomez123@gmail.com', '123Carlos456*', 1, 2, 387387, NULL, NULL),
+(2, 'Paz', 'Bys', 'paz250804@gmail.com', '$2y$10$muOtEmClkWLGa1VjINuEU.wR2TjAV46h.hcIweaCYEHjvXnLlkQjW', 1, 1, 46242480, NULL, NULL),
+(3, 'Micaela', 'Cardozo', 'micaelacardozo3794@gmail.com', '$2y$10$IHpkC7DNWX3k6lyzfBUeLOWb4SlBN1II9euIzwECgzotDvTI0pMIG', 1, 1, 57832, NULL, NULL),
+(4, 'Victoria', 'Lopez', 'victorialopez12345@gmail.com', '$2y$10$DtY91YzGs4Lo1iip15.OvusoqXfVFAGXkPOhD5bkBNn1h6ioNma7.', 1, 2, 876896, NULL, NULL),
+(6, 'Alex', 'Martin', 'alexM@gmail.com', '$2y$10$KG8UKVi/LPXcYfiQ6me8seRY2c7zz0ONeLYlhUUoWzwOI7ZERiVly', 1, 2, 125, NULL, NULL),
+(7, 'Alejandro', 'Acosta', 'aleacosta@gmail.com', '$2y$10$YSe/n4uBS9t3vcRQms37xe3Mz5OvE4y9iigEo8EDfdalbhAgXUE5.', 1, 2, 128, NULL, NULL),
+(8, 'Sofia', 'Fernandez', 'Soffer1@gmail.com', '$2y$10$tZ1P6VjUBITRXIqSoWNYEu32qiZgV193EIS9ldR86XLGkOZU18PAm', 1, 2, 256, NULL, NULL),
+(9, 'Lorena', 'Galarza', 'lorenaGal@gmail.com', '$2y$10$TQfZj0UV9gjuCxUGQdYKLOL8RB.nuQVPg4DDrno6E9Sc7bRg5VGw6', 1, 2, 782, NULL, NULL),
+(11, 'Roberto', 'Llave', 'robb@gmail.com', '$2y$10$xxw8F9V7wE9UIUPqf7FMU.Pn/QEl/JRWAm2moDa39BFdOkN06IYSq', 1, 2, 89798, NULL, NULL),
+(13, 'Tatiana', 'Londres', 'mpb25000@gmail.com', '$2y$10$5B724bixEH9yXpmkiwjP6O4HmRySX/Gj.iqaEqIyYK9.CQNVd/6YW', 1, 2, 65555555, 2, '3794987865'),
+(15, 'Juan', 'Perez', 'juanpi@gmail.com', '$2y$10$iV1cZOZFlWufokrXwKIKfuw8xD/PZYciHv7MxE.YSe1ZhNAqUuB/e', 1, 2, 25484825, 1, '3794987868');
 
 -- --------------------------------------------------------
 
@@ -501,18 +532,24 @@ CREATE TABLE `venta` (
   `idCliente` int(11) NOT NULL,
   `total` decimal(10,0) NOT NULL,
   `idPago` int(11) NOT NULL,
-  `estado` varchar(30) NOT NULL
+  `estado` varchar(30) NOT NULL,
+  `formaEnvio` int(11) NOT NULL DEFAULT 1 COMMENT '1 = Retiro en sucursal, 2 = Envío a domicilio'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `venta`
 --
 
-INSERT INTO `venta` (`idVenta`, `fecha`, `idCliente`, `total`, `idPago`, `estado`) VALUES
-(5, '2025-06-19', 8, 33199, 1, 'Finalizado'),
-(6, '2025-06-19', 8, 103500, 2, 'Pendiente'),
-(7, '2025-06-19', 9, 92598, 1, 'Pendiente'),
-(8, '2025-06-20', 9, 66100, 2, 'Pendiente');
+INSERT INTO `venta` (`idVenta`, `fecha`, `idCliente`, `total`, `idPago`, `estado`, `formaEnvio`) VALUES
+(5, '2025-06-19', 8, 33199, 1, 'Finalizado', 1),
+(6, '2025-06-19', 8, 103500, 2, 'Pendiente', 1),
+(7, '2025-06-19', 9, 92598, 1, 'Finalizado', 1),
+(8, '2025-06-20', 9, 66100, 2, 'Pendiente', 1),
+(12, '2026-05-28', 15, 25899, 1, 'Pendiente', 1),
+(13, '2026-05-28', 15, 28000, 1, 'Pendiente', 1),
+(14, '2026-05-28', 15, 33199, 2, 'Pendiente', 1),
+(15, '2026-05-29', 13, 59098, 2, 'Finalizado', 2),
+(16, '2026-05-29', 13, 56000, 1, 'Pendiente', 1);
 
 --
 -- Índices para tablas volcadas
@@ -536,7 +573,8 @@ ALTER TABLE `categorias`
 --
 ALTER TABLE `consultas`
   ADD PRIMARY KEY (`idConsulta`),
-  ADD KEY `idPersona` (`idPersona`);
+  ADD KEY `idPersona` (`idPersona`),
+  ADD KEY `fk_consultas_admin` (`idAdminResponde`);
 
 --
 -- Indices de la tabla `detalleventa`
@@ -638,19 +676,19 @@ ALTER TABLE `categorias`
 -- AUTO_INCREMENT de la tabla `consultas`
 --
 ALTER TABLE `consultas`
-  MODIFY `idConsulta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `idConsulta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT de la tabla `detalleventa`
 --
 ALTER TABLE `detalleventa`
-  MODIFY `idDetalle` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `idDetalle` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT de la tabla `direccion`
 --
 ALTER TABLE `direccion`
-  MODIFY `idDireccion` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idDireccion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `etiqueta`
@@ -668,7 +706,7 @@ ALTER TABLE `formapago`
 -- AUTO_INCREMENT de la tabla `libros`
 --
 ALTER TABLE `libros`
-  MODIFY `idLibro` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `idLibro` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT de la tabla `localidades`
@@ -680,7 +718,7 @@ ALTER TABLE `localidades`
 -- AUTO_INCREMENT de la tabla `persona`
 --
 ALTER TABLE `persona`
-  MODIFY `idPersona` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `idPersona` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT de la tabla `provincias`
@@ -692,7 +730,7 @@ ALTER TABLE `provincias`
 -- AUTO_INCREMENT de la tabla `venta`
 --
 ALTER TABLE `venta`
-  MODIFY `idVenta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `idVenta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- Restricciones para tablas volcadas
@@ -702,7 +740,8 @@ ALTER TABLE `venta`
 -- Filtros para la tabla `consultas`
 --
 ALTER TABLE `consultas`
-  ADD CONSTRAINT `consultas_ibfk_1` FOREIGN KEY (`idPersona`) REFERENCES `persona` (`idPersona`);
+  ADD CONSTRAINT `consultas_ibfk_1` FOREIGN KEY (`idPersona`) REFERENCES `persona` (`idPersona`),
+  ADD CONSTRAINT `fk_consultas_admin` FOREIGN KEY (`idAdminResponde`) REFERENCES `persona` (`idPersona`) ON DELETE SET NULL ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `detalleventa`

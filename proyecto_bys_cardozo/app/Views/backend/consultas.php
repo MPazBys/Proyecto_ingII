@@ -18,8 +18,11 @@
                     <tr>
                         <th>Nombre y Apellido</th>
                         <th>Email</th>
+                        <th>Fecha</th>
                         <th>Motivo</th>
                         <th>Consulta</th>
+                        <th>Respondido por</th>
+                        <th>Respuesta</th>
                         <th>Estado</th>
                         <th>Acciones</th>
                     </tr>
@@ -29,8 +32,29 @@
                         <tr>
                             <td><?= esc($consulta['nombreApellido']) ?></td>
                             <td><?= esc($consulta['correo']) ?></td>
+                            <td><?= date('d/m/Y H:i', strtotime($consulta['created_at'])) ?></td>
                             <td><?= esc($consulta['asunto']) ?></td>
-                            <td><?= esc($consulta['mensaje']) ?></td>
+                            <td>
+                                <span class="btn btn-sm btn-outline-secondary" 
+                                      data-bs-toggle="tooltip" 
+                                      data-bs-placement="top" 
+                                      title="<?= esc($consulta['mensaje']) ?>">
+                                    <i class="fa-solid fa-eye me-1"></i> Ver consulta
+                                </span>
+                            </td>
+                            <td><?= !empty($consulta['adminNombreApellido']) ? esc($consulta['adminNombreApellido']) : '-' ?></td>
+                            <td>
+                                <?php if (!empty($consulta['respuestaText'])): ?>
+                                    <span class="btn btn-sm btn-outline-info" 
+                                          data-bs-toggle="tooltip" 
+                                          data-bs-placement="top" 
+                                          title="<?= esc($consulta['respuestaText']) ?>">
+                                        <i class="fa-solid fa-envelope-open me-1"></i> Ver respuesta
+                                    </span>
+                                <?php else: ?>
+                                    <span class="text-muted">-</span>
+                                <?php endif; ?>
+                            </td>
                             <td>
                                 <?php if ($consulta['respondido']): ?>
                                     <span class="badge bg-success">Respondido</span>
@@ -43,9 +67,7 @@
                                     <span class="text-muted"><i class="fa-solid fa-check-double text-success me-1"></i> Resuelto</span>
                                 <?php else: ?>
                                     <a href="<?= base_url('responder/' . $consulta['idConsulta']) ?>" 
-                                       target="_blank" 
-                                       class="btn btn-sm btn-primary" 
-                                       onclick="setTimeout(() => { window.location.reload(); }, 1000);">
+                                       class="btn btn-sm btn-primary">
                                         <i class="fa-solid fa-reply me-1"></i> Responder
                                     </a>
                                 <?php endif; ?>
@@ -59,4 +81,13 @@
             <div class="alert alert-info">No hay consultas registradas.</div>
         <?php endif; ?>
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+            var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+                return new bootstrap.Tooltip(tooltipTriggerEl)
+            })
+        });
+    </script>
 <?= $this->endSection() ?>

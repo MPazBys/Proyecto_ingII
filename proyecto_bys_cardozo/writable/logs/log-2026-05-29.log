@@ -1,0 +1,197 @@
+INFO - 2026-05-29 00:17:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-05-29 00:17:39 --> REDIRECTED ROUTE at http://localhost/Proyecto_ingII/proyecto_bys_cardozo/login
+INFO - 2026-05-29 00:17:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-05-29 00:18:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-05-29 00:18:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-05-29 00:18:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-05-29 00:18:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-05-29 00:18:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-05-29 00:18:41 --> Cart Class Initialized
+INFO - 2026-05-29 00:18:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-05-29 00:18:42 --> Cart Class Initialized
+INFO - 2026-05-29 00:18:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-05-29 00:18:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-05-29 00:18:54 --> Cart Class Initialized
+INFO - 2026-05-29 00:18:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-05-29 00:18:54 --> Cart Class Initialized
+INFO - 2026-05-29 00:20:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-05-29 00:20:10 --> Cart Class Initialized
+INFO - 2026-05-29 00:20:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-05-29 00:20:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-05-29 00:20:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-05-29 00:20:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-05-29 00:20:44 --> Cart Class Initialized
+ERROR - 2026-05-29 00:20:44 --> An invalid name was submitted as the product name: EL MONJE QUE VENDIÓ SU FERRARI (bolsillo) The name can only contain alpha-numeric characters, dashes, underscores, colons, and spaces
+INFO - 2026-05-29 00:20:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-05-29 00:20:44 --> Cart Class Initialized
+INFO - 2026-05-29 00:20:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-05-29 00:20:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-05-29 00:20:55 --> Cart Class Initialized
+ERROR - 2026-05-29 00:20:55 --> An invalid name was submitted as the product name: EL MONJE QUE VENDIÓ SU FERRARI (bolsillo) The name can only contain alpha-numeric characters, dashes, underscores, colons, and spaces
+INFO - 2026-05-29 00:20:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-05-29 00:20:56 --> Cart Class Initialized
+INFO - 2026-05-29 00:21:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-05-29 00:21:03 --> Cart Class Initialized
+INFO - 2026-05-29 00:21:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-05-29 00:21:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-05-29 00:21:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-05-29 00:21:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-05-29 00:21:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-05-29 00:21:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-05-29 00:21:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-05-29 00:21:43 --> Cart Class Initialized
+ERROR - 2026-05-29 00:21:43 --> An invalid name was submitted as the product name: EL MONJE QUE VENDIÓ SU FERRARI (bolsillo) The name can only contain alpha-numeric characters, dashes, underscores, colons, and spaces
+INFO - 2026-05-29 00:21:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-05-29 00:21:43 --> Cart Class Initialized
+INFO - 2026-05-29 00:21:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-05-29 00:21:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-05-29 00:21:55 --> Cart Class Initialized
+INFO - 2026-05-29 00:21:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-05-29 00:21:56 --> Cart Class Initialized
+INFO - 2026-05-29 00:22:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-05-29 00:22:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-05-29 00:22:11 --> Cart Class Initialized
+ERROR - 2026-05-29 00:22:11 --> An invalid name was submitted as the product name: EL MONJE QUE VENDIÓ SU FERRARI (bolsillo) The name can only contain alpha-numeric characters, dashes, underscores, colons, and spaces
+INFO - 2026-05-29 00:22:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-05-29 00:22:12 --> Cart Class Initialized
+INFO - 2026-05-29 00:22:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-05-29 00:22:21 --> Cart Class Initialized
+INFO - 2026-05-29 00:22:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-05-29 00:22:21 --> Cart Class Initialized
+INFO - 2026-05-29 00:22:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-05-29 00:22:55 --> Cart Class Initialized
+INFO - 2026-05-29 00:23:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-05-29 00:23:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-05-29 00:23:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-05-29 00:23:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-05-29 00:24:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-05-29 00:24:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-05-29 00:24:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-05-29 00:24:11 --> REDIRECTED ROUTE at http://localhost/Proyecto_ingII/proyecto_bys_cardozo/login
+INFO - 2026-05-29 00:24:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-05-29 00:24:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-05-29 00:24:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-05-29 00:24:22 --> REDIRECTED ROUTE at http://localhost/Proyecto_ingII/proyecto_bys_cardozo/login
+INFO - 2026-05-29 00:24:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-05-29 00:37:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-05-29 00:37:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-05-29 00:38:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-05-29 00:39:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-05-29 00:39:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-05-29 00:39:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-05-29 00:39:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-05-29 00:39:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-05-29 00:40:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-05-29 00:40:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-05-29 01:01:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-05-29 01:03:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-05-29 01:03:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-05-29 01:19:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-05-29 01:19:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-05-29 01:19:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-05-29 01:19:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-05-29 01:19:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-05-29 01:20:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-05-29 01:20:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-05-29 01:20:32 --> Cart Class Initialized
+ERROR - 2026-05-29 01:20:32 --> An invalid name was submitted as the product name: CARRIE (50 aniversario) The name can only contain alpha-numeric characters, dashes, underscores, colons, and spaces
+INFO - 2026-05-29 01:20:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-05-29 01:20:34 --> Cart Class Initialized
+INFO - 2026-05-29 01:20:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-05-29 01:20:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-05-29 01:20:58 --> Cart Class Initialized
+ERROR - 2026-05-29 01:20:58 --> An invalid name was submitted as the product name: CARRIE (50 aniversario) The name can only contain alpha-numeric characters, dashes, underscores, colons, and spaces
+INFO - 2026-05-29 01:20:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-05-29 01:20:58 --> Cart Class Initialized
+INFO - 2026-05-29 01:21:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-05-29 01:21:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-05-29 01:21:09 --> Cart Class Initialized
+ERROR - 2026-05-29 01:21:09 --> An invalid name was submitted as the product name: EL CIELO ES AZUL, LA TIERRA BLANCA The name can only contain alpha-numeric characters, dashes, underscores, colons, and spaces
+INFO - 2026-05-29 01:21:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-05-29 01:21:09 --> Cart Class Initialized
+INFO - 2026-05-29 01:21:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-05-29 01:21:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-05-29 01:21:48 --> Cart Class Initialized
+INFO - 2026-05-29 01:21:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-05-29 01:21:49 --> Cart Class Initialized
+INFO - 2026-05-29 01:21:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-05-29 01:21:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-05-29 01:21:59 --> Cart Class Initialized
+INFO - 2026-05-29 01:22:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-05-29 01:22:00 --> Cart Class Initialized
+INFO - 2026-05-29 01:22:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-05-29 01:22:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-05-29 01:22:10 --> Cart Class Initialized
+INFO - 2026-05-29 01:22:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-05-29 01:22:11 --> Cart Class Initialized
+INFO - 2026-05-29 01:22:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-05-29 01:22:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-05-29 01:22:20 --> Cart Class Initialized
+INFO - 2026-05-29 01:22:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-05-29 01:22:21 --> Cart Class Initialized
+INFO - 2026-05-29 01:22:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-05-29 01:22:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-05-29 01:22:31 --> Cart Class Initialized
+INFO - 2026-05-29 01:22:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-05-29 01:22:31 --> Cart Class Initialized
+INFO - 2026-05-29 01:22:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-05-29 01:22:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-05-29 01:22:43 --> Cart Class Initialized
+INFO - 2026-05-29 01:22:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-05-29 01:22:43 --> Cart Class Initialized
+INFO - 2026-05-29 01:22:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-05-29 01:22:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-05-29 01:22:56 --> Cart Class Initialized
+ERROR - 2026-05-29 01:22:56 --> An invalid name was submitted as the product name: FIVE NIGHTS AT FREDDY'S: LOS OJOS DE PLATA The name can only contain alpha-numeric characters, dashes, underscores, colons, and spaces
+INFO - 2026-05-29 01:22:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-05-29 01:22:56 --> Cart Class Initialized
+INFO - 2026-05-29 01:23:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-05-29 01:23:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-05-29 01:23:08 --> Cart Class Initialized
+INFO - 2026-05-29 01:23:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-05-29 01:23:09 --> Cart Class Initialized
+INFO - 2026-05-29 01:23:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-05-29 01:23:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-05-29 01:23:24 --> Cart Class Initialized
+INFO - 2026-05-29 01:23:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-05-29 01:23:24 --> Cart Class Initialized
+INFO - 2026-05-29 01:23:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-05-29 01:23:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-05-29 01:23:37 --> Cart Class Initialized
+ERROR - 2026-05-29 01:23:37 --> An invalid name was submitted as the product name: EL MONJE QUE VENDIÓ SU FERRARI (bolsillo) The name can only contain alpha-numeric characters, dashes, underscores, colons, and spaces
+INFO - 2026-05-29 01:23:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-05-29 01:23:38 --> Cart Class Initialized
+INFO - 2026-05-29 01:25:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-05-29 01:35:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-05-29 01:35:28 --> Cart Class Initialized
+INFO - 2026-05-29 01:35:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-05-29 01:35:36 --> Cart Class Initialized
+INFO - 2026-05-29 01:36:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-05-29 01:36:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-05-29 01:36:36 --> Cart Class Initialized
+INFO - 2026-05-29 01:36:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-05-29 01:36:36 --> Cart Class Initialized
+INFO - 2026-05-29 01:36:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-05-29 01:36:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-05-29 01:36:55 --> Cart Class Initialized
+INFO - 2026-05-29 01:36:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-05-29 01:36:55 --> Cart Class Initialized
+INFO - 2026-05-29 01:37:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-05-29 01:37:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-05-29 01:37:25 --> Cart Class Initialized
+INFO - 2026-05-29 01:37:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-05-29 01:37:26 --> Cart Class Initialized
+INFO - 2026-05-29 01:37:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-05-29 01:37:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-05-29 01:37:43 --> Cart Class Initialized
+INFO - 2026-05-29 01:37:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-05-29 01:37:43 --> Cart Class Initialized
+INFO - 2026-05-29 01:37:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-05-29 01:38:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-05-29 01:38:03 --> Cart Class Initialized
+INFO - 2026-05-29 01:38:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-05-29 01:38:04 --> Cart Class Initialized
+INFO - 2026-05-29 01:38:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-05-29 01:38:17 --> Cart Class Initialized
+INFO - 2026-05-29 01:38:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-05-29 01:38:17 --> Cart Class Initialized

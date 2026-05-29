@@ -4,10 +4,15 @@ namespace Config;
 
 use CodeIgniter\Config\BaseConfig;
 
+/**
+ * Configuración del Servicio de Correos Electrónicos.
+ * Configurado centralmente para despachar notificaciones reales a internet vía SMTP de Gmail.
+ */
 class Email extends BaseConfig
 {
-    public string $fromEmail  = '';
-    public string $fromName   = '';
+    // Dirección que verá el cliente como remitente (Debe coincidir con tu SMTPUser)
+    public string $fromEmail  = 'myp.libros@gmail.com'; 
+    public string $fromName   = 'Librería M&P - Soporte';
     public string $recipients = '';
 
     /**
@@ -16,9 +21,9 @@ class Email extends BaseConfig
     public string $userAgent = 'CodeIgniter';
 
     /**
-     * The mail sending protocol: mail, sendmail, smtp
+     * Protocolo de envío de correos: smtp (Obligatorio para servidores externos)
      */
-    public string $protocol = 'mail';
+    public string $protocol = 'smtp';
 
     /**
      * The server path to Sendmail.
@@ -26,24 +31,24 @@ class Email extends BaseConfig
     public string $mailPath = '/usr/sbin/sendmail';
 
     /**
-     * SMTP Server Hostname
+     * Servidor SMTP de Google
      */
-    public string $SMTPHost = '';
+    public string $SMTPHost = 'smtp.gmail.com';
 
     /**
-     * SMTP Username
+     * Tu cuenta de Gmail institucional o centralizada para el proyecto
      */
-    public string $SMTPUser = '';
+    public string $SMTPUser = 'myp.libros@gmail.com';
 
     /**
-     * SMTP Password
+     * Contraseña de Aplicación de 16 caracteres generada desde Google (SIN espacios)
      */
-    public string $SMTPPass = '';
+    public string $SMTPPass = 'jultsakvqphszbhv';
 
     /**
-     * SMTP Port
+     * Puerto SMTP seguro para conexiones implícitas SSL
      */
-    public int $SMTPPort = 25;
+    public int $SMTPPort = 465;
 
     /**
      * SMTP Timeout (in seconds)
@@ -56,13 +61,9 @@ class Email extends BaseConfig
     public bool $SMTPKeepAlive = false;
 
     /**
-     * SMTP Encryption.
-     *
-     * @var string '', 'tls' or 'ssl'. 'tls' will issue a STARTTLS command
-     *             to the server. 'ssl' means implicit SSL. Connection on port
-     *             465 should set this to ''.
+     * Encriptación SSL obligatoria para conectar con el puerto 465 de Gmail
      */
-    public string $SMTPCrypto = 'tls';
+    public string $SMTPCrypto = 'ssl';
 
     /**
      * Enable word-wrap
@@ -75,12 +76,12 @@ class Email extends BaseConfig
     public int $wrapChars = 76;
 
     /**
-     * Type of mail, either 'text' or 'html'
+     * Tipo de correo en formato 'html' para soportar plantillas estilizadas
      */
-    public string $mailType = 'text';
+    public string $mailType = 'html';
 
     /**
-     * Character set (utf-8, iso-8859-1, etc.)
+     * Codificación universal de caracteres para evitar problemas con eñes o acentos
      */
     public string $charset = 'UTF-8';
 
@@ -95,12 +96,12 @@ class Email extends BaseConfig
     public int $priority = 3;
 
     /**
-     * Newline character. (Use “\r\n” to comply with RFC 822)
+     * Caracteres de nueva línea requeridos por los estándares RFC 822
      */
     public string $CRLF = "\r\n";
 
     /**
-     * Newline character. (Use “\r\n” to comply with RFC 822)
+     * Caracteres de nueva línea requeridos por los estándares RFC 822
      */
     public string $newline = "\r\n";
 

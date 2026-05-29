@@ -74,27 +74,35 @@
         <div class="col-md-6 mt-3">
             <div class="form-group">
                 <label for="formaEnvio">Forma de Envío:</label>
-                <select class="form-select mt-2" id="formaEnvio" name="formaEnvio" required>
+                <select class="form-select mt-2 <?= session('errors.selectedFormaEnvio') ? 'is-invalid' : '' ?>" id="formaEnvio" name="formaEnvio" required>
                     <option value="" <?= set_select('selectedFormaEnvio', ''); ?>>Seleccione forma de envío</option> 
-                    <option value="1" <?= set_select('selectedFormaEnvio', '1'); ?>>Retiro en sucursal</option> 
-                    <option value="2" <?= set_select('selectedFormaEnvio', '2'); ?>>Envío a domicilio</option> 
+                    <option value="1" <?= set_select('selectedFormaEnvio', '1', (old('selectedFormaEnvio') ?? '') == '1'); ?>>Retiro en sucursal</option> 
+                    <option value="2" <?= set_select('selectedFormaEnvio', '2', (old('selectedFormaEnvio') ?? '') == '2'); ?>>Envío a domicilio</option> 
                 </select>
+                <?php if (session('errors.selectedFormaEnvio')): ?>
+                    <div class="invalid-feedback"><?= session('errors.selectedFormaEnvio') ?></div>
+                <?php endif; ?>
             </div>
         </div>
         <div class="col-md-6">
             <div class="form-group mt-3">
                 <label for="formaPago">Forma de Pago:</label>
-                <select class="form-select mt-2" id="formaPago" name="formaPago" required>
-    <option value="" <?= set_select('selectedFormaPago', ''); ?>>Seleccione forma de pago</option> <?php foreach($formasPago as $fp): ?>
-        <option value="<?= esc($fp['idPago']); ?>" <?= set_select('selectedFormaPago', $fp['idPago']); ?>> <?= esc($fp['nombrePago']); ?>
-        </option>
-    <?php endforeach; ?>
-</select>
+                <select class="form-select mt-2 <?= session('errors.selectedFormaPago') ? 'is-invalid' : '' ?>" id="formaPago" name="formaPago" required>
+                    <option value="" <?= set_select('selectedFormaPago', ''); ?>>Seleccione forma de pago</option> 
+                    <?php foreach($formasPago as $fp): ?>
+                        <option value="<?= esc($fp['idPago']); ?>" <?= set_select('selectedFormaPago', $fp['idPago'], (old('selectedFormaPago') ?? '') == $fp['idPago']); ?>>
+                            <?= esc($fp['nombrePago']); ?>
+                        </option>
+                    <?php endforeach; ?>
+                </select>
+                <?php if (session('errors.selectedFormaPago')): ?>
+                    <div class="invalid-feedback"><?= session('errors.selectedFormaPago') ?></div>
+                <?php endif; ?>
             </div>
         </div>
-            
     </div>
-    <button type="button" class="btn btn-success mt-4" data-bs-toggle="modal" data-bs-target="#confirmarCompraModal">Ordenar Compra</button>
+
+    <button type="button" id="btnOrdenarCompra" class="btn btn-success mt-4">Ordenar Compra</button>
     <?php endif; ?>
 </div>
 
@@ -105,97 +113,134 @@
                 <h5 class="modal-title" id="confirmarCompraModalLabel">Confirmar Compra y Datos de Envío</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form action="<?= base_url('procesar_finalizar_compra') ?>" method="post" novalidate>
+            <?= form_open('procesar_finalizar_compra', ['id' => 'finalizarCompraForm', 'novalidate' => 'novalidate']) ?>
                 <div class="modal-body">
 
-                    <p class="mt-2 texto-seccion">Información de contacto y envío</p>
+                    <p class="texto-seccion text-primary border-bottom pb-2">Información de contacto</p>
 
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="modal_dni" class="form-label">DNI <span class="text-danger">*</span></label>
+                            <input type="text" name="dni" id="modal_dni" class="form-control <?= session('errors.dni') ? 'is-invalid' : '' ?>" placeholder="DNI sin puntos" value="<?= old('dni', $persona['dni'] ?? '') ?>" <?= !empty($persona['dni']) ? 'readonly' : '' ?> required>
+                            <?php if (session('errors.dni')): ?>
+                                <div class="invalid-feedback"><?= session('errors.dni') ?></div>
+                            <?php endif; ?>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="modal_telefono" class="form-label">Teléfono <span class="text-danger">*</span></label>
+                            <input type="text" name="telefono" id="modal_telefono" class="form-control <?= session('errors.telefono') ? 'is-invalid' : '' ?>" placeholder="Ej: 3794123456" value="<?= old('telefono', $persona['telefono'] ?? '') ?>" required>
+                            <?php if (session('errors.telefono')): ?>
+                                <div class="invalid-feedback"><?= session('errors.telefono') ?></div>
+                            <?php endif; ?>
+                        </div>
+                    </div>
+
+                    <!-- Campos ocultos para enviar las formas de envío y pago seleccionadas -->
+                    <input type="hidden" name="selectedFormaEnvio" id="selectedFormaEnvio" value="">
+                    <input type="hidden" name="selectedFormaPago" id="selectedFormaPago" value="">
+
+                    <!-- Recuadro para Dirección (se muestra sólo si es envío a domicilio) -->
                     <div id="domicilioFields" style="display: none;">
-                        <div class="mb-3">
-                            <label for="modal_domicilio">Domicilio</label>
-                            <?php echo form_input([
-                                'name'        => 'domicilio',
-                                'id'          => 'modal_domicilio', 
-                                'type'        => 'text',
-                                'class'       => 'form-control',
-                                'placeholder' => 'Ingrese su domicilio',
-                                'value'       => set_value('domicilio', $persona['direccion'] ?? '') 
-                            ]); ?>
-                             <?php if (session('errors.domicilio')): ?>
-                                <div class="mt-1 fw-bold text-danger alert alert-danger"><?= session('errors.domicilio'); ?></div>
-                            <?php endif; ?>
+                        <p class="mt-4 texto-seccion text-primary border-bottom pb-2">Información de domicilio</p>
+
+                        <?php if (!empty($direccion)): ?>
+                            <div class="mb-3 text-end">
+                                <button type="button" id="btnCambiarDireccion" class="btn btn-outline-primary btn-sm">
+                                    Cambiar dirección
+                                </button>
+                            </div>
+                        <?php endif; ?>
+
+                        <div class="row">
+                            <div class="col-md-8 mb-3">
+                                <label for="modal_calle" class="form-label">Calle <span class="text-danger">*</span></label>
+                                <input type="text" name="calle" id="modal_calle" class="form-control <?= session('errors.calle') ? 'is-invalid' : '' ?>" placeholder="Nombre de calle" value="<?= old('calle', $direccion['calle'] ?? '') ?>" <?= !empty($direccion) ? 'readonly' : '' ?> required>
+                                <?php if (session('errors.calle')): ?>
+                                    <div class="invalid-feedback"><?= session('errors.calle') ?></div>
+                                <?php endif; ?>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label for="modal_altura" class="form-label">Altura <span class="text-danger">*</span></label>
+                                <input type="text" name="altura" id="modal_altura" class="form-control <?= session('errors.altura') ? 'is-invalid' : '' ?>" placeholder="Ej: 123" value="<?= old('altura', $direccion['altura'] ?? '') ?>" <?= !empty($direccion) ? 'readonly' : '' ?> required>
+                                <?php if (session('errors.altura')): ?>
+                                    <div class="invalid-feedback"><?= session('errors.altura') ?></div>
+                                <?php endif; ?>
+                            </div>
                         </div>
-                        <div class="mb-3">
-                            <label for="modal_provincia">Provincia</label>
-                            <select name="provincia" id="modal_provincia" class="form-select">
-                                <option value="">Seleccione su provincia</option>
-                                <?php foreach ($provincias as $prov): ?>
-                                    <option value="<?= esc($prov['nombreProvincia']) ?>" data-id="<?= esc($prov['idProvincia']) ?>" <?= set_select('provincia', $prov['nombreProvincia'], ($persona['provincia'] ?? '') == $prov['nombreProvincia']) ?>>
-                                        <?= esc($prov['nombreProvincia']) ?>
-                                    </option>
-                                <?php endforeach; ?>
-                            </select>
-                            <?php if (session('errors.provincia')): ?>
-                                <div class="mt-1 fw-bold text-danger alert alert-danger"><?= session('errors.provincia'); ?></div>
-                            <?php endif; ?>
+
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="modal_pisoDepto" class="form-label">Piso / Depto</label>
+                                <input type="text" name="pisoDepto" id="modal_pisoDepto" class="form-control <?= session('errors.pisoDepto') ? 'is-invalid' : '' ?>" placeholder="Ej: 1A (Opcional)" value="<?= old('pisoDepto', $direccion['pisoDepto'] ?? '') ?>" <?= !empty($direccion) ? 'readonly' : '' ?>>
+                                <?php if (session('errors.pisoDepto')): ?>
+                                    <div class="invalid-feedback"><?= session('errors.pisoDepto') ?></div>
+                                <?php endif; ?>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="modal_provincia" class="form-label">Provincia <span class="text-danger">*</span></label>
+                                <select name="provincia" id="modal_provincia" class="form-select <?= session('errors.provincia') ? 'is-invalid' : '' ?>" <?= !empty($direccion) ? 'disabled' : '' ?> required>
+                                    <option value="">Seleccione su provincia</option>
+                                    <?php foreach ($provincias as $prov): ?>
+                                        <option value="<?= esc($prov['idProvincia']) ?>" <?= set_select('provincia', $prov['idProvincia'], ($idProvinciaCliente ?? '') == $prov['idProvincia']) ?>>
+                                            <?= esc($prov['nombreProvincia']) ?>
+                                        </option>
+                                    <?php endforeach; ?>
+                                </select>
+                                <?php if (session('errors.provincia')): ?>
+                                    <div class="invalid-feedback"><?= session('errors.provincia') ?></div>
+                                <?php endif; ?>
+                            </div>
                         </div>
+
                         <div class="mb-3">
-                            <label for="modal_ciudad">Ciudad</label>
-                            <select name="ciudad" id="modal_ciudad" class="form-select">
+                            <label for="modal_ciudad" class="form-label">Ciudad / Localidad <span class="text-danger">*</span></label>
+                            <select name="idLocalidad" id="modal_ciudad" class="form-select <?= session('errors.idLocalidad') ? 'is-invalid' : '' ?>" <?= !empty($direccion) ? 'disabled' : '' ?> required>
                                 <option value="">Seleccione su ciudad</option>
                                 <?php foreach ($localidades as $loc): ?>
-                                    <option value="<?= esc($loc['nombreLocalidad']) ?>" data-provincia="<?= esc($loc['idProvincia']) ?>" <?= set_select('ciudad', $loc['nombreLocalidad'], ($persona['ciudad'] ?? '') == $loc['nombreLocalidad']) ?>>
+                                    <option value="<?= esc($loc['idLocalidad']) ?>" data-provincia="<?= esc($loc['idProvincia']) ?>" <?= set_select('idLocalidad', $loc['idLocalidad'], ($idLocalidadCliente ?? '') == $loc['idLocalidad']) ?>>
                                         <?= esc($loc['nombreLocalidad']) ?>
                                     </option>
                                 <?php endforeach; ?>
                             </select>
-                            <?php if (session('errors.ciudad')): ?>
-                                <div class="mt-1 fw-bold text-danger alert alert-danger"><?= session('errors.ciudad'); ?></div>
+                            <?php if (session('errors.idLocalidad')): ?>
+                                <div class="invalid-feedback"><?= session('errors.idLocalidad') ?></div>
+                            <?php endif; ?>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="modal_consideraciones" class="form-label">Consideraciones / Indicaciones para el delivery</label>
+                            <textarea name="consideraciones" id="modal_consideraciones" class="form-control <?= session('errors.consideraciones') ? 'is-invalid' : '' ?>" placeholder="Ej: Casa de rejas negras, timbre no funciona (Opcional)" <?= !empty($direccion) ? 'readonly' : '' ?>><?= old('consideraciones', $direccion['consideraciones'] ?? '') ?></textarea>
+                            <?php if (session('errors.consideraciones')): ?>
+                                <div class="invalid-feedback"><?= session('errors.consideraciones') ?></div>
                             <?php endif; ?>
                         </div>
                     </div>
 
-                    <div class="mb-3">
-                        <label for="modal_telefono">Teléfono</label>
-                        <?php echo form_input([
-                            'name'        => 'telefono',
-                            'id'          => 'modal_telefono', 
-                            'type'        => 'text', 
-                            'class'       => 'form-control',
-                            'placeholder' => 'Ingrese su teléfono',
-                            'value'       => set_value('telefono', $persona['telefono'] ?? ''),
-                            'required'    => 'required' 
-                        ]); ?>
-                        <?php if (session('errors.telefono')): ?>
-                            <div class="mt-1 fw-bold text-danger alert alert-danger"><?= session('errors.telefono'); ?></div>
-                        <?php endif; ?>
-                    </div>
-
-                    <input type="hidden" name="selectedFormaEnvio" id="selectedFormaEnvio" value="">
-                    <input type="hidden" name="selectedFormaPago" id="selectedFormaPago" value="">
-
-                    <div id="tarjetaFields" style="display: none;" novalidate>
-                        <p class="mt-4 texto-seccion">Datos de tarjeta</p>
+                    <!-- Datos de tarjeta (se muestra sólo si es pago con tarjeta) -->
+                    <div id="tarjetaFields" style="display: none;">
+                        <p class="mt-4 texto-seccion text-primary border-bottom pb-2">Datos de tarjeta</p>
                         <div class="mb-3">
-                            <label for="tarjeta">Número de tarjeta</label>
-                            <input type="text" class="form-control" name="tarjeta" id="tarjeta" maxlength="16" pattern="\d{16}" placeholder="xxxxxxxxxxxxxxxx">
+                            <label for="tarjeta" class="form-label">Número de tarjeta <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control <?= session('errors.tarjeta') ? 'is-invalid' : '' ?>" name="tarjeta" id="tarjeta" maxlength="16" placeholder="16 dígitos sin espacios" value="<?= old('tarjeta') ?>">
                             <?php if (session('errors.tarjeta')): ?>
-                                <div class="mt-1 fw-bold text-danger alert alert-danger"><?= session('errors.tarjeta'); ?></div>
+                                <div class="invalid-feedback"><?= session('errors.tarjeta') ?></div>
                             <?php endif; ?>
                         </div>
-                        <div class="mb-3">
-                            <label for="vencimiento">Fecha de vencimiento</label>
-                            <input type="month" class="form-control" name="vencimiento" id="vencimiento">
-                            <?php if (session('errors.vencimiento')): ?>
-                                <div class="mt-1 fw-bold text-danger alert alert-danger"><?= session('errors.vencimiento'); ?></div>
-                            <?php endif; ?>
-                        </div>
-                        <div class="mb-3">
-                            <label for="cvv">CVV</label>
-                            <input type="text" class="form-control" name="cvv" id="cvv" maxlength="4" pattern="\d{3,4}" placeholder="XXX">
-                            <?php if (session('errors.cvv')): ?>
-                                <div class="mt-1 fw-bold text-danger alert alert-danger"><?= session('errors.cvv'); ?></div>
-                            <?php endif; ?>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="vencimiento" class="form-label">Fecha de vencimiento <span class="text-danger">*</span></label>
+                                <input type="month" class="form-control <?= session('errors.vencimiento') ? 'is-invalid' : '' ?>" name="vencimiento" id="vencimiento" value="<?= old('vencimiento') ?>">
+                                <?php if (session('errors.vencimiento')): ?>
+                                    <div class="invalid-feedback"><?= session('errors.vencimiento') ?></div>
+                                <?php endif; ?>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="cvv" class="form-label">CVV <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control <?= session('errors.cvv') ? 'is-invalid' : '' ?>" name="cvv" id="cvv" maxlength="4" placeholder="3 o 4 dígitos" value="<?= old('cvv') ?>">
+                                <?php if (session('errors.cvv')): ?>
+                                    <div class="invalid-feedback"><?= session('errors.cvv') ?></div>
+                                <?php endif; ?>
+                            </div>
                         </div>
                     </div>
 
@@ -204,7 +249,7 @@
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
                     <button type="submit" class="btn btn-success">Confirmar Compra</button>
                 </div>
-            </form>
+            <?= form_close() ?>
         </div> 
     </div>
 </div>
@@ -235,12 +280,16 @@ Swal.fire({
 document.addEventListener('DOMContentLoaded', function() {
     const formaEnvioSelect = document.getElementById('formaEnvio');
     const formaPagoSelect = document.getElementById('formaPago');
+    const btnOrdenarCompra = document.getElementById('btnOrdenarCompra');
 
     const domicilioFields = document.getElementById('domicilioFields');
     const ciudadInput = document.getElementById('modal_ciudad');
     const provinciaInput = document.getElementById('modal_provincia');
-    const domicilioInput = document.getElementById('modal_domicilio');
-    const telefonoInput = document.getElementById('modal_telefono');
+    const calleInput = document.getElementById('modal_calle');
+    const alturaInput = document.getElementById('modal_altura');
+    const pisoDeptoInput = document.getElementById('modal_pisoDepto');
+    const consideracionesInput = document.getElementById('modal_consideraciones');
+    const btnCambiarDireccion = document.getElementById('btnCambiarDireccion');
 
     const tarjetaFields = document.getElementById('tarjetaFields');
     const tarjetaInput = document.getElementById('tarjeta');
@@ -263,8 +312,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     function filterCiudades() {
-        const selectedProvOption = provinciaInput.options[provinciaInput.selectedIndex];
-        const selectedProvId = selectedProvOption ? selectedProvOption.getAttribute('data-id') : '';
+        const selectedProvId = provinciaInput.value;
 
         // Guardamos el valor seleccionado actual de la ciudad para intentar conservarlo
         const currentCiudadValue = ciudadInput.value;
@@ -284,7 +332,8 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
 
-        ciudadInput.disabled = false;
+        // Si la provincia está deshabilitada (modo lectura), mantenemos la ciudad deshabilitada
+        ciudadInput.disabled = provinciaInput.hasAttribute('disabled');
 
         // Filtramos y añadimos las localidades correspondientes
         let optionSelected = false;
@@ -295,7 +344,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 opt.textContent = loc.text;
                 opt.setAttribute('data-provincia', loc.provinciaId);
                 // Si coincide con el valor seleccionado anteriormente, lo marcamos como seleccionado
-                if (loc.value === currentCiudadValue) {
+                if (loc.value === currentCiudadValue || loc.value === '<?= $idLocalidadCliente ?? '' ?>') {
                     opt.selected = true;
                     optionSelected = true;
                 }
@@ -303,9 +352,14 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
 
-        // Si el valor guardado no pertenecía a la provincia seleccionada, se selecciona la opción vacía
         if (!optionSelected) {
-            ciudadInput.value = '';
+            const initialLocalidad = '<?= $idLocalidadCliente ?? '' ?>';
+            const hasInitial = allLocalidades.some(l => l.value === initialLocalidad && l.provinciaId === selectedProvId);
+            if (hasInitial) {
+                ciudadInput.value = initialLocalidad;
+            } else {
+                ciudadInput.value = '';
+            }
         }
     }
 
@@ -317,12 +371,14 @@ document.addEventListener('DOMContentLoaded', function() {
         // Toggle Domicilio, Ciudad, Provincia
         if (currentFormaEnvio === '2') { // 2 = Domicilio
             domicilioFields.style.display = 'block';
-            domicilioInput.setAttribute('required', 'required');
+            calleInput.setAttribute('required', 'required');
+            alturaInput.setAttribute('required', 'required');
             ciudadInput.setAttribute('required', 'required');
             provinciaInput.setAttribute('required', 'required');
         } else {
             domicilioFields.style.display = 'none';
-            domicilioInput.removeAttribute('required');
+            calleInput.removeAttribute('required');
+            alturaInput.removeAttribute('required');
             ciudadInput.removeAttribute('required');
             provinciaInput.removeAttribute('required');
         }
@@ -344,33 +400,96 @@ document.addEventListener('DOMContentLoaded', function() {
     // Registrar escuchadores de eventos
     provinciaInput.addEventListener('change', filterCiudades);
 
-    // Cuando el modal está a punto de mostrarse, se transfieren los valores seleccionados
-    // Los campos internos del modal se actualicen antes de mostrarse.
-    const confirmarCompraModal = document.getElementById('confirmarCompraModal');
-    confirmarCompraModal.addEventListener('show.bs.modal', function () {
-        // Transfiere los valores del formulario principal a los campos ocultos del modal
-        selectedFormaEnvioInput.value = formaEnvioSelect.value;
-        selectedFormaPagoInput.value = formaPagoSelect.value;
+    // Al hacer clic en el botón Ordenar Compra del formulario del carrito
+    btnOrdenarCompra.addEventListener('click', function() {
+        // Limpiamos estilos de error previos
+        formaEnvioSelect.classList.remove('is-invalid');
+        formaPagoSelect.classList.remove('is-invalid');
 
+        const env = formaEnvioSelect.value;
+        const pag = formaPagoSelect.value;
+
+        let hasError = false;
+        if (!env) {
+            formaEnvioSelect.classList.add('is-invalid');
+            hasError = true;
+        }
+        if (!pag) {
+            formaPagoSelect.classList.add('is-invalid');
+            hasError = true;
+        }
+
+        if (hasError) {
+            Swal.fire({
+                title: 'Atención',
+                icon: 'warning',
+                text: 'Debe seleccionar obligatoriamente una Forma de Envío y una Forma de Pago antes de ordenar la compra.',
+                confirmButtonText: 'Entendido'
+            });
+            return;
+        }
+
+        // Si están seleccionados, transferimos sus valores a los campos hidden
+        selectedFormaEnvioInput.value = env;
+        selectedFormaPagoInput.value = pag;
+
+        // Actualizamos los campos condicionales y localidades del modal
         toggleFieldsVisibility();
         filterCiudades();
+
+        // Abrimos el modal programáticamente
+        const modal = new bootstrap.Modal(document.getElementById('confirmarCompraModal'));
+        modal.show();
     });
 
-    // Si se hacen cambios en los selectores principales para actualizar los campos del modal dinámicamente
-    formaEnvioSelect.addEventListener('change', toggleFieldsVisibility);
-    formaPagoSelect.addEventListener('change', toggleFieldsVisibility);
+    // Cambiar dirección (habilitar campos)
+    if (btnCambiarDireccion) {
+        btnCambiarDireccion.addEventListener('click', function() {
+            calleInput.removeAttribute('readonly');
+            alturaInput.removeAttribute('readonly');
+            pisoDeptoInput.removeAttribute('readonly');
+            consideracionesInput.removeAttribute('readonly');
+            
+            provinciaInput.removeAttribute('disabled');
+            ciudadInput.removeAttribute('disabled');
+            
+            btnCambiarDireccion.style.display = 'none';
+        });
+    }
 
-    // El modal se abre automáticamente si hay errores
-    <?php if (session()->getFlashdata('errors')): ?>
+    // Habilitar campos selectores antes de enviar el formulario para que viajen por POST
+    const finalizarCompraForm = document.getElementById('finalizarCompraForm');
+    if (finalizarCompraForm) {
+        finalizarCompraForm.addEventListener('submit', function() {
+            provinciaInput.removeAttribute('disabled');
+            ciudadInput.removeAttribute('disabled');
+        });
+    }
+
+    // Si hay errores de validación devueltos por el backend, abrimos el modal
+    <?php if (session('errors')): ?>
+        formaEnvioSelect.value = "<?= old('selectedFormaEnvio') ?>";
+        formaPagoSelect.value = "<?= old('selectedFormaPago') ?>";
+        selectedFormaEnvioInput.value = "<?= old('selectedFormaEnvio') ?>";
+        selectedFormaPagoInput.value = "<?= old('selectedFormaPago') ?>";
+        
+        toggleFieldsVisibility();
+        filterCiudades();
+
         const modal = new bootstrap.Modal(document.getElementById('confirmarCompraModal'));
         modal.show();
     <?php endif; ?>
 
-    // Llamada inicial para que los campos condicionales se muestren u oculten 
-    // correctamente al cargar la página, especialmente si hay valores antiguos 
-    // que restaurar en los selectores.
+    // Sincronizar en tiempo real si el usuario cambia los selects principales antes de presionar el botón
+    formaEnvioSelect.addEventListener('change', function() {
+        formaEnvioSelect.classList.remove('is-invalid');
+    });
+    formaPagoSelect.addEventListener('change', function() {
+        formaPagoSelect.classList.remove('is-invalid');
+    });
+
+    // Inicializaciones
     toggleFieldsVisibility();
     filterCiudades();
-
 });
 </script>

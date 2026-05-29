@@ -14,7 +14,7 @@ class venta_model extends Model
     protected $returnType     = 'array';
     protected $useSoftDeletes = false;
 
-    protected $allowedFields = ['fecha', 'idCliente', 'total', 'idPago', 'estado'];
+    protected $allowedFields = ['fecha', 'idCliente', 'total', 'idPago', 'estado', 'formaEnvio'];
 
     protected bool $allowEmptyInserts = false;
     protected bool $updateOnlyChanged = true;

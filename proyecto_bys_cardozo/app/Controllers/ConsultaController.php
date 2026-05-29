@@ -3,22 +3,68 @@
 namespace App\Controllers;
 
 use App\Models\consulta_model;
+use CodeIgniter\HTTP\RedirectResponse;
 
+/**
+ * Controlador principal para la gestión de consultas de contacto.
+ * Administra el envío por parte de los clientes y el procesamiento de respuestas internas del backend.
+ */
 class ConsultaController extends BaseController
 {
+    // Propiedad tipada para la inyección del modelo principal
+    protected consulta_model $consultaModel;
+
+    // --- REGLAS DE VALIDACIÓN: CONSULTAS (CLIENTES) ---
+    protected array $addConsultaRules = [
+        'motivo'   => 'required|max_length[100]',
+        'consulta' => 'required|max_length[250]|min_length[10]',
+    ];
+
+    protected array $addConsultaErrors = [
+        'motivo' => [
+            'required'   => 'El motivo es obligatorio', 
+            'max_length' => 'El motivo de la consulta debe tener como máximo 100 caracteres',
+        ], 
+        'consulta' => [
+            'required'   => 'La consulta es requerida', 
+            'min_length' => 'La consulta debe tener como mínimo 10 caracteres',
+            'max_length' => 'La consulta debe tener como máximo 250 caracteres',
+        ],
+    ];
+
+    // --- REGLAS DE VALIDACIÓN: RESPUESTAS (ADMINISTRADORES) ---
+    protected array $replyConsultaRules = [
+        'respuesta' => 'required|min_length[5]|regex_match[/[a-zA-ZñÑáéíóúüÁÉÍÓÚÜ]/]',
+    ];
+
+    protected array $replyConsultaErrors = [
+        'respuesta' => [
+            'required'    => 'El campo de respuesta no puede estar vacío.',
+            'min_length'  => 'La respuesta debe ser más descriptiva (mínimo 5 caracteres).',
+            'regex_match' => 'La respuesta debe contener letras y no solo números o símbolos.',
+        ],
+    ];
+
     /**
-     * Registra una nueva consulta de contacto enviada por el usuario
+     * Constructor del controlador.
+     * Carga el modelo una sola vez utilizando el patrón Singleton nativo de CI4.
      */
-    public function add_consulta()
+    public function __construct()
+    {
+        $this->consultaModel = model(consulta_model::class);
+    }
+
+    /**
+     * Registra una nueva consulta de contacto enviada por el usuario (Frontend).
+     */
+    public function add_consulta(): RedirectResponse|string
     {
         if (!session('login')) {
             return redirect()->route('login')->with('error_login', 'Debes iniciar sesión para realizar una consulta.');
         }
 
-        $consultaModel = new consulta_model();
-
-        // Validar el formulario de consulta usando las reglas y errores definidos en el modelo
-        if (!$this->validate($consultaModel->addConsultaRules, $consultaModel->addConsultaErrors)) {
+        // Validación nativa de la consulta de entrada
+        if (!$this->validate($this->addConsultaRules, $this->addConsultaErrors)) {
             $data['titulo'] = 'Contactos';
             $data['validation'] = $this->validator->getErrors();
             return view('contenido/contactos', $data);
@@ -26,58 +72,140 @@ class ConsultaController extends BaseController
 
         $request = \Config\Services::request();
         $data = [
-            'asunto'    => $request->getPost('motivo'),
-            'mensaje'   => $request->getPost('consulta'),
-            'idPersona' => session('id'),
-            'respondido'=> 0
+            'asunto'     => $request->getPost('motivo'),
+            'mensaje'    => $request->getPost('consulta'),
+            'idPersona'  => session('id'),
+            'respondido' => 0
         ];
 
-        $consultaModel->insert($data);
+        $this->consultaModel->insert($data);
 
         return redirect()->route('contactos')->with('mensajeConsulta', 'Su consulta se envió correctamente!');
     }
 
-    public function admin()
+    /**
+     * Muestra la tabla general de control de consultas en el panel de administrador.
+     */
+    public function admin(): string
     {
-        $model = new consulta_model();
-        $data['consultas'] = $model->getConsultasConPersona();
+        $data['consultas'] = $this->getConsultasConPersona();
         $data['titulo'] = 'Consultas';
 
         return view('backend/consultas', $data);
     }
 
-    public function responder($idConsulta)
+    /**
+     * Carga el formulario interno para responder a una consulta específica.
+     */
+    public function responder(int $idConsulta): string|RedirectResponse
     {
-        $model = new consulta_model();
-        $consulta = $model->getConsultaConPersona($idConsulta);
+        $consulta = $this->getConsultaConPersona($idConsulta);
 
-        if ($consulta) {
-            // Marcar consulta como respondida en la base de datos
-            $model->update($idConsulta, ['respondido' => 1]);
-
-            // Construir el enlace para redactar correo en Gmail
-            $to = urlencode($consulta['correo']);
-            $subject = urlencode('Respuesta a su consulta: ' . $consulta['asunto']);
-            $body = urlencode("\n\n---\nConsulta original de " . $consulta['nombreApellido'] . ":\n\"" . $consulta['mensaje'] . "\"");
-            $gmailUrl = "https://mail.google.com/mail/?view=cm&fs=1&to={$to}&su={$subject}&body={$body}";
-
-            // Redirigir a Gmail para redactar la respuesta
-            return redirect()->to($gmailUrl);
+        if (!$consulta) {
+            session()->setFlashdata('mensaje', 'La consulta no existe.');
+            return redirect()->route('consultas');
         }
 
-        session()->setFlashdata('mensaje', 'La consulta no existe.');
-        return redirect()->route('consultas');
+        $data = [
+            'consulta' => $consulta,
+            'titulo'   => 'Responder Consulta'
+        ];
+
+        return view('backend/responder_consulta_view', $data);
     }
 
-    public function eliminar($idConsulta)
+    /**
+     * Procesa la contestación redactada por el administrador, actualiza la base de datos
+     * de forma transaccional y despacha la notificación por correo utilizando XAMPP mailtodo.
+     */
+    public function procesar_respuesta(): RedirectResponse
     {
-        $model = new consulta_model();
-        if ($model->delete($idConsulta)) {
-            session()->setFlashdata('mensaje', 'Consulta eliminada correctamente.');
-        } else {
-            session()->setFlashdata('mensaje', 'Error al eliminar la consulta.');
+        $idConsulta = (int)$this->request->getPost('idConsulta');
+
+        // 1. EARLY RETURN: Valida que la respuesta sea correcta usando el Service nativo
+        if (!$this->validate($this->replyConsultaRules, $this->replyConsultaErrors)) {
+            return redirect()->back()
+                             ->withInput()
+                             ->with('validation', $this->validator->getErrors());
         }
 
-        return redirect()->route('consultas');
+        // 2. EARLY RETURN: Valida la existencia física de la consulta antes de operar
+        $consulta = $this->getConsultaConPersona($idConsulta);
+        if (!$consulta) {
+            return redirect()->route('consultas')->with('error', 'La consulta no existe.');
+        }
+
+        // 3. EARLY RETURN: Control riguroso de sesión administrativa activa
+        $adminId = session('id');
+        if (!$adminId) {
+            return redirect()->route('login')->with('error_login', 'Debes iniciar sesión para responder.');
+        }
+
+        $respuestaText = $this->request->getPost('respuesta');
+
+        // 4. FLUJO ATÓMICO TRANSACCIONAL (ACID)
+        $db = \Config\Database::connect();
+        $db->transBegin();
+
+        try {
+            // Actualización del registro en base de datos asociando la consulta con la respuesta y el admin firmante
+            $this->consultaModel->update($idConsulta, [
+                'respuestaText'   => $respuestaText,
+                'idAdminResponde' => $adminId,
+                'respondido'      => 1
+            ]);
+
+            // Construcción del envío del email utilizando el driver nativo ('mail')
+            $email = \Config\Services::email();
+            $email->setTo($consulta['correo']);
+            $email->setSubject('Respuesta a su consulta: ' . $consulta['asunto']);
+
+            $mensajeEmail = "Hola " . $consulta['nombreApellido'] . ",\n\n";
+            $mensajeEmail .= "Hemos respondido a su consulta sobre: \"" . $consulta['asunto'] . "\"\n\n";
+            $mensajeEmail .= "Respuesta:\n" . $respuestaText . "\n\n";
+            $mensajeEmail .= "Atentamente,\nEl equipo de M&P.";
+
+            $email->setMessage($mensajeEmail);
+
+            // Si el motor 'mailtodo' de XAMPP no logra interceptar el archivo, forzamos rollback de seguridad
+            if (!$email->send()) {
+                throw new \RuntimeException('No se pudo enviar el correo electrónico a través del servidor de Gmail.');
+            }
+
+            $db->transCommit();
+            return redirect()->route('consultas')->with('mensaje', 'Respuesta enviada y notificada con éxito.');
+
+        } catch (\Exception $e) {
+            $db->transRollback();
+            return redirect()->back()->withInput()->with('error', 'Error al procesar la respuesta: ' . $e->getMessage());
+        }
+    }
+
+    // --- MÉTODOS DE CONSULTAS AUXILIARES CON RELACIONES (JOINs) ---
+
+    /**
+     * Recupera el listado completo de consultas ordenando de forma prioritaria las pendientes (FIFO).
+     */
+    private function getConsultasConPersona(): array
+    {
+        return $this->consultaModel->select('consultas.*, CONCAT(persona.nombrePersona, " ", persona.apellidoPersona) AS nombreApellido, persona.correoPersona AS correo, CONCAT(admin.nombrePersona, " ", admin.apellidoPersona) AS adminNombreApellido')
+                    ->join('persona', 'persona.idPersona = consultas.idPersona')
+                    ->join('persona AS admin', 'admin.idPersona = consultas.idAdminResponde', 'left')
+                    ->orderBy('consultas.respondido', 'ASC')
+                    ->orderBy('CASE WHEN consultas.respondido = 0 THEN consultas.created_at END', 'ASC', false)
+                    ->orderBy('CASE WHEN consultas.respondido = 1 THEN consultas.created_at END', 'DESC', false)
+                    ->findAll();
+    }
+
+    /**
+     * Recupera los metadatos de una única consulta específica mapeando sus relaciones.
+     */
+    private function getConsultaConPersona(int $idConsulta): ?array
+    {
+        return $this->consultaModel->select('consultas.*, CONCAT(persona.nombrePersona, " ", persona.apellidoPersona) AS nombreApellido, persona.correoPersona AS correo, CONCAT(admin.nombrePersona, " ", admin.apellidoPersona) AS adminNombreApellido')
+                    ->join('persona', 'persona.idPersona = consultas.idPersona')
+                    ->join('persona AS admin', 'admin.idPersona = consultas.idAdminResponde', 'left')
+                    ->where('consultas.idConsulta', $idConsulta)
+                    ->first();
     }
 }

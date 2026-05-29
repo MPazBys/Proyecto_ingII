@@ -9,7 +9,7 @@
           <li> 
             <i class="fa-solid fa-phone me-2" style="color: #da1616;"></i> +54 11 4567-8901 / +54 11 4567-8902 
             <br>
-            <i class="fa-solid fa-envelope me-2" style="color: #da1616;"></i> contacto_librosmyp@gmail.com
+            <i class="fa-solid fa-envelope me-2" style="color: #da1616;"></i> myp.libros@gmail.com
             <br>
             <i class="fa-solid fa-location-dot me-2" style="color: #da1616;"></i> Av. Libertad 1234,  Buenos Aires 
           </li>

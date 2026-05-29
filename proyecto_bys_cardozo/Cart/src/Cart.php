@@ -28,7 +28,7 @@ class Cart
      *
      * @var string
      */
-    public $productNameRules = '\w \-\.\:';
+    public $productNameRules = '\d\D';
 
     /**
      * only allow safe product names

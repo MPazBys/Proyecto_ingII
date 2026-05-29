@@ -1,0 +1,53 @@
+__ci_last_regenerate|i:1779998639;_ci_previous_url|s:65:"http://localhost/Proyecto_ingII/proyecto_bys_cardozo/responder/10";id|s:1:"2";nombre|s:3:"Paz";apellido|s:3:"Bys";correo|s:19:"paz250804@gmail.com";perfil|s:1:"1";login|b:1;_ci_old_input|a:2:{s:3:"get";a:0:{}s:4:"post";a:2:{s:10:"idConsulta";s:2:"10";s:9:"respuesta";s:24:"yyyyyyyyyyyyyyyyyyyyyyyy";}}__ci_vars|a:2:{s:13:"_ci_old_input";s:3:"old";s:5:"error";s:3:"old";}error|s:2176:"Error al procesar la respuesta: No se pudo enviar el correo electrónico a través del servidor de Gmail.<br><pre>220 smtp.gmail.com ESMTP d75a77b69052e-517069ed9f9sm84236121cf.1 - gsmtp
+&lt;br&gt;&lt;pre&gt;hello: 250-smtp.gmail.com at your service, [2803:9800:9853:81e0:cd5c:24b4:808:6147]
+250-SIZE 35882577
+250-8BITMIME
+250-AUTH LOGIN PLAIN XOAUTH2 PLAIN-CLIENTTOKEN OAUTHBEARER XOAUTH
+250-ENHANCEDSTATUSCODES
+250-PIPELINING
+250-CHUNKING
+250 SMTPUTF8
+&lt;/pre&gt;Failed to authenticate password. Error: 535-5.7.8 Username and Password not accepted. For more information, go to
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials d75a77b69052e-517069ed9f9sm84236121cf.1 - gsmtp
+&lt;br&gt;Unable to send email using SMTP. Your server might not be configured to send mail using this method.&lt;br&gt;&lt;pre&gt;Date: Thu, 28 May 2026 19:50:03 +0000
+To: mpb25000@gmail.com
+Subject: =?UTF-8?Q?Respuesta=20a=20su=20consulta:=20libelula?=
+From: =?UTF-8?Q?Librer=C3=ADa=20M&amp;amp;P=20-=20Soporte?= &amp;lt;myp.libros@gmail.com&amp;gt;
+Return-Path: &amp;lt;myp.libros@gmail.com&amp;gt;
+Reply-To: &amp;lt;myp.libros@gmail.com&amp;gt;
+User-Agent: CodeIgniter
+X-Sender: myp.libros@gmail.com
+X-Mailer: CodeIgniter
+X-Priority: 3 (Normal)
+Message-ID: &amp;lt;6a189c6be78488.55903324@gmail.com&amp;gt;
+Mime-Version: 1.0
+
+
+Content-Type: multipart/alternative; boundary=&amp;quot;B_ALT_6a189c6be78722.11270825&amp;quot;
+
+This is a multi-part message in MIME format.
+Your email application may not support this format.
+
+--B_ALT_6a189c6be78722.11270825
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Hola mpb mpb,
+
+Hemos respondido a su consulta sobre: &amp;quot;libelula&amp;quot;
+
+Respuesta:
+yyyyyyyyyyyyyyyyyyyyyyyy
+
+Atentamente,
+El equipo de M&amp;amp;P.
+
+
+--B_ALT_6a189c6be78722.11270825
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+Hola mpb mpb,=0A=0AHemos respondido a su consulta sobre: &amp;quot;libelula&amp;quot;=0A=0ARe=
+spuesta:=0Ayyyyyyyyyyyyyyyyyyyyyyyy=0A=0AAtentamente,=0AEl equipo de M&amp;amp;P.
+
+--B_ALT_6a189c6be78722.11270825--&lt;/pre&gt;</pre>";
