@@ -34,11 +34,42 @@
                                 <tr>
                                     <td class="text-center fw-bold">#<?= $row['idVenta']; ?></td>
                                     <td class="text-center"><?= $row['fecha']; ?></td>
-                                    <td><?= esc($row['correoPersona']); ?></td>
+                                    <td>
+                                        <span class="badge bg-secondary-subtle text-dark border" 
+                                            data-bs-toggle="tooltip" 
+                                            data-bs-html="true"
+                                            data-bs-placement="top" 
+                                            title="<b>Email:</b> <?= esc($row['correoPersona']) ?><br><b>Cliente:</b> <?= esc($row['apellidoPersona']) . ', ' . esc($row['nombrePersona']) ?><br><b>Tel:</b> <?= esc($row['telefono']) ?><br><b>DNI:</b> <?= esc($row['dni']) ?>">
+                                            <i class="fa-solid fa-eye me-1"></i> Ver información
+                                        </span>
+                                    </td>
                                     <td class="text-end">$<?= number_format($row['total'], 2, ',', '.'); ?></td>
                                     <td class="text-center"><?= esc($row['nombrePago']); ?></td>
                                     <td class="text-center">
-                                        <?= ($row['formaEnvio'] == '2') ? '<span class="badge bg-info text-dark"><i class="bi bi-truck"></i> A Domicilio</span>' : '<span class="badge bg-secondary"><i class="bi bi-shop"></i> Retiro en Sucursal</span>'; ?>
+                                        <?php if ($row['formaEnvio'] == '2'): 
+                                            $dirLinea1 = esc($row['calle']) . ' ' . esc($row['altura']);
+                                            if (!empty($row['pisoDepto'])) { 
+                                                $dirLinea1 .= ' - ' . esc($row['pisoDepto']);
+                                            }
+                                            $dirLinea2 = esc($row['nombreLocalidad']) . ', ' . esc($row['nombreProvincia']);
+                                            $tooltipDireccion = '<b>Dirección de Entrega:</b><br>' . $dirLinea1 . '<br>' . $dirLinea2;
+                                            if (!empty($row['consideraciones'])) {
+                                                $tooltipDireccion .= '<br><small class="text-muted"><i>Obs: ' . esc($row['consideraciones']) . '</i></small>';
+                                            }
+                                        ?>
+                                            <span class="badge bg-info text-dark"><i class="bi bi-truck"></i> A Domicilio</span>
+                                            <br>
+                                            <small class="badge bg-danger-subtle text-dark border d-block mt-1" 
+                                                   style="cursor: pointer;"
+                                                   data-bs-toggle="tooltip" 
+                                                   data-bs-html="true" 
+                                                   data-bs-placement="top" 
+                                                   title="<?= $tooltipDireccion ?>">
+                                                <i class="bi bi-geo-alt-fill"></i>Ver dirección
+                                            </small>
+                                        <?php else: ?>
+                                            <span class="badge bg-secondary"><i class="bi bi-shop"></i> Retiro en Sucursal</span>
+                                        <?php endif; ?>
                                     </td>
                                     <td class="text-center">
                                         <button class="btn btn-sm btn-info" onclick="mostrarDetalles(<?= $row['idVenta']; ?>)">
@@ -93,11 +124,42 @@
                                 <tr>
                                     <td class="text-center fw-bold">#<?= $row['idVenta']; ?></td>
                                     <td class="text-center"><?= $row['fecha']; ?></td>
-                                    <td><?= esc($row['correoPersona']); ?></td>
+                                    <td>
+                                        <span class="badge bg-secondary-subtle text-dark border" 
+                                            data-bs-toggle="tooltip" 
+                                            data-bs-html="true"
+                                            data-bs-placement="top" 
+                                            title="<b>Email:</b> <?= esc($row['correoPersona']) ?><br><b>Cliente:</b> <?= esc($row['apellidoPersona']) . ', ' . esc($row['nombrePersona']) ?><br><b>Tel:</b> <?= esc($row['telefono']) ?><br><b>DNI:</b> <?= esc($row['dni']) ?>">
+                                            <i class="fa-solid fa-eye me-1"></i> Ver información
+                                        </span>
+                                    </td>
                                     <td class="text-end">$<?= number_format($row['total'], 2, ',', '.'); ?></td>
                                     <td class="text-center"><?= esc($row['nombrePago']); ?></td>
                                     <td class="text-center">
-                                        <?= ($row['formaEnvio'] == '2') ? '<span class="badge bg-info text-dark"><i class="bi bi-truck"></i> A Domicilio</span>' : '<span class="badge bg-secondary"><i class="bi bi-shop"></i> Retiro en Sucursal</span>'; ?>
+                                        <?php if ($row['formaEnvio'] == '2'): 
+                                            $dirLinea1 = esc($row['calle']) . ' ' . esc($row['altura']);
+                                            if (!empty($row['pisoDepto'])) { 
+                                                $dirLinea1 .= ' - ' . esc($row['pisoDepto']);
+                                            }
+                                            $dirLinea2 = esc($row['nombreLocalidad']) . ', ' . esc($row['nombreProvincia']);
+                                            $tooltipDireccion = '<b>Dirección de Entrega:</b><br>' . $dirLinea1 . '<br>' . $dirLinea2;
+                                            if (!empty($row['consideraciones'])) {
+                                                $tooltipDireccion .= '<br><small class="text-muted"><i>Obs: ' . esc($row['consideraciones']) . '</i></small>';
+                                            }
+                                        ?>
+                                            <span class="badge bg-info text-dark"><i class="bi bi-truck"></i> A Domicilio</span>
+                                            <br>
+                                            <small class="badge bg-danger-subtle text-dark border d-block mt-1" 
+                                                   style="cursor: pointer;"
+                                                   data-bs-toggle="tooltip" 
+                                                   data-bs-html="true" 
+                                                   data-bs-placement="top" 
+                                                   title="<?= $tooltipDireccion ?>">
+                                                <i class="bi bi-geo-alt-fill"></i>Ver dirección
+                                            </small>
+                                        <?php else: ?>
+                                            <span class="badge bg-secondary"><i class="bi bi-shop"></i> Retiro en Sucursal</span>
+                                        <?php endif; ?>
                                     </td>
                                     <td class="text-center">
                                         <button class="btn btn-sm btn-info" onclick="mostrarDetalles(<?= $row['idVenta']; ?>)">
@@ -105,7 +167,7 @@
                                         </button>
                                     </td>
                                     <td class="text-center">
-                                        <a class="btn btn-sm btn-warning text-white fw-bold" href="<?= base_url('cambiar_estado/'.$row['idVenta'].'/Finalizado'); ?>">
+                                        <a class="btn btn-sm btn-warning fw-bold" href="<?= base_url('cambiar_estado/'.$row['idVenta'].'/Finalizado'); ?>">
                                             <i class="bi bi-house-door"></i> Marcar como Entregado
                                         </a>
                                     </td>
@@ -146,11 +208,42 @@
                                 <tr>
                                     <td class="text-center fw-bold">#<?= $row['idVenta']; ?></td>
                                     <td class="text-center"><?= $row['fecha']; ?></td>
-                                    <td><?= esc($row['correoPersona']); ?></td>
+                                    <td>
+                                        <span class="badge bg-secondary-subtle text-dark border" 
+                                            data-bs-toggle="tooltip" 
+                                            data-bs-html="true"
+                                            data-bs-placement="top" 
+                                            title="<b>Email:</b> <?= esc($row['correoPersona']) ?><br><b>Cliente:</b> <?= esc($row['apellidoPersona']) . ', ' . esc($row['nombrePersona']) ?><br><b>Tel:</b> <?= esc($row['telefono']) ?><br><b>DNI:</b> <?= esc($row['dni']) ?>">
+                                            <i class="fa-solid fa-eye me-1"></i> Ver información
+                                        </span>
+                                    </td>
                                     <td class="text-end">$<?= number_format($row['total'], 2, ',', '.'); ?></td>
                                     <td class="text-center"><?= esc($row['nombrePago']); ?></td>
                                     <td class="text-center">
-                                        <?= ($row['formaEnvio'] == '2') ? '<span class="badge bg-info text-dark"><i class="bi bi-truck"></i> A Domicilio</span>' : '<span class="badge bg-secondary"><i class="bi bi-shop"></i> Retiro en Sucursal</span>'; ?>
+                                        <?php if ($row['formaEnvio'] == '2'): 
+                                            $dirLinea1 = esc($row['calle']) . ' ' . esc($row['altura']);
+                                            if (!empty($row['pisoDepto'])) { 
+                                                $dirLinea1 .= ' - ' . esc($row['pisoDepto']);
+                                            }
+                                            $dirLinea2 = esc($row['nombreLocalidad']) . ', ' . esc($row['nombreProvincia']);
+                                            $tooltipDireccion = '<b>Dirección de Entrega:</b><br>' . $dirLinea1 . '<br>' . $dirLinea2;
+                                            if (!empty($row['consideraciones'])) {
+                                                $tooltipDireccion .= '<br><small class="text-muted"><i>Obs: ' . esc($row['consideraciones']) . '</i></small>';
+                                            }
+                                        ?>
+                                            <span class="badge bg-info text-dark"><i class="bi bi-truck"></i> A Domicilio</span>
+                                            <br>
+                                            <small class="badge bg-danger-subtle text-dark border d-block mt-1" 
+                                                   style="cursor: pointer;"
+                                                   data-bs-toggle="tooltip" 
+                                                   data-bs-html="true" 
+                                                   data-bs-placement="top" 
+                                                   title="<?= $tooltipDireccion ?>">
+                                                <i class="bi bi-geo-alt-fill"></i>Ver dirección
+                                            </small>
+                                        <?php else: ?>
+                                            <span class="badge bg-secondary"><i class="bi bi-shop"></i> Retiro en Sucursal</span>
+                                        <?php endif; ?>
                                     </td>
                                     <td class="text-center">
                                         <button class="btn btn-sm btn-info" onclick="mostrarDetalles(<?= $row['idVenta']; ?>)">
@@ -200,4 +293,13 @@ function mostrarDetalles(idVenta) {
             console.error(error);
         });
 }
+</script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+        var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+            return new bootstrap.Tooltip(tooltipTriggerEl)
+        })
+    });
 </script>

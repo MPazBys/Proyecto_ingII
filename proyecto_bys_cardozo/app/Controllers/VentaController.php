@@ -3,11 +3,17 @@
 namespace App\Controllers;
 
 use CodeIgniter\HTTP\RedirectResponse;
+use App\Libraries\Estado\EstadoVentaFactory; // importacion de la fabrica para la implementacion del patron
 use App\Models\venta_model;
 use App\Models\detalle_venta_model;
 use App\Models\persona_model;
 use App\Models\formapago_model;
 use App\Models\libros_model;
+use App\Models\direccion_model;
+use App\Models\localidades_model;
+use App\Models\provincias_model;
+
+//El método que posee la impletación del patron es cambiar_estado(int $idVenta, string $nuevoEstado)
 
 class VentaController extends BaseController {
 
@@ -16,6 +22,10 @@ class VentaController extends BaseController {
     protected persona_model $personaModel;
     protected formapago_model $formaPagoModel;
     protected libros_model $librosModel;
+    protected direccion_model $direccionModel;
+    protected localidades_model $localidadModel;
+    protected provincias_model $provinciaModel;
+
 
     public function initController(\CodeIgniter\HTTP\RequestInterface $request, \CodeIgniter\HTTP\ResponseInterface $response, \Psr\Log\LoggerInterface $logger) {
         parent::initController($request, $response, $logger);
@@ -25,6 +35,9 @@ class VentaController extends BaseController {
         $this->personaModel   = model(persona_model::class);
         $this->formaPagoModel = model(formapago_model::class);
         $this->librosModel    = model(libros_model::class);
+        $this->direccionModel  = model(direccion_model::class);
+        $this->localidadModel   = model(localidades_model::class);
+        $this->provinciaModel   = model(provincias_model::class);
     }
 
     /**
@@ -74,8 +87,9 @@ class VentaController extends BaseController {
         return $html . '</ul>';
     }
 
-    /**
-     * Cambia el estado de una venta aplicando las reglas de negocio transaccionales y de correo.
+    /*
+     * Cambia el estado de una venta delegando el control de la máquina de estados
+     * y las acciones secundarias a los objetos del patrón Estado.
      */
     public function cambiar_estado(int $idVenta, string $nuevoEstado): RedirectResponse {
         if (!session('login') || session('perfil') != 1) {
@@ -92,28 +106,32 @@ class VentaController extends BaseController {
             return redirect()->route('gestionar_ventas')->with('msj', 'Cliente no encontrado.');
         }
 
-        // Normalización estricta de cadenas de texto
         $nuevoEstado  = ucfirst(strtolower($nuevoEstado));
-        $estadoActual = $venta['estado'];
-        $formaEnvio   = (int)$venta['formaEnvio']; // 1 = Retiro, 2 = Domicilio
-
-        // MODULARIZACIÓN: Validación aislada del ciclo de vida del pedido
-        if (!$this->es_transicion_valida($estadoActual, $nuevoEstado, $formaEnvio)) {
-            return redirect()->route('gestionar_ventas')->with('msj', 'Transición de estado denegada por reglas de negocio del despacho.');
-        }
-
-        // Persistencia atómica
-        $db = \Config\Database::connect();
-        $db->transBegin();
+        $formaEnvio   = (int)$venta['formaEnvio'];
 
         try {
+            // 1. Instanciar el objeto del estado actual mediante la fábrica
+            $estadoActualObj = EstadoVentaFactory::crear($venta['estado']);
+
+            // 2. Delegar la validación lógica de la transición al objeto de estado
+            if (!$estadoActualObj->cambiarEstado($venta, $nuevoEstado, $formaEnvio)) {
+                return redirect()->route('gestionar_ventas')->with('msj', 'Transición de estado denegada por reglas de negocio del despacho.');
+            }
+
+            // Persistencia atómica
+            $db = \Config\Database::connect();
+            $db->transBegin();
+
+            // 3. Actualizar el registro string en la base de datos
             $this->ventaModel->update($idVenta, ['estado' => $nuevoEstado]);
 
-            // Notificación vía SMTP/mail centralizado
-            $this->enviar_notificacion_estado($idVenta, $cliente, $nuevoEstado, $formaEnvio);
+            // 4. Instanciar el nuevo estado para disparar automáticamente sus efectos secundarios (ej. enviar mail)
+            $estadoNuevoObj = EstadoVentaFactory::crear($nuevoEstado);
+            $estadoNuevoObj->ejecutarAccionPostTransicion($venta, $cliente);
 
             $db->transCommit();
             return redirect()->route('gestionar_ventas')->with('mensaje', 'El pedido #' . $idVenta . ' cambió a ' . $nuevoEstado . ' con éxito.');
+            
         } catch (\Exception $e) {
             $db->transRollback();
             return redirect()->route('gestionar_ventas')->with('msj', 'Error crítico al alterar estado: ' . $e->getMessage());
@@ -131,61 +149,13 @@ class VentaController extends BaseController {
         return $this->ventaModel
             ->join('persona', 'persona.idPersona = venta.idCliente')
             ->join('formapago', 'formapago.idPago = venta.idPago')
+            ->join('direccion', 'direccion.idDireccion = persona.idDireccion', 'left')
+            ->join('localidades', 'localidades.idLocalidad = direccion.idLocalidad', 'left')
+            ->join('provincias', 'provincias.idProvincia = localidades.idProvincia', 'left')
             ->where('venta.estado', $estado)
             ->orderBy('venta.idVenta', $orden)
             ->findAll();
     }
 
-    /**
-     * Aplica de forma estricta las reglas de la máquina de estados de las entregas.
-     */
-    private function es_transicion_valida(string $actual, string $nuevo, int $formaEnvio): bool {
-        if ($formaEnvio === 1) {
-            // Retiro presencial: Solo se permite ir directo de Pendiente a Finalizado
-            return ($actual === 'Pendiente' && $nuevo === 'Finalizado');
-        } 
-        
-        if ($formaEnvio === 2) {
-            // Envío domiciliario: Sigue el pipeline secuencial obligatorio
-            if ($actual === 'Pendiente') {
-                return ($nuevo === 'Enviado');
-            }
-            if ($actual === 'Enviado') {
-                return ($nuevo === 'Finalizado');
-            }
-        }
-
-        return false;
-    }
-
-    /**
-     * Construye y despacha los correos electrónicos informativos al cliente.
-     */
-    private function enviar_notificacion_estado(int $idVenta, array $cliente, string $estado, int $formaEnvio): void {
-        $email = \Config\Services::email();
-        $email->setTo($cliente['correoPersona']);
-
-        if ($estado === 'Enviado') {
-            $email->setSubject('¡Tu pedido está en camino! - Librería M&P');
-            $html = '<h2>¡Hola ' . esc($cliente['nombrePersona']) . '!</h2>';
-            $html .= '<p>Queremos informarte que tu pedido <strong>#' . $idVenta . '</strong> ha sido despachado y está en camino a tu domicilio.</p>';
-            $html .= '<p>Nuestros repartidores se contactarán contigo al número de teléfono registrado al momento de la entrega.</p>';
-            $html .= '<br><p>¡Gracias por elegir Librería M&P!</p>';
-        } elseif ($estado === 'Finalizado') {
-            $email->setSubject(($formaEnvio === 1) ? '¡Retiraste tu pedido con éxito! - Librería M&P' : 'Tu pedido fue entregado con éxito - Librería M&P');
-            
-            $html = '<h2>¡Hola ' . esc($cliente['nombrePersona']) . '!</h2>';
-            $html .= '<p>Tu pedido <strong>#' . $idVenta . '</strong> ha sido ' . (($formaEnvio === 1) ? 'retirado de nuestra sucursal' : 'entregado correctamente') . '.</p>';
-            $html .= '<p>Esperamos que disfrutes de tu compra. Si tienes alguna consulta, no dudes en escribirnos.</p>';
-            $html .= '<br><p>¡Muchas gracias por tu confianza!<br><strong>El equipo de M&P.</strong></p>';
-        } else {
-            return;
-        }
-
-        $email->setMessage($html);
-
-        if (!$email->send()) {
-            log_message('error', 'Error al despachar notificación SMTP para venta #' . $idVenta);
-        }
-    }
+    
 }

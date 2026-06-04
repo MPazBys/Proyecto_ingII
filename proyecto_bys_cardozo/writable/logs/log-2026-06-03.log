@@ -1,0 +1,301 @@
+INFO - 2026-06-03 00:36:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-06-03 00:38:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-06-03 01:03:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-06-03 01:16:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-06-03 01:19:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-06-03 01:19:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-06-03 01:19:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-06-03 01:19:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-06-03 01:19:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-06-03 01:20:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-06-03 01:59:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-06-03 02:00:04 --> mysqli_sql_exception: Table 'bd_bys_cardozo.localidad' doesn't exist in C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\app\Controllers\VentaController.php(149): CodeIgniter\BaseModel->findAll()
+#7 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\app\Controllers\VentaController.php(49): App\Controllers\VentaController->obtener_ventas_por_estado('Pendiente', 'ASC')
+#8 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\CodeIgniter.php(941): App\Controllers\VentaController->gestionar_ventas()
+#9 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VentaController))
+#10 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\index.php(79): CodeIgniter\CodeIgniter->run()
+#12 {main}
+CRITICAL - 2026-06-03 02:00:04 --> CodeIgniter\Database\Exceptions\DatabaseException: Table 'bd_bys_cardozo.localidad' doesn't exist
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `venta`
+JOIN `persona` ON `persona`.`idPersona` = `venta`.`idCliente`
+JOIN `formapago` ON `formapago`.`idPago` = `venta`.`idPago`
+JOIN `direccion` ON `direccion`.`idDireccion` = `persona`.`idDireccion`
+JOIN `localidad` ON `localidad`.`idLocalidad` = `direccion`.`idLocalidad`
+JOIN `provincia` ON `provincia`.`idProvincia` = `localidad`.`idProvincia`
+WHERE `venta`.`estado` = :venta.estado:
+ORDER BY `venta`.`idVenta` ASC', [...], false)
+ 2 SYSTEMPATH\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\VentaController.php(149): CodeIgniter\BaseModel->findAll()
+ 5 APPPATH\Controllers\VentaController.php(49): App\Controllers\VentaController->obtener_ventas_por_estado('Pendiente', 'ASC')
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\VentaController->gestionar_ventas()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VentaController))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-06-03 02:00:04 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Table 'bd_bys_cardozo.localidad' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `venta`
+JOIN `persona` ON `persona`.`idPersona` = `venta`.`idCliente`
+JOIN `formapago` ON `formapago`.`idPago` = `venta`.`idPago`
+JOIN `direccion` ON `direccion`.`idDireccion` = `persona`.`idDireccion`
+JOIN `localidad` ON `localidad`.`idLocalidad` = `direccion`.`idLocalidad`
+JOIN `provincia` ON `provincia`.`idProvincia` = `localidad`.`idProvincia`
+WHERE `venta`.`estado` = \'Pendiente\'
+ORDER BY `venta`.`idVenta` ASC')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `venta`
+JOIN `persona` ON `persona`.`idPersona` = `venta`.`idCliente`
+JOIN `formapago` ON `formapago`.`idPago` = `venta`.`idPago`
+JOIN `direccion` ON `direccion`.`idDireccion` = `persona`.`idDireccion`
+JOIN `localidad` ON `localidad`.`idLocalidad` = `direccion`.`idLocalidad`
+JOIN `provincia` ON `provincia`.`idProvincia` = `localidad`.`idProvincia`
+WHERE `venta`.`estado` = \'Pendiente\'
+ORDER BY `venta`.`idVenta` ASC')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `venta`
+JOIN `persona` ON `persona`.`idPersona` = `venta`.`idCliente`
+JOIN `formapago` ON `formapago`.`idPago` = `venta`.`idPago`
+JOIN `direccion` ON `direccion`.`idDireccion` = `persona`.`idDireccion`
+JOIN `localidad` ON `localidad`.`idLocalidad` = `direccion`.`idLocalidad`
+JOIN `provincia` ON `provincia`.`idProvincia` = `localidad`.`idProvincia`
+WHERE `venta`.`estado` = :venta.estado:
+ORDER BY `venta`.`idVenta` ASC', [...], false)
+ 4 SYSTEMPATH\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+ 6 APPPATH\Controllers\VentaController.php(149): CodeIgniter\BaseModel->findAll()
+ 7 APPPATH\Controllers\VentaController.php(49): App\Controllers\VentaController->obtener_ventas_por_estado('Pendiente', 'ASC')
+ 8 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\VentaController->gestionar_ventas()
+ 9 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VentaController))
+10 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-06-03 02:00:04 --> [Caused by] mysqli_sql_exception: Table 'bd_bys_cardozo.localidad' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('SELECT *
+FROM `venta`
+JOIN `persona` ON `persona`.`idPersona` = `venta`.`idCliente`
+JOIN `formapago` ON `formapago`.`idPago` = `venta`.`idPago`
+JOIN `direccion` ON `direccion`.`idDireccion` = `persona`.`idDireccion`
+JOIN `localidad` ON `localidad`.`idLocalidad` = `direccion`.`idLocalidad`
+JOIN `provincia` ON `provincia`.`idProvincia` = `localidad`.`idProvincia`
+WHERE `venta`.`estado` = \'Pendiente\'
+ORDER BY `venta`.`idVenta` ASC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `venta`
+JOIN `persona` ON `persona`.`idPersona` = `venta`.`idCliente`
+JOIN `formapago` ON `formapago`.`idPago` = `venta`.`idPago`
+JOIN `direccion` ON `direccion`.`idDireccion` = `persona`.`idDireccion`
+JOIN `localidad` ON `localidad`.`idLocalidad` = `direccion`.`idLocalidad`
+JOIN `provincia` ON `provincia`.`idProvincia` = `localidad`.`idProvincia`
+WHERE `venta`.`estado` = \'Pendiente\'
+ORDER BY `venta`.`idVenta` ASC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `venta`
+JOIN `persona` ON `persona`.`idPersona` = `venta`.`idCliente`
+JOIN `formapago` ON `formapago`.`idPago` = `venta`.`idPago`
+JOIN `direccion` ON `direccion`.`idDireccion` = `persona`.`idDireccion`
+JOIN `localidad` ON `localidad`.`idLocalidad` = `direccion`.`idLocalidad`
+JOIN `provincia` ON `provincia`.`idProvincia` = `localidad`.`idProvincia`
+WHERE `venta`.`estado` = \'Pendiente\'
+ORDER BY `venta`.`idVenta` ASC')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `venta`
+JOIN `persona` ON `persona`.`idPersona` = `venta`.`idCliente`
+JOIN `formapago` ON `formapago`.`idPago` = `venta`.`idPago`
+JOIN `direccion` ON `direccion`.`idDireccion` = `persona`.`idDireccion`
+JOIN `localidad` ON `localidad`.`idLocalidad` = `direccion`.`idLocalidad`
+JOIN `provincia` ON `provincia`.`idProvincia` = `localidad`.`idProvincia`
+WHERE `venta`.`estado` = :venta.estado:
+ORDER BY `venta`.`idVenta` ASC', [...], false)
+ 5 SYSTEMPATH\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH\Controllers\VentaController.php(149): CodeIgniter\BaseModel->findAll()
+ 8 APPPATH\Controllers\VentaController.php(49): App\Controllers\VentaController->obtener_ventas_por_estado('Pendiente', 'ASC')
+ 9 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\VentaController->gestionar_ventas()
+10 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VentaController))
+11 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2026-06-03 02:03:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-06-03 02:03:04 --> mysqli_sql_exception: Unknown column 'localidad.idLocalidad' in 'on clause' in C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\app\Controllers\VentaController.php(149): CodeIgniter\BaseModel->findAll()
+#7 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\app\Controllers\VentaController.php(49): App\Controllers\VentaController->obtener_ventas_por_estado('Pendiente', 'ASC')
+#8 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\CodeIgniter.php(941): App\Controllers\VentaController->gestionar_ventas()
+#9 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VentaController))
+#10 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\index.php(79): CodeIgniter\CodeIgniter->run()
+#12 {main}
+CRITICAL - 2026-06-03 02:03:04 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'localidad.idLocalidad' in 'on clause'
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `venta`
+JOIN `persona` ON `persona`.`idPersona` = `venta`.`idCliente`
+JOIN `formapago` ON `formapago`.`idPago` = `venta`.`idPago`
+JOIN `direccion` ON `direccion`.`idDireccion` = `persona`.`idDireccion`
+JOIN `localidades` ON `localidad`.`idLocalidad` = `direccion`.`idLocalidad`
+JOIN `provincias` ON `provincia`.`idProvincia` = `localidad`.`idProvincia`
+WHERE `venta`.`estado` = :venta.estado:
+ORDER BY `venta`.`idVenta` ASC', [...], false)
+ 2 SYSTEMPATH\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\VentaController.php(149): CodeIgniter\BaseModel->findAll()
+ 5 APPPATH\Controllers\VentaController.php(49): App\Controllers\VentaController->obtener_ventas_por_estado('Pendiente', 'ASC')
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\VentaController->gestionar_ventas()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VentaController))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-06-03 02:03:04 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'localidad.idLocalidad' in 'on clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `venta`
+JOIN `persona` ON `persona`.`idPersona` = `venta`.`idCliente`
+JOIN `formapago` ON `formapago`.`idPago` = `venta`.`idPago`
+JOIN `direccion` ON `direccion`.`idDireccion` = `persona`.`idDireccion`
+JOIN `localidades` ON `localidad`.`idLocalidad` = `direccion`.`idLocalidad`
+JOIN `provincias` ON `provincia`.`idProvincia` = `localidad`.`idProvincia`
+WHERE `venta`.`estado` = \'Pendiente\'
+ORDER BY `venta`.`idVenta` ASC')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `venta`
+JOIN `persona` ON `persona`.`idPersona` = `venta`.`idCliente`
+JOIN `formapago` ON `formapago`.`idPago` = `venta`.`idPago`
+JOIN `direccion` ON `direccion`.`idDireccion` = `persona`.`idDireccion`
+JOIN `localidades` ON `localidad`.`idLocalidad` = `direccion`.`idLocalidad`
+JOIN `provincias` ON `provincia`.`idProvincia` = `localidad`.`idProvincia`
+WHERE `venta`.`estado` = \'Pendiente\'
+ORDER BY `venta`.`idVenta` ASC')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `venta`
+JOIN `persona` ON `persona`.`idPersona` = `venta`.`idCliente`
+JOIN `formapago` ON `formapago`.`idPago` = `venta`.`idPago`
+JOIN `direccion` ON `direccion`.`idDireccion` = `persona`.`idDireccion`
+JOIN `localidades` ON `localidad`.`idLocalidad` = `direccion`.`idLocalidad`
+JOIN `provincias` ON `provincia`.`idProvincia` = `localidad`.`idProvincia`
+WHERE `venta`.`estado` = :venta.estado:
+ORDER BY `venta`.`idVenta` ASC', [...], false)
+ 4 SYSTEMPATH\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+ 6 APPPATH\Controllers\VentaController.php(149): CodeIgniter\BaseModel->findAll()
+ 7 APPPATH\Controllers\VentaController.php(49): App\Controllers\VentaController->obtener_ventas_por_estado('Pendiente', 'ASC')
+ 8 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\VentaController->gestionar_ventas()
+ 9 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VentaController))
+10 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-06-03 02:03:04 --> [Caused by] mysqli_sql_exception: Unknown column 'localidad.idLocalidad' in 'on clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('SELECT *
+FROM `venta`
+JOIN `persona` ON `persona`.`idPersona` = `venta`.`idCliente`
+JOIN `formapago` ON `formapago`.`idPago` = `venta`.`idPago`
+JOIN `direccion` ON `direccion`.`idDireccion` = `persona`.`idDireccion`
+JOIN `localidades` ON `localidad`.`idLocalidad` = `direccion`.`idLocalidad`
+JOIN `provincias` ON `provincia`.`idProvincia` = `localidad`.`idProvincia`
+WHERE `venta`.`estado` = \'Pendiente\'
+ORDER BY `venta`.`idVenta` ASC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `venta`
+JOIN `persona` ON `persona`.`idPersona` = `venta`.`idCliente`
+JOIN `formapago` ON `formapago`.`idPago` = `venta`.`idPago`
+JOIN `direccion` ON `direccion`.`idDireccion` = `persona`.`idDireccion`
+JOIN `localidades` ON `localidad`.`idLocalidad` = `direccion`.`idLocalidad`
+JOIN `provincias` ON `provincia`.`idProvincia` = `localidad`.`idProvincia`
+WHERE `venta`.`estado` = \'Pendiente\'
+ORDER BY `venta`.`idVenta` ASC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `venta`
+JOIN `persona` ON `persona`.`idPersona` = `venta`.`idCliente`
+JOIN `formapago` ON `formapago`.`idPago` = `venta`.`idPago`
+JOIN `direccion` ON `direccion`.`idDireccion` = `persona`.`idDireccion`
+JOIN `localidades` ON `localidad`.`idLocalidad` = `direccion`.`idLocalidad`
+JOIN `provincias` ON `provincia`.`idProvincia` = `localidad`.`idProvincia`
+WHERE `venta`.`estado` = \'Pendiente\'
+ORDER BY `venta`.`idVenta` ASC')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `venta`
+JOIN `persona` ON `persona`.`idPersona` = `venta`.`idCliente`
+JOIN `formapago` ON `formapago`.`idPago` = `venta`.`idPago`
+JOIN `direccion` ON `direccion`.`idDireccion` = `persona`.`idDireccion`
+JOIN `localidades` ON `localidad`.`idLocalidad` = `direccion`.`idLocalidad`
+JOIN `provincias` ON `provincia`.`idProvincia` = `localidad`.`idProvincia`
+WHERE `venta`.`estado` = :venta.estado:
+ORDER BY `venta`.`idVenta` ASC', [...], false)
+ 5 SYSTEMPATH\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH\Controllers\VentaController.php(149): CodeIgniter\BaseModel->findAll()
+ 8 APPPATH\Controllers\VentaController.php(49): App\Controllers\VentaController->obtener_ventas_por_estado('Pendiente', 'ASC')
+ 9 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\VentaController->gestionar_ventas()
+10 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VentaController))
+11 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2026-06-03 02:03:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-06-03 02:03:43 --> ErrorException: Undefined array key "apellido"
+in APPPATH\Views\backend\ventas.php on line 42.
+ 1 APPPATH\Views\backend\ventas.php(42): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "apellido"', 'C:\\xampp\\htdocs\\Proyecto_ingII\\proyecto_bys_cardozo\\app\\Views\\backend\\ventas.php', 42)
+ 2 SYSTEMPATH\View\View.php(228): include('C:\\xampp\\htdocs\\Proyecto_ingII\\proyecto_bys_cardozo\\app\\Views\\backend\\ventas.php')
+ 3 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('backend/ventas', [], true)
+ 5 APPPATH\Controllers\VentaController.php(64): view('backend/ventas', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\VentaController->gestionar_ventas()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VentaController))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2026-06-03 02:09:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-06-03 02:26:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-06-03 02:33:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-06-03 02:33:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-06-03 02:34:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-06-03 02:39:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-06-03 02:40:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-06-03 02:41:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-06-03 02:41:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-06-03 02:52:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-06-03 03:02:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-06-03 03:10:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-06-03 03:22:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-06-03 03:32:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-06-03 03:34:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-06-03 03:34:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-06-03 03:34:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-06-03 03:39:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-06-03 04:10:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-06-03 23:33:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-06-03 23:34:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-06-03 23:34:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-06-03 23:35:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-06-03 23:35:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-06-03 23:35:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-06-03 23:59:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-06-03 23:59:15 --> Email: Unable to send email using SMTP. Your server might not be configured to send mail using this method.
+ERROR - 2026-06-03 23:59:15 --> 220 smtp.gmail.com ESMTP 956f58d0204a3-660d5f86e2csm2877819d50.5 - gsmtp
+
+hello: 250-smtp.gmail.com at your service, [2803:9800:9853:81e0:4420:3e3e:b14c:e8e8]
+250-SIZE 35882577
+250-8BITMIME
+250-AUTH LOGIN PLAIN XOAUTH2 PLAIN-CLIENTTOKEN OAUTHBEARER XOAUTH
+250-ENHANCEDSTATUSCODES
+250-PIPELINING
+250-CHUNKING
+250 SMTPUTF8
+
+Failed to authenticate password. Error: 535-5.7.8 Username and Password not accepted. For more information, go to
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials 956f58d0204a3-660d5f86e2csm2877819d50.5 - gsmtp
+
+ERROR - 2026-06-03 23:59:15 --> Error al despachar notificación SMTP para venta #8
+INFO - 2026-06-03 23:59:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
