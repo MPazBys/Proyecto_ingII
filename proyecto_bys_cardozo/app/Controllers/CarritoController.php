@@ -50,9 +50,9 @@ class CarritoController extends BaseController {
 
         $cart = \Config\Services::cart();
         $data['items'] = $cart->contents();
-        $data['formasPago'] = $this->formaPagoModel->findAll();
-        $data['provincias'] = $this->provinciaModel->orderBy('nombreProvincia', 'ASC')->findAll();
-        $data['localidades'] = $this->localidadModel->orderBy('nombreLocalidad', 'ASC')->findAll();
+        $data['formasPago'] = $this->formaPagoModel->findAll(); //En el diagrama de secuencia 10.3 esta como "obtenerFormaPago()"
+        $data['provincias'] = $this->provinciaModel->orderBy('nombreProvincia', 'ASC')->findAll(); //En el diagrama de secuencia 10.3 esta como "obtenerProvincia()"
+        $data['localidades'] = $this->localidadModel->orderBy('nombreLocalidad', 'ASC')->findAll(); //En el diagrama de secuencia 10.3 esta como "obtenerLocalidad()"
         $data['titulo'] = 'Carrito de compras';
 
         // Pre-carga estructurada de datos del cliente y su dirección
@@ -325,7 +325,7 @@ class CarritoController extends BaseController {
 
         if ($formaPago === '2') {
             $rules['tarjeta']     = ['rules' => 'required|regex_match[/^\d{16}$/]', 'errors' => ['required' => 'El número de tarjeta es obligatorio.', 'regex_match' => 'La tarjeta debe tener exactamente 16 dígitos.']];
-            $rules['vencimiento'] = ['rules' => 'required', 'errors' => ['required' => 'La fecha de vencimiento es obligatoria.']];
+            $rules['vencimiento'] = ['rules' => 'required|regex_match[/^(0[1-9]|1[0-2])\/[0-9]{2}$/]', 'errors' => ['required' => 'La fecha de vencimiento es obligatoria.','regex_match' => 'El formato de vencimiento debe ser numérico MM/AA (Por ejemplo: 06/26).']];
             $rules['cvv']         = ['rules' => 'required|regex_match[/^\d{3,4}$/]', 'errors' => ['required' => 'El CVV es obligatorio.', 'regex_match' => 'El CVV debe tener 3 o 4 dígitos.']];
         }
 
