@@ -229,7 +229,7 @@
                         <div class="row">
                             <div class="col-md-6 mb-3">
                                 <label for="vencimiento" class="form-label">Fecha de vencimiento <span class="text-danger">*</span></label>
-                                <input type="month" class="form-control <?= session('errors.vencimiento') ? 'is-invalid' : '' ?>" name="vencimiento" id="vencimiento" value="<?= old('vencimiento') ?>">
+                                <input type="text" class="form-control <?= session('errors.vencimiento') ? 'is-invalid' : '' ?>" name="vencimiento" id="vencimiento" placeholder="MM/AA" maxlength="5" value="<?= old('vencimiento') ?>" required>
                                 <?php if (session('errors.vencimiento')): ?>
                                     <div class="invalid-feedback"><?= session('errors.vencimiento') ?></div>
                                 <?php endif; ?>
@@ -275,6 +275,76 @@ Swal.fire({
 });
 </script>
 <?php endif; ?>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const vencimientoInput = document.getElementById('vencimiento');
+
+    if (vencimientoInput) {
+        // 1. MÁSCARA EN TIEMPO REAL (Formatea automáticamente a MM/AA)
+        vencimientoInput.addEventListener('input', function (e) {
+            let value = e.target.value.replace(/\D/g, ''); // Remueve cualquier letra o símbolo
+            
+            if (value.length > 2) {
+                e.target.value = value.substring(0, 2) + '/' + value.substring(2, 4);
+            } else {
+                e.target.value = value;
+            }
+
+            // Si el usuario vuelve a escribir, limpiamos los estados de error visuales
+            e.target.classList.remove('is-invalid');
+            const feedback = e.target.nextElementSibling;
+            if (feedback && feedback.classList.contains('invalid-feedback')) {
+                feedback.style.display = 'none';
+            }
+        });
+
+        // 2. CONTROL DE EXPIRACIÓN MATEMÁTICA (Se ejecuta cuando el usuario cambia de campo)
+        vencimientoInput.addEventListener('change', function (e) {
+            const valor = e.target.value;
+            
+            // Verificamos que se haya completado el patrón MM/AA (5 caracteres)
+            if (valor.length === 5 && valor.includes('/')) {
+                const partes = valor.split('/');
+                const mesIngresado = parseInt(partes[0], 10);
+                const anioIngresado = parseInt('20' + partes[1], 10); 
+
+                // Validar que el mes exista (01 a 12)
+                if (mesIngresado < 1 || mesIngresado > 12) {
+                    marcarErrorTarjeta(e.target, 'Mes inválido. Debe ingresar un valor entre 01 y 12.');
+                    return;
+                }
+
+                // Captura dinámica de la fecha actual del sistema
+                const fechaActual = new Date();
+                const mesActual = fechaActual.getMonth() + 1; 
+                const anioActual = fechaActual.getFullYear(); 
+
+                // EVALUACIÓN DE VENCIMIENTO:
+                // Si el año es menor al actual, o si es el mismo año pero el mes ya pasó, se rechaza.
+                if (anioIngresado < anioActual || (anioIngresado === anioActual && mesIngresado < mesActual)) {
+                    marcarErrorTarjeta(e.target, 'La tarjeta ingresada ya no se encuentra vigente o se encuentra vencida.');
+                }
+            }
+        });
+    }
+
+    // Función auxiliar para unificar el comportamiento estético de los errores
+    function marcarErrorTarjeta(inputElement, mensajeTexto) {
+        inputElement.classList.add('is-invalid'); 
+        inputElement.value = ''; 
+
+        // Dispara la alerta bonita de SweetAlert 
+        Swal.fire({
+            title: 'Tarjeta Inválida',
+            icon: 'error',
+            text: mensajeTexto,
+            confirmButtonText: 'Aceptar',
+            confirmButtonColor: '#198754'
+        });
+    }
+});
+</script>
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
