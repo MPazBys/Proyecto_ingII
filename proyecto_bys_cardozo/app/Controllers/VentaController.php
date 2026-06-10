@@ -3,7 +3,7 @@
 namespace App\Controllers;
 
 use CodeIgniter\HTTP\RedirectResponse;
-use App\Libraries\Estado\EstadoVentaFactory; // importacion de la fabrica para la implementacion del patron
+use App\Libraries\Estado\EstadoVentaInterface; // importación de la interfaz del patrón Estado
 use App\Models\venta_model;
 use App\Models\detalle_venta_model;
 use App\Models\persona_model;
@@ -110,8 +110,13 @@ class VentaController extends BaseController {
         $formaEnvio   = (int)$venta['formaEnvio'];
 
         try {
-            // 1. Instanciar el objeto del estado actual mediante la fábrica
-            $estadoActualObj = EstadoVentaFactory::crear($venta['estado']);
+            // 1. Instanciar el objeto del estado actual de forma dinámica
+            $claseEstadoActual = 'App\\Libraries\\Estado\\Estado' . ucfirst(strtolower($venta['estado']));
+            if (!class_exists($claseEstadoActual)) {
+                throw new \InvalidArgumentException("Estado no válido: " . $venta['estado']);
+            }
+            /** @var EstadoVentaInterface $estadoActualObj */
+            $estadoActualObj = new $claseEstadoActual();
 
             // 2. Delegar la validación lógica de la transición al objeto de estado
             if (!$estadoActualObj->cambiarEstado($venta, $nuevoEstado, $formaEnvio)) {
@@ -125,8 +130,13 @@ class VentaController extends BaseController {
             // 3. Actualizar el registro string en la base de datos
             $this->ventaModel->update($idVenta, ['estado' => $nuevoEstado]);
 
-            // 4. Instanciar el nuevo estado para disparar automáticamente sus efectos secundarios (ej. enviar mail)
-            $estadoNuevoObj = EstadoVentaFactory::crear($nuevoEstado);
+            // 4. Instanciar el nuevo estado de forma dinámica para disparar automáticamente sus efectos secundarios (ej. enviar mail)
+            $claseEstadoNuevo = 'App\\Libraries\\Estado\\Estado' . $nuevoEstado;
+            if (!class_exists($claseEstadoNuevo)) {
+                throw new \InvalidArgumentException("Estado no válido: " . $nuevoEstado);
+            }
+            /** @var EstadoVentaInterface $estadoNuevoObj */
+            $estadoNuevoObj = new $claseEstadoNuevo();
             $estadoNuevoObj->ejecutarAccionPostTransicion($venta, $cliente);
 
             $db->transCommit();
@@ -143,18 +153,17 @@ class VentaController extends BaseController {
     // ===================================
 
     /**
-     * Abstrae y unifica la construcción del Query Builder para listar pedidos.
+     * Llama al procedimiento almacenado para obtener las ventas.
      */
     private function obtener_ventas_por_estado(string $estado, string $orden): array {
-        return $this->ventaModel
-            ->join('persona', 'persona.idPersona = venta.idCliente')
-            ->join('formapago', 'formapago.idPago = venta.idPago')
-            ->join('direccion', 'direccion.idDireccion = persona.idDireccion', 'left')
-            ->join('localidades', 'localidades.idLocalidad = direccion.idLocalidad', 'left')
-            ->join('provincias', 'provincias.idProvincia = localidades.idProvincia', 'left')
-            ->where('venta.estado', $estado)
-            ->orderBy('venta.idVenta', $orden)
-            ->findAll();
+        $db = \Config\Database::connect();
+
+        // Llamada al procedimiento almacenado con parámetros para filtrar por estado y ordenar por fecha
+        $query = $db->query("CALL sp_obtener_ventas_por_estado(?, ?)", [$estado, $orden]);
+
+        $db->getConnection()->next_result(); // Limpia el resultado del procedimiento almacenado para evitar conflictos con futuras consultas
+        
+        return $query->getResultArray();
     }
 
     

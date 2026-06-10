@@ -4,6 +4,10 @@ Alumnas:
 
 Proyecto: libreria
 
+Para probar el sistema, poner dentro del archivo Email.php, 
+que se encuentra en proyecto_bys_cardozo/app/Config/Email.php,
+la siguiente contraseña 'jlomeljafsoenjvy' en la linea 46 del archivo.
+
 Administrador:
 	mail: paz250804@gmail.com
 	contraseña: Paz2508*
@@ -17,3 +21,10 @@ Usuarios:
 
 	mail: lorenaGal@gmail.com
 	contraseña: loreG12*
+
+Pruebas Unitarias
+Abrir 'símbolo de sistema' y pararse sobre le carpeta proyecto_bys_cardozo
+Ejecutar el siguiente comando:
+vendor\bin\phpunit tests/Controllers/RegistrarLibroTest.php
+vendor\bin\phpunit tests/Controllers/ActualizarLibroTest.php
+vendor\bin\phpunit tests/Controllers/ProcesarFinalizarCompraTest.php

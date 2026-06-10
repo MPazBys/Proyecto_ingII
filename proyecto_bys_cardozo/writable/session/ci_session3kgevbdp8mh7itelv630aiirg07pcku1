@@ -1,0 +1,25 @@
+__ci_last_regenerate|i:1780622336;_ci_previous_url|s:64:"http://localhost/Proyecto_ingII/proyecto_bys_cardozo/ver_carrito";id|s:2:"11";nombre|s:7:"Roberto";apellido|s:5:"Llave";correo|s:14:"robb@gmail.com";perfil|s:1:"2";login|b:1;cart_contents|a:3:{s:10:"cart_total";d:33199;s:11:"total_items";d:1;s:32:"eccbc87e4b5ce2fe28308fd9f2a7baf3";a:7:{s:2:"id";s:1:"3";s:4:"name";s:12:"MR. MERCEDES";s:5:"price";d:33199;s:3:"qty";d:1;s:10:"stockLibro";s:2:"55";s:5:"rowid";s:32:"eccbc87e4b5ce2fe28308fd9f2a7baf3";s:8:"subtotal";d:33199;}}msj|s:1159:"Error SMTP: 220 smtp.gmail.com ESMTP 00721157ae682-7ea23591b26sm42984327b3.31 - gsmtp
+hello: 250-smtp.gmail.com at your service, [2803:9800:9853:81e0:3478:a38b:c5ca:bf98]
+250-SIZE 35882577
+250-8BITMIME
+250-AUTH LOGIN PLAIN XOAUTH2 PLAIN-CLIENTTOKEN OAUTHBEARER XOAUTH
+250-ENHANCEDSTATUSCODES
+250-PIPELINING
+250-CHUNKING
+250 SMTPUTF8
+Failed to authenticate password. Error: 535-5.7.8 Username and Password not accepted. For more information, go to
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials 00721157ae682-7ea23591b26sm42984327b3.31 - gsmtp
+Unable to send email using SMTP. Your server might not be configured to send mail using this method.Date: Fri, 5 Jun 2026 01:14:42 +0000
+To: robb@gmail.com
+Subject: =?UTF-8?Q?Detalle=20de=20tu=20compra=20#21=20-=20Librer=C3=ADa=20M&amp;P?=
+From: =?UTF-8?Q?Librer=C3=ADa=20M&amp;P=20-=20Soporte?= &lt;myp.libros@gmail.com&gt;
+Return-Path: &lt;myp.libros@gmail.com&gt;
+Reply-To: &lt;myp.libros@gmail.com&gt;
+User-Agent: CodeIgniter
+X-Sender: myp.libros@gmail.com
+X-Mailer: CodeIgniter
+X-Priority: 3 (Normal)
+Message-ID: &lt;6a222302317726.08964259@gmail.com&gt;
+Mime-Version: 1.0
+
+";__ci_vars|a:1:{s:3:"msj";s:3:"old";}

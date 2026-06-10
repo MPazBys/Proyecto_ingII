@@ -51,11 +51,15 @@
                                             if (!empty($row['pisoDepto'])) { 
                                                 $dirLinea1 .= ' - ' . esc($row['pisoDepto']);
                                             }
-                                            $dirLinea2 = esc($row['nombreLocalidad']) . ', ' . esc($row['nombreProvincia']);
-                                            $tooltipDireccion = '<b>Dirección de Entrega:</b><br>' . $dirLinea1 . '<br>' . $dirLinea2;
-                                            if (!empty($row['consideraciones'])) {
-                                                $tooltipDireccion .= '<br><small class="text-muted"><i>Obs: ' . esc($row['consideraciones']) . '</i></small>';
+
+                                            $dirLinea2 = 'Obs: - ';
+                                            if (!empty($row['consideraciones'])) { 
+                                                $dirLinea2 = 'Obs: ' . esc($row['consideraciones']);
                                             }
+
+                                            $dirLinea3 = esc($row['nombreLocalidad']) . ', ' . esc($row['nombreProvincia']);
+                                            $tooltipDireccion = '<b>Dirección de Entrega:</b><br>' . $dirLinea1 . '<br>' . 
+                                            $dirLinea2 . '<br>' . $dirLinea3;                                                 
                                         ?>
                                             <span class="badge bg-info text-dark"><i class="bi bi-truck"></i> A Domicilio</span>
                                             <br>
@@ -141,11 +145,15 @@
                                             if (!empty($row['pisoDepto'])) { 
                                                 $dirLinea1 .= ' - ' . esc($row['pisoDepto']);
                                             }
-                                            $dirLinea2 = esc($row['nombreLocalidad']) . ', ' . esc($row['nombreProvincia']);
-                                            $tooltipDireccion = '<b>Dirección de Entrega:</b><br>' . $dirLinea1 . '<br>' . $dirLinea2;
-                                            if (!empty($row['consideraciones'])) {
-                                                $tooltipDireccion .= '<br><small class="text-muted"><i>Obs: ' . esc($row['consideraciones']) . '</i></small>';
+
+                                            $dirLinea2 = 'Obs: - ';
+                                            if (!empty($row['consideraciones'])) { 
+                                                $dirLinea2 = 'Obs: ' . esc($row['consideraciones']);
                                             }
+
+                                            $dirLinea3 = esc($row['nombreLocalidad']) . ', ' . esc($row['nombreProvincia']);
+                                            $tooltipDireccion = '<b>Dirección de Entrega:</b><br>' . $dirLinea1 . '<br>' . 
+                                            $dirLinea2 . '<br>' . $dirLinea3;                                                 
                                         ?>
                                             <span class="badge bg-info text-dark"><i class="bi bi-truck"></i> A Domicilio</span>
                                             <br>
@@ -225,11 +233,15 @@
                                             if (!empty($row['pisoDepto'])) { 
                                                 $dirLinea1 .= ' - ' . esc($row['pisoDepto']);
                                             }
-                                            $dirLinea2 = esc($row['nombreLocalidad']) . ', ' . esc($row['nombreProvincia']);
-                                            $tooltipDireccion = '<b>Dirección de Entrega:</b><br>' . $dirLinea1 . '<br>' . $dirLinea2;
-                                            if (!empty($row['consideraciones'])) {
-                                                $tooltipDireccion .= '<br><small class="text-muted"><i>Obs: ' . esc($row['consideraciones']) . '</i></small>';
+
+                                            $dirLinea2 = 'Obs: - ';
+                                            if (!empty($row['consideraciones'])) { 
+                                                $dirLinea2 = 'Obs: ' . esc($row['consideraciones']);
                                             }
+
+                                            $dirLinea3 = esc($row['nombreLocalidad']) . ', ' . esc($row['nombreProvincia']);
+                                            $tooltipDireccion = '<b>Dirección de Entrega:</b><br>' . $dirLinea1 . '<br>' . 
+                                            $dirLinea2 . '<br>' . $dirLinea3;                                                 
                                         ?>
                                             <span class="badge bg-info text-dark"><i class="bi bi-truck"></i> A Domicilio</span>
                                             <br>

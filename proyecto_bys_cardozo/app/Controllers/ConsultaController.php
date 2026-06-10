@@ -155,6 +155,8 @@ class ConsultaController extends BaseController
                 'respondido'      => 1
             ]);
 
+            $db->getConnection()->next_result(); //limpieza de resultados para evitar bloqueos en SP posteriores
+
             // Construcción del envío del email utilizando el driver nativo ('mail')
             $email = \Config\Services::email();
             $email->setTo($consulta['correo']);
@@ -181,20 +183,15 @@ class ConsultaController extends BaseController
         }
     }
 
-    // --- MÉTODOS DE CONSULTAS AUXILIARES CON RELACIONES (JOINs) ---
+    // --- MÉTODOS DE LLAMADAS A PROCEDIMIENTOS ALMACENADOS CON RELACIONES (JOINs) ---
 
     /**
      * Recupera el listado completo de consultas ordenando de forma prioritaria las pendientes (FIFO).
      */
     private function getConsultasConPersona(): array
     {
-        return $this->consultaModel->select('consultas.*, CONCAT(persona.nombrePersona, " ", persona.apellidoPersona) AS nombreApellido, persona.correoPersona AS correo, CONCAT(admin.nombrePersona, " ", admin.apellidoPersona) AS adminNombreApellido')
-                    ->join('persona', 'persona.idPersona = consultas.idPersona')
-                    ->join('persona AS admin', 'admin.idPersona = consultas.idAdminResponde', 'left')
-                    ->orderBy('consultas.respondido', 'ASC')
-                    ->orderBy('CASE WHEN consultas.respondido = 0 THEN consultas.created_at END', 'ASC', false)
-                    ->orderBy('CASE WHEN consultas.respondido = 1 THEN consultas.created_at END', 'DESC', false)
-                    ->findAll();
+        // Ejecutamos el SP
+        return \Config\Database::connect()->query("CALL sp_obtener_consultas_completas()")->getResultArray();
     }
 
     /**
@@ -202,10 +199,16 @@ class ConsultaController extends BaseController
      */
     private function getConsultaConPersona(int $idConsulta): ?array
     {
-        return $this->consultaModel->select('consultas.*, CONCAT(persona.nombrePersona, " ", persona.apellidoPersona) AS nombreApellido, persona.correoPersona AS correo, CONCAT(admin.nombrePersona, " ", admin.apellidoPersona) AS adminNombreApellido')
-                    ->join('persona', 'persona.idPersona = consultas.idPersona')
-                    ->join('persona AS admin', 'admin.idPersona = consultas.idAdminResponde', 'left')
-                    ->where('consultas.idConsulta', $idConsulta)
-                    ->first();
+        $db = \Config\Database::connect();
+        // Ejecutamos el SP 
+        $query = $db->query("CALL sp_obtener_consulta_por_id(?)", [$idConsulta]);
+        
+        $db->getConnection()->next_result();
+
+        if($query){
+            return $query->getRowArray();
+        }
+
+        return null;
     }
 }

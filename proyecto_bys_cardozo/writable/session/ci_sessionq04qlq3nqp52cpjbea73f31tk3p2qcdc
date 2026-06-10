@@ -1,0 +1,43 @@
+__ci_last_regenerate|i:1780968649;_ci_previous_url|s:65:"http://localhost/Proyecto_ingII/proyecto_bys_cardozo/responder/39";id|s:1:"2";nombre|s:3:"Paz";apellido|s:3:"Bys";correo|s:19:"paz250804@gmail.com";perfil|s:1:"1";login|b:1;_ci_old_input|a:2:{s:3:"get";a:0:{}s:4:"post";a:2:{s:10:"idConsulta";s:2:"39";s:9:"respuesta";s:57:"Te recomendamos la saga de "Harry Potter" de J.K. Rowling";}}__ci_vars|a:2:{s:13:"_ci_old_input";s:3:"old";s:5:"error";s:3:"old";}error|s:1538:"Error al procesar la respuesta: Error: Unable to send email using SMTP. Your server might not be configured to send mail using this method.<br><pre>Date: Tue, 9 Jun 2026 01:28:01 +0000
+To: sofia.f88@gmail.com
+Subject: =?UTF-8?Q?Respuesta=20a=20su=20consulta:=20Recomendaci=C3=B3n?=
+From: =?UTF-8?Q?Librer=C3=ADa=20M&amp;P=20-=20Soporte?= &lt;myp.libros@gmail.com&gt;
+Return-Path: &lt;myp.libros@gmail.com&gt;
+Reply-To: &lt;myp.libros@gmail.com&gt;
+User-Agent: CodeIgniter
+X-Sender: myp.libros@gmail.com
+X-Mailer: CodeIgniter
+X-Priority: 3 (Normal)
+Message-ID: &lt;6a276c215f6ac6.03779752@gmail.com&gt;
+Mime-Version: 1.0
+
+
+Content-Type: multipart/alternative; boundary=&quot;B_ALT_6a276c215f6f18.75392197&quot;
+
+This is a multi-part message in MIME format.
+Your email application may not support this format.
+
+--B_ALT_6a276c215f6f18.75392197
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Hola Sofia Torres,
+
+Hemos respondido a su consulta sobre: &quot;Recomendación&quot;
+
+Respuesta:
+Te recomendamos la saga de &quot;Harry Potter&quot; de J.K. Rowling
+
+Atentamente,
+El equipo de M&amp;P.
+
+
+--B_ALT_6a276c215f6f18.75392197
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+Hola Sofia Torres,=0A=0AHemos respondido a su consulta sobre: &quot;Recomendaci=
+=C3=B3n&quot;=0A=0ARespuesta:=0ATe recomendamos la saga de &quot;Harry Potter&quot; de J.K=
+. Rowling=0A=0AAtentamente,=0AEl equipo de M&amp;P.
+
+--B_ALT_6a276c215f6f18.75392197--</pre>";

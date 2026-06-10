@@ -1,0 +1,11 @@
+Cambiar Estado (Tests\Controllers\CambiarEstado)
+ [x] Cambiar estado pendiente a finalizado exitoso
+ [x] Cambiar estado pendiente a enviado fallido
+ [x] Cambiar estado pendiente a enviado exitoso
+ [x] Cambiar estado enviado a finalizado exitoso
+ [x] Cambiar estado pendiente a finalizado fallido
+ [x] Cambiar estado venta ya finalizada fallido
+ [x] Cambiar estado sin sesion admin rebota
+ [x] Cambiar estado venta inexistente
+ [x] Cambiar estado cliente no existe
+

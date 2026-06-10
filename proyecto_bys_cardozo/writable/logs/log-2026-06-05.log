@@ -1,0 +1,412 @@
+INFO - 2026-06-05 00:45:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-06-05 00:45:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-06-05 00:45:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-06-05 00:48:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-06-05 00:48:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-06-05 00:48:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-06-05 00:48:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-06-05 00:48:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-06-05 00:48:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-06-05 00:49:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-06-05 00:49:06 --> Cart Class Initialized
+INFO - 2026-06-05 00:49:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-06-05 00:49:07 --> Cart Class Initialized
+INFO - 2026-06-05 00:52:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-06-05 00:52:21 --> Cart Class Initialized
+INFO - 2026-06-05 00:52:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-06-05 00:52:23 --> Cart Class Initialized
+INFO - 2026-06-05 00:54:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-06-05 00:54:34 --> Cart Class Initialized
+INFO - 2026-06-05 00:56:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-06-05 00:56:06 --> Cart Class Initialized
+ERROR - 2026-06-05 00:56:20 --> Email: Unable to send email using SMTP. Your server might not be configured to send mail using this method.
+ERROR - 2026-06-05 00:56:20 --> 220 smtp.gmail.com ESMTP 00721157ae682-7ea2148d046sm43028537b3.11 - gsmtp
+
+hello: 250-smtp.gmail.com at your service, [2803:9800:9853:81e0:3478:a38b:c5ca:bf98]
+250-SIZE 35882577
+250-8BITMIME
+250-AUTH LOGIN PLAIN XOAUTH2 PLAIN-CLIENTTOKEN OAUTHBEARER XOAUTH
+250-ENHANCEDSTATUSCODES
+250-PIPELINING
+250-CHUNKING
+250 SMTPUTF8
+
+Failed to authenticate password. Error: 535-5.7.8 Username and Password not accepted. For more information, go to
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials 00721157ae682-7ea2148d046sm43028537b3.11 - gsmtp
+
+ERROR - 2026-06-05 00:56:20 --> Error en procesar_finalizar_compra: No se pudo enviar el correo de comprobante, compra cancelada por seguridad.
+INFO - 2026-06-05 00:56:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-06-05 00:56:22 --> Cart Class Initialized
+ERROR - 2026-06-05 00:56:24 --> Email: Unable to send email using SMTP. Your server might not be configured to send mail using this method.
+ERROR - 2026-06-05 00:56:24 --> 220 smtp.gmail.com ESMTP 00721157ae682-7ea23a9946bsm42860897b3.37 - gsmtp
+
+hello: 250-smtp.gmail.com at your service, [2803:9800:9853:81e0:3478:a38b:c5ca:bf98]
+250-SIZE 35882577
+250-8BITMIME
+250-AUTH LOGIN PLAIN XOAUTH2 PLAIN-CLIENTTOKEN OAUTHBEARER XOAUTH
+250-ENHANCEDSTATUSCODES
+250-PIPELINING
+250-CHUNKING
+250 SMTPUTF8
+
+Failed to authenticate password. Error: 535-5.7.8 Username and Password not accepted. For more information, go to
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials 00721157ae682-7ea23a9946bsm42860897b3.37 - gsmtp
+
+ERROR - 2026-06-05 00:56:24 --> Error en procesar_finalizar_compra: No se pudo enviar el correo de comprobante, compra cancelada por seguridad.
+INFO - 2026-06-05 00:56:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-06-05 00:56:25 --> Cart Class Initialized
+INFO - 2026-06-05 01:01:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-06-05 01:01:17 --> Cart Class Initialized
+ERROR - 2026-06-05 01:01:23 --> Email: Unable to send email using SMTP. Your server might not be configured to send mail using this method.
+ERROR - 2026-06-05 01:01:23 --> 220 smtp.gmail.com ESMTP 71dfb90a1353d-5a6d6dc3d3fsm6698108e0c.5 - gsmtp
+
+hello: 250-smtp.gmail.com at your service, [2803:9800:9853:81e0:3478:a38b:c5ca:bf98]
+250-SIZE 35882577
+250-8BITMIME
+250-AUTH LOGIN PLAIN XOAUTH2 PLAIN-CLIENTTOKEN OAUTHBEARER XOAUTH
+250-ENHANCEDSTATUSCODES
+250-PIPELINING
+250-CHUNKING
+250 SMTPUTF8
+
+Failed to authenticate password. Error: 535-5.7.8 Username and Password not accepted. For more information, go to
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials 71dfb90a1353d-5a6d6dc3d3fsm6698108e0c.5 - gsmtp
+
+ERROR - 2026-06-05 01:01:23 --> Error en procesar_finalizar_compra: No se pudo enviar el correo de comprobante, compra cancelada por seguridad.
+INFO - 2026-06-05 01:01:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-06-05 01:01:29 --> Cart Class Initialized
+INFO - 2026-06-05 01:10:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-06-05 01:10:05 --> Cart Class Initialized
+INFO - 2026-06-05 01:13:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-06-05 01:13:33 --> Cart Class Initialized
+ERROR - 2026-06-05 01:13:40 --> Email: Unable to send email using SMTP. Your server might not be configured to send mail using this method.
+ERROR - 2026-06-05 01:13:40 --> 220 smtp.gmail.com ESMTP 956f58d0204a3-660d6488b1csm4895614d50.19 - gsmtp
+
+hello: 250-smtp.gmail.com at your service, [2803:9800:9853:81e0:3478:a38b:c5ca:bf98]
+250-SIZE 35882577
+250-8BITMIME
+250-AUTH LOGIN PLAIN XOAUTH2 PLAIN-CLIENTTOKEN OAUTHBEARER XOAUTH
+250-ENHANCEDSTATUSCODES
+250-PIPELINING
+250-CHUNKING
+250 SMTPUTF8
+
+Failed to authenticate password. Error: 535-5.7.8 Username and Password not accepted. For more information, go to
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials 956f58d0204a3-660d6488b1csm4895614d50.19 - gsmtp
+
+ERROR - 2026-06-05 01:13:40 --> 220 smtp.gmail.com ESMTP 956f58d0204a3-660d6488b1csm4895614d50.19 - gsmtp
+<br><pre>hello: 250-smtp.gmail.com at your service, [2803:9800:9853:81e0:3478:a38b:c5ca:bf98]
+250-SIZE 35882577
+250-8BITMIME
+250-AUTH LOGIN PLAIN XOAUTH2 PLAIN-CLIENTTOKEN OAUTHBEARER XOAUTH
+250-ENHANCEDSTATUSCODES
+250-PIPELINING
+250-CHUNKING
+250 SMTPUTF8
+</pre>Failed to authenticate password. Error: 535-5.7.8 Username and Password not accepted. For more information, go to
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials 956f58d0204a3-660d6488b1csm4895614d50.19 - gsmtp
+<br>Unable to send email using SMTP. Your server might not be configured to send mail using this method.<br><pre>Date: Fri, 5 Jun 2026 01:13:34 +0000
+To: robb@gmail.com
+Subject: =?UTF-8?Q?Detalle=20de=20tu=20compra=20#20=20-=20Librer=C3=ADa=20M&amp;P?=
+From: =?UTF-8?Q?Librer=C3=ADa=20M&amp;P=20-=20Soporte?= &lt;myp.libros@gmail.com&gt;
+Return-Path: &lt;myp.libros@gmail.com&gt;
+Reply-To: &lt;myp.libros@gmail.com&gt;
+User-Agent: CodeIgniter
+X-Sender: myp.libros@gmail.com
+X-Mailer: CodeIgniter
+X-Priority: 3 (Normal)
+Message-ID: &lt;6a2222be96d739.48446851@gmail.com&gt;
+Mime-Version: 1.0
+
+
+Content-Type: multipart/alternative; boundary=&quot;B_ALT_6a2222be96d9a0.02136861&quot;
+
+This is a multi-part message in MIME format.
+Your email application may not support this format.
+
+--B_ALT_6a2222be96d9a0.02136861
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+¡Gracias por tu compra en Librería M&amp;P!Hola Roberto Llave,Tu pedido ha
+sido procesado con éxito. A continuación te detallamos los datos de tu
+compra:Datos del CompradorDNI: 23389798Teléfono: 3794987865Forma de Envío:
+Retiro en sucursalForma de Pago: Transferencia BancariaDetalle de los
+ProductosLibroCantidadPrecio UnitarioSubtotalMR.
+MERCEDES1$33.199,00$33.199,00Total Facturado:$33.199,00Puedes revisar el
+estado de tu pedido en cualquier momento ingresando a tu perfil en nuestra
+web.Atentamente,El equipo de M&amp;P.
+
+
+--B_ALT_6a2222be96d9a0.02136861
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+&lt;h2&gt;=C2=A1Gracias por tu compra en Librer=C3=ADa M&amp;P!&lt;/h2&gt;&lt;p&gt;Hola &lt;strong&gt;R=
+oberto Llave&lt;/strong&gt;,&lt;/p&gt;&lt;p&gt;Tu pedido ha sido procesado con =C3=A9xito. A =
+continuaci=C3=B3n te detallamos los datos de tu compra:&lt;/p&gt;&lt;hr&gt;&lt;h3&gt;Datos de=
+l Comprador&lt;/h3&gt;&lt;ul&gt;&lt;li&gt;&lt;strong&gt;DNI:&lt;/strong&gt; 23389798&lt;/li&gt;&lt;li&gt;&lt;strong&gt;Tel=
+=C3=A9fono:&lt;/strong&gt; 3794987865&lt;/li&gt;&lt;li&gt;&lt;strong&gt;Forma de Env=C3=ADo:&lt;/stron=
+g&gt; Retiro en sucursal&lt;/li&gt;&lt;li&gt;&lt;strong&gt;Forma de Pago:&lt;/strong&gt; Transferencia=
+ Bancaria&lt;/li&gt;&lt;/ul&gt;&lt;hr&gt;&lt;h3&gt;Detalle de los Productos&lt;/h3&gt;&lt;table border=3D&quot;1&quot;=
+ cellpadding=3D&quot;8&quot; cellspacing=3D&quot;0&quot; style=3D&quot;border-collapse: collapse; wi=
+dth: 100%; border-color: #ddd;&quot;&gt;&lt;thead style=3D&quot;background-color: #f2f2f2;&quot;=
+&gt;&lt;tr&gt;&lt;th align=3D&quot;left&quot;&gt;Libro&lt;/th&gt;&lt;th align=3D&quot;center&quot;&gt;Cantidad&lt;/th&gt;&lt;th ali=
+gn=3D&quot;right&quot;&gt;Precio Unitario&lt;/th&gt;&lt;th align=3D&quot;right&quot;&gt;Subtotal&lt;/th&gt;&lt;/tr&gt;&lt;/th=
+ead&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;MR. MERCEDES&lt;/td&gt;&lt;td align=3D&quot;center&quot;&gt;1&lt;/td&gt;&lt;td align=3D=
+&quot;right&quot;&gt;$33.199,00&lt;/td&gt;&lt;td align=3D&quot;right&quot;&gt;$33.199,00&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td cols=
+pan=3D&quot;3&quot; align=3D&quot;right&quot;&gt;&lt;strong&gt;Total Facturado:&lt;/strong&gt;&lt;/td&gt;&lt;td align=
+=3D&quot;right&quot; style=3D&quot;background-color: #f9f9f9;&quot;&gt;&lt;strong&gt;$33.199,00&lt;/strong&gt;=
+&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;br&gt;&lt;p&gt;Puedes revisar el estado de tu pedido en c=
+ualquier momento ingresando a tu perfil en nuestra web.&lt;/p&gt;&lt;p&gt;Atentamente,&lt;=
+br&gt;&lt;strong&gt;El equipo de M&amp;P.&lt;/strong&gt;&lt;/p&gt;
+
+--B_ALT_6a2222be96d9a0.02136861--</pre>
+ERROR - 2026-06-05 01:13:40 --> Error en procesar_finalizar_compra: Error SMTP: 220 smtp.gmail.com ESMTP 956f58d0204a3-660d6488b1csm4895614d50.19 - gsmtp
+hello: 250-smtp.gmail.com at your service, [2803:9800:9853:81e0:3478:a38b:c5ca:bf98]
+250-SIZE 35882577
+250-8BITMIME
+250-AUTH LOGIN PLAIN XOAUTH2 PLAIN-CLIENTTOKEN OAUTHBEARER XOAUTH
+250-ENHANCEDSTATUSCODES
+250-PIPELINING
+250-CHUNKING
+250 SMTPUTF8
+Failed to authenticate password. Error: 535-5.7.8 Username and Password not accepted. For more information, go to
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials 956f58d0204a3-660d6488b1csm4895614d50.19 - gsmtp
+Unable to send email using SMTP. Your server might not be configured to send mail using this method.Date: Fri, 5 Jun 2026 01:13:34 +0000
+To: robb@gmail.com
+Subject: =?UTF-8?Q?Detalle=20de=20tu=20compra=20#20=20-=20Librer=C3=ADa=20M&amp;P?=
+From: =?UTF-8?Q?Librer=C3=ADa=20M&amp;P=20-=20Soporte?= &lt;myp.libros@gmail.com&gt;
+Return-Path: &lt;myp.libros@gmail.com&gt;
+Reply-To: &lt;myp.libros@gmail.com&gt;
+User-Agent: CodeIgniter
+X-Sender: myp.libros@gmail.com
+X-Mailer: CodeIgniter
+X-Priority: 3 (Normal)
+Message-ID: &lt;6a2222be96d739.48446851@gmail.com&gt;
+Mime-Version: 1.0
+
+
+INFO - 2026-06-05 01:13:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-06-05 01:13:44 --> Cart Class Initialized
+INFO - 2026-06-05 01:14:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-06-05 01:14:41 --> Cart Class Initialized
+ERROR - 2026-06-05 01:14:44 --> Email: Unable to send email using SMTP. Your server might not be configured to send mail using this method.
+ERROR - 2026-06-05 01:14:44 --> 220 smtp.gmail.com ESMTP 00721157ae682-7ea23591b26sm42984327b3.31 - gsmtp
+
+hello: 250-smtp.gmail.com at your service, [2803:9800:9853:81e0:3478:a38b:c5ca:bf98]
+250-SIZE 35882577
+250-8BITMIME
+250-AUTH LOGIN PLAIN XOAUTH2 PLAIN-CLIENTTOKEN OAUTHBEARER XOAUTH
+250-ENHANCEDSTATUSCODES
+250-PIPELINING
+250-CHUNKING
+250 SMTPUTF8
+
+Failed to authenticate password. Error: 535-5.7.8 Username and Password not accepted. For more information, go to
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials 00721157ae682-7ea23591b26sm42984327b3.31 - gsmtp
+
+ERROR - 2026-06-05 01:14:44 --> 220 smtp.gmail.com ESMTP 00721157ae682-7ea23591b26sm42984327b3.31 - gsmtp
+<br><pre>hello: 250-smtp.gmail.com at your service, [2803:9800:9853:81e0:3478:a38b:c5ca:bf98]
+250-SIZE 35882577
+250-8BITMIME
+250-AUTH LOGIN PLAIN XOAUTH2 PLAIN-CLIENTTOKEN OAUTHBEARER XOAUTH
+250-ENHANCEDSTATUSCODES
+250-PIPELINING
+250-CHUNKING
+250 SMTPUTF8
+</pre>Failed to authenticate password. Error: 535-5.7.8 Username and Password not accepted. For more information, go to
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials 00721157ae682-7ea23591b26sm42984327b3.31 - gsmtp
+<br>Unable to send email using SMTP. Your server might not be configured to send mail using this method.<br><pre>Date: Fri, 5 Jun 2026 01:14:42 +0000
+To: robb@gmail.com
+Subject: =?UTF-8?Q?Detalle=20de=20tu=20compra=20#21=20-=20Librer=C3=ADa=20M&amp;P?=
+From: =?UTF-8?Q?Librer=C3=ADa=20M&amp;P=20-=20Soporte?= &lt;myp.libros@gmail.com&gt;
+Return-Path: &lt;myp.libros@gmail.com&gt;
+Reply-To: &lt;myp.libros@gmail.com&gt;
+User-Agent: CodeIgniter
+X-Sender: myp.libros@gmail.com
+X-Mailer: CodeIgniter
+X-Priority: 3 (Normal)
+Message-ID: &lt;6a222302317726.08964259@gmail.com&gt;
+Mime-Version: 1.0
+
+
+Content-Type: multipart/alternative; boundary=&quot;B_ALT_6a222302317916.69068292&quot;
+
+This is a multi-part message in MIME format.
+Your email application may not support this format.
+
+--B_ALT_6a222302317916.69068292
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+¡Gracias por tu compra en Librería M&amp;P!Hola Roberto Llave,Tu pedido ha
+sido procesado con éxito. A continuación te detallamos los datos de tu
+compra:Datos del CompradorDNI: 23389798Teléfono: 3877877656Forma de Envío:
+Retiro en sucursalForma de Pago: Transferencia BancariaDetalle de los
+ProductosLibroCantidadPrecio UnitarioSubtotalMR.
+MERCEDES1$33.199,00$33.199,00Total Facturado:$33.199,00Puedes revisar el
+estado de tu pedido en cualquier momento ingresando a tu perfil en nuestra
+web.Atentamente,El equipo de M&amp;P.
+
+
+--B_ALT_6a222302317916.69068292
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+&lt;h2&gt;=C2=A1Gracias por tu compra en Librer=C3=ADa M&amp;P!&lt;/h2&gt;&lt;p&gt;Hola &lt;strong&gt;R=
+oberto Llave&lt;/strong&gt;,&lt;/p&gt;&lt;p&gt;Tu pedido ha sido procesado con =C3=A9xito. A =
+continuaci=C3=B3n te detallamos los datos de tu compra:&lt;/p&gt;&lt;hr&gt;&lt;h3&gt;Datos de=
+l Comprador&lt;/h3&gt;&lt;ul&gt;&lt;li&gt;&lt;strong&gt;DNI:&lt;/strong&gt; 23389798&lt;/li&gt;&lt;li&gt;&lt;strong&gt;Tel=
+=C3=A9fono:&lt;/strong&gt; 3877877656&lt;/li&gt;&lt;li&gt;&lt;strong&gt;Forma de Env=C3=ADo:&lt;/stron=
+g&gt; Retiro en sucursal&lt;/li&gt;&lt;li&gt;&lt;strong&gt;Forma de Pago:&lt;/strong&gt; Transferencia=
+ Bancaria&lt;/li&gt;&lt;/ul&gt;&lt;hr&gt;&lt;h3&gt;Detalle de los Productos&lt;/h3&gt;&lt;table border=3D&quot;1&quot;=
+ cellpadding=3D&quot;8&quot; cellspacing=3D&quot;0&quot; style=3D&quot;border-collapse: collapse; wi=
+dth: 100%; border-color: #ddd;&quot;&gt;&lt;thead style=3D&quot;background-color: #f2f2f2;&quot;=
+&gt;&lt;tr&gt;&lt;th align=3D&quot;left&quot;&gt;Libro&lt;/th&gt;&lt;th align=3D&quot;center&quot;&gt;Cantidad&lt;/th&gt;&lt;th ali=
+gn=3D&quot;right&quot;&gt;Precio Unitario&lt;/th&gt;&lt;th align=3D&quot;right&quot;&gt;Subtotal&lt;/th&gt;&lt;/tr&gt;&lt;/th=
+ead&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;MR. MERCEDES&lt;/td&gt;&lt;td align=3D&quot;center&quot;&gt;1&lt;/td&gt;&lt;td align=3D=
+&quot;right&quot;&gt;$33.199,00&lt;/td&gt;&lt;td align=3D&quot;right&quot;&gt;$33.199,00&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td cols=
+pan=3D&quot;3&quot; align=3D&quot;right&quot;&gt;&lt;strong&gt;Total Facturado:&lt;/strong&gt;&lt;/td&gt;&lt;td align=
+=3D&quot;right&quot; style=3D&quot;background-color: #f9f9f9;&quot;&gt;&lt;strong&gt;$33.199,00&lt;/strong&gt;=
+&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;br&gt;&lt;p&gt;Puedes revisar el estado de tu pedido en c=
+ualquier momento ingresando a tu perfil en nuestra web.&lt;/p&gt;&lt;p&gt;Atentamente,&lt;=
+br&gt;&lt;strong&gt;El equipo de M&amp;P.&lt;/strong&gt;&lt;/p&gt;
+
+--B_ALT_6a222302317916.69068292--</pre>
+ERROR - 2026-06-05 01:14:44 --> Error en procesar_finalizar_compra: Error SMTP: 220 smtp.gmail.com ESMTP 00721157ae682-7ea23591b26sm42984327b3.31 - gsmtp
+hello: 250-smtp.gmail.com at your service, [2803:9800:9853:81e0:3478:a38b:c5ca:bf98]
+250-SIZE 35882577
+250-8BITMIME
+250-AUTH LOGIN PLAIN XOAUTH2 PLAIN-CLIENTTOKEN OAUTHBEARER XOAUTH
+250-ENHANCEDSTATUSCODES
+250-PIPELINING
+250-CHUNKING
+250 SMTPUTF8
+Failed to authenticate password. Error: 535-5.7.8 Username and Password not accepted. For more information, go to
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials 00721157ae682-7ea23591b26sm42984327b3.31 - gsmtp
+Unable to send email using SMTP. Your server might not be configured to send mail using this method.Date: Fri, 5 Jun 2026 01:14:42 +0000
+To: robb@gmail.com
+Subject: =?UTF-8?Q?Detalle=20de=20tu=20compra=20#21=20-=20Librer=C3=ADa=20M&amp;P?=
+From: =?UTF-8?Q?Librer=C3=ADa=20M&amp;P=20-=20Soporte?= &lt;myp.libros@gmail.com&gt;
+Return-Path: &lt;myp.libros@gmail.com&gt;
+Reply-To: &lt;myp.libros@gmail.com&gt;
+User-Agent: CodeIgniter
+X-Sender: myp.libros@gmail.com
+X-Mailer: CodeIgniter
+X-Priority: 3 (Normal)
+Message-ID: &lt;6a222302317726.08964259@gmail.com&gt;
+Mime-Version: 1.0
+
+
+INFO - 2026-06-05 01:14:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-06-05 01:14:45 --> Cart Class Initialized
+INFO - 2026-06-05 01:18:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-06-05 01:18:56 --> Cart Class Initialized
+ERROR - 2026-06-05 01:19:00 --> Email: Unable to send email using SMTP. Your server might not be configured to send mail using this method.
+ERROR - 2026-06-05 01:19:00 --> 220 smtp.gmail.com ESMTP 71dfb90a1353d-5a6d777a638sm6291928e0c.8 - gsmtp
+
+hello: 250-smtp.gmail.com at your service, [2803:9800:9853:81e0:3478:a38b:c5ca:bf98]
+250-SIZE 35882577
+250-8BITMIME
+250-AUTH LOGIN PLAIN XOAUTH2 PLAIN-CLIENTTOKEN OAUTHBEARER XOAUTH
+250-ENHANCEDSTATUSCODES
+250-PIPELINING
+250-CHUNKING
+250 SMTPUTF8
+
+Failed to authenticate password. Error: 535-5.7.8 Username and Password not accepted. For more information, go to
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials 71dfb90a1353d-5a6d777a638sm6291928e0c.8 - gsmtp
+
+ERROR - 2026-06-05 01:19:00 --> 220 smtp.gmail.com ESMTP 71dfb90a1353d-5a6d777a638sm6291928e0c.8 - gsmtp
+<br><pre>hello: 250-smtp.gmail.com at your service, [2803:9800:9853:81e0:3478:a38b:c5ca:bf98]
+250-SIZE 35882577
+250-8BITMIME
+250-AUTH LOGIN PLAIN XOAUTH2 PLAIN-CLIENTTOKEN OAUTHBEARER XOAUTH
+250-ENHANCEDSTATUSCODES
+250-PIPELINING
+250-CHUNKING
+250 SMTPUTF8
+</pre>Failed to authenticate password. Error: 535-5.7.8 Username and Password not accepted. For more information, go to
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials 71dfb90a1353d-5a6d777a638sm6291928e0c.8 - gsmtp
+<br>Unable to send email using SMTP. Your server might not be configured to send mail using this method.<br><pre>Date: Fri, 5 Jun 2026 01:18:56 +0000
+To: robb@gmail.com
+Subject: =?UTF-8?Q?Detalle=20de=20tu=20compra=20#22=20-=20Librer=C3=ADa=20M&amp;P?=
+From: =?UTF-8?Q?Librer=C3=ADa=20M&amp;P=20-=20Soporte?= &lt;myp.libros@gmail.com&gt;
+Return-Path: &lt;myp.libros@gmail.com&gt;
+Reply-To: &lt;myp.libros@gmail.com&gt;
+User-Agent: CodeIgniter
+X-Sender: myp.libros@gmail.com
+X-Mailer: CodeIgniter
+X-Priority: 3 (Normal)
+Message-ID: &lt;6a222400ed4b10.69591625@gmail.com&gt;
+Mime-Version: 1.0
+
+
+Content-Type: multipart/alternative; boundary=&quot;B_ALT_6a222400ed4cb2.61538996&quot;
+
+This is a multi-part message in MIME format.
+Your email application may not support this format.
+
+--B_ALT_6a222400ed4cb2.61538996
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+¡Gracias por tu compra en Librería M&amp;P!Hola Roberto Llave,Tu pedido ha
+sido procesado con éxito. A continuación te detallamos los datos de tu
+compra:Datos del CompradorDNI: 23389798Teléfono: 3789659865Forma de Envío:
+Retiro en sucursalForma de Pago: Transferencia BancariaDetalle de los
+ProductosLibroCantidadPrecio UnitarioSubtotalMR.
+MERCEDES1$33.199,00$33.199,00Total Facturado:$33.199,00Puedes revisar el
+estado de tu pedido en cualquier momento ingresando a tu perfil en nuestra
+web.Atentamente,El equipo de M&amp;P.
+
+
+--B_ALT_6a222400ed4cb2.61538996
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+&lt;h2&gt;=C2=A1Gracias por tu compra en Librer=C3=ADa M&amp;P!&lt;/h2&gt;&lt;p&gt;Hola &lt;strong&gt;R=
+oberto Llave&lt;/strong&gt;,&lt;/p&gt;&lt;p&gt;Tu pedido ha sido procesado con =C3=A9xito. A =
+continuaci=C3=B3n te detallamos los datos de tu compra:&lt;/p&gt;&lt;hr&gt;&lt;h3&gt;Datos de=
+l Comprador&lt;/h3&gt;&lt;ul&gt;&lt;li&gt;&lt;strong&gt;DNI:&lt;/strong&gt; 23389798&lt;/li&gt;&lt;li&gt;&lt;strong&gt;Tel=
+=C3=A9fono:&lt;/strong&gt; 3789659865&lt;/li&gt;&lt;li&gt;&lt;strong&gt;Forma de Env=C3=ADo:&lt;/stron=
+g&gt; Retiro en sucursal&lt;/li&gt;&lt;li&gt;&lt;strong&gt;Forma de Pago:&lt;/strong&gt; Transferencia=
+ Bancaria&lt;/li&gt;&lt;/ul&gt;&lt;hr&gt;&lt;h3&gt;Detalle de los Productos&lt;/h3&gt;&lt;table border=3D&quot;1&quot;=
+ cellpadding=3D&quot;8&quot; cellspacing=3D&quot;0&quot; style=3D&quot;border-collapse: collapse; wi=
+dth: 100%; border-color: #ddd;&quot;&gt;&lt;thead style=3D&quot;background-color: #f2f2f2;&quot;=
+&gt;&lt;tr&gt;&lt;th align=3D&quot;left&quot;&gt;Libro&lt;/th&gt;&lt;th align=3D&quot;center&quot;&gt;Cantidad&lt;/th&gt;&lt;th ali=
+gn=3D&quot;right&quot;&gt;Precio Unitario&lt;/th&gt;&lt;th align=3D&quot;right&quot;&gt;Subtotal&lt;/th&gt;&lt;/tr&gt;&lt;/th=
+ead&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;MR. MERCEDES&lt;/td&gt;&lt;td align=3D&quot;center&quot;&gt;1&lt;/td&gt;&lt;td align=3D=
+&quot;right&quot;&gt;$33.199,00&lt;/td&gt;&lt;td align=3D&quot;right&quot;&gt;$33.199,00&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td cols=
+pan=3D&quot;3&quot; align=3D&quot;right&quot;&gt;&lt;strong&gt;Total Facturado:&lt;/strong&gt;&lt;/td&gt;&lt;td align=
+=3D&quot;right&quot; style=3D&quot;background-color: #f9f9f9;&quot;&gt;&lt;strong&gt;$33.199,00&lt;/strong&gt;=
+&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;br&gt;&lt;p&gt;Puedes revisar el estado de tu pedido en c=
+ualquier momento ingresando a tu perfil en nuestra web.&lt;/p&gt;&lt;p&gt;Atentamente,&lt;=
+br&gt;&lt;strong&gt;El equipo de M&amp;P.&lt;/strong&gt;&lt;/p&gt;
+
+--B_ALT_6a222400ed4cb2.61538996--</pre>
+INFO - 2026-06-05 01:57:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-06-05 01:57:04 --> Cart Class Initialized
+INFO - 2026-06-05 01:57:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-06-05 02:47:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-06-05 02:49:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-06-05 02:49:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-06-05 02:51:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-06-05 02:51:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-06-05 02:54:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-06-05 02:54:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-06-05 02:54:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-06-05 02:54:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-06-05 02:55:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-06-05 02:55:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-06-05 02:55:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-06-05 02:55:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-06-05 02:55:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-06-05 02:55:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-06-05 02:55:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-06-05 02:56:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-06-05 02:56:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-06-05 03:22:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-06-05 03:23:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-06-05 03:24:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.

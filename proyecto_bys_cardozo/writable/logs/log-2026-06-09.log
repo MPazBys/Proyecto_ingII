@@ -1,0 +1,517 @@
+INFO - 2026-06-09 00:03:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-06-09 00:03:13 --> ErrorException: Undefined array key "apellidoPersona"
+in APPPATH\Views\backend\ventas.php on line 42.
+ 1 APPPATH\Views\backend\ventas.php(42): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "apellidoPersona"', 'C:\\xampp\\htdocs\\Proyecto_ingII\\proyecto_bys_cardozo\\app\\Views\\backend\\ventas.php', 42)
+ 2 SYSTEMPATH\View\View.php(228): include('C:\\xampp\\htdocs\\Proyecto_ingII\\proyecto_bys_cardozo\\app\\Views\\backend\\ventas.php')
+ 3 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('backend/ventas', [], true)
+ 5 APPPATH\Controllers\VentaController.php(67): view('backend/ventas', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\VentaController->gestionar_ventas()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VentaController))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2026-06-09 00:08:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-06-09 00:08:17 --> ErrorException: Undefined array key "nombrePago"
+in APPPATH\Views\backend\ventas.php on line 47.
+ 1 APPPATH\Views\backend\ventas.php(47): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "nombrePago"', 'C:\\xampp\\htdocs\\Proyecto_ingII\\proyecto_bys_cardozo\\app\\Views\\backend\\ventas.php', 47)
+ 2 SYSTEMPATH\View\View.php(228): include('C:\\xampp\\htdocs\\Proyecto_ingII\\proyecto_bys_cardozo\\app\\Views\\backend\\ventas.php')
+ 3 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('backend/ventas', [], true)
+ 5 APPPATH\Controllers\VentaController.php(67): view('backend/ventas', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\VentaController->gestionar_ventas()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VentaController))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2026-06-09 00:09:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-06-09 00:15:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-06-09 00:15:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-06-09 00:16:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-06-09 00:27:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-06-09 00:27:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-06-09 00:27:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-06-09 00:31:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-06-09 00:32:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-06-09 00:32:29 --> mysqli_sql_exception: Commands out of sync; you can't run this command now
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 596.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(596): mysqli->autocommit(false)
+ 2 SYSTEMPATH\Database\BaseConnection.php(810): CodeIgniter\Database\MySQLi\Connection->_transBegin()
+ 3 APPPATH\Controllers\ConsultaController.php(148): CodeIgniter\Database\BaseConnection->transBegin()
+ 4 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\ConsultaController->procesar_respuesta()
+ 5 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ConsultaController))
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-06-09 00:38:12 --> TypeError: App\Controllers\ConsultaController::getConsultaConPersona(): Return value must be of type ?array, none returned
+in APPPATH\Controllers\ConsultaController.php on line 208.
+ 1 APPPATH\Controllers\ConsultaController.php(102): App\Controllers\ConsultaController->getConsultaConPersona(39)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\ConsultaController->responder(39)
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ConsultaController))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2026-06-09 00:38:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-06-09 00:38:44 --> TypeError: App\Controllers\ConsultaController::getConsultaConPersona(): Return value must be of type ?array, none returned
+in APPPATH\Controllers\ConsultaController.php on line 208.
+ 1 APPPATH\Controllers\ConsultaController.php(102): App\Controllers\ConsultaController->getConsultaConPersona(39)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\ConsultaController->responder(39)
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ConsultaController))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2026-06-09 00:39:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-06-09 00:39:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-06-09 00:40:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-06-09 00:40:34 --> Email: sendWithSmtp throwed ErrorException: fsockopen(): SSL operation failed with code 1. OpenSSL Error messages:
+error:0A000086:SSL routines::certificate verify failed in C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\Email\Email.php:1897
+Stack trace:
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'fsockopen(): SS...', 'C:\\xampp\\htdocs...', 1897)
+#1 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\Email\Email.php(1897): fsockopen('ssl://smtp.gmai...', 465, NULL, NULL, 5)
+#2 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\Email\Email.php(1810): CodeIgniter\Email\Email->SMTPConnect()
+#3 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\Email\Email.php(1695): CodeIgniter\Email\Email->sendWithSmtp()
+#4 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\Email\Email.php(1587): CodeIgniter\Email\Email->spoolEmail()
+#5 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\app\Controllers\ConsultaController.php(171): CodeIgniter\Email\Email->send()
+#6 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\CodeIgniter.php(941): App\Controllers\ConsultaController->procesar_respuesta()
+#7 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ConsultaController))
+#8 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\index.php(79): CodeIgniter\CodeIgniter->run()
+#10 {main}
+ERROR - 2026-06-09 00:40:34 --> Email: Unable to send email using SMTP. Your server might not be configured to send mail using this method.
+ERROR - 2026-06-09 00:40:34 --> 
+INFO - 2026-06-09 00:40:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-06-09 00:43:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-06-09 00:43:11 --> Email: sendWithSmtp throwed ErrorException: fsockopen(): SSL operation failed with code 1. OpenSSL Error messages:
+error:0A000086:SSL routines::certificate verify failed in C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\Email\Email.php:1897
+Stack trace:
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'fsockopen(): SS...', 'C:\\xampp\\htdocs...', 1897)
+#1 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\Email\Email.php(1897): fsockopen('ssl://smtp.gmai...', 465, NULL, NULL, 5)
+#2 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\Email\Email.php(1810): CodeIgniter\Email\Email->SMTPConnect()
+#3 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\Email\Email.php(1695): CodeIgniter\Email\Email->sendWithSmtp()
+#4 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\Email\Email.php(1587): CodeIgniter\Email\Email->spoolEmail()
+#5 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\app\Controllers\ConsultaController.php(171): CodeIgniter\Email\Email->send()
+#6 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\CodeIgniter.php(941): App\Controllers\ConsultaController->procesar_respuesta()
+#7 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ConsultaController))
+#8 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\index.php(79): CodeIgniter\CodeIgniter->run()
+#10 {main}
+ERROR - 2026-06-09 00:43:11 --> Email: Unable to send email using SMTP. Your server might not be configured to send mail using this method.
+ERROR - 2026-06-09 00:43:11 --> 
+INFO - 2026-06-09 00:43:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-06-09 00:46:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-06-09 00:46:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-06-09 00:46:51 --> Email: sendWithSmtp throwed ErrorException: fsockopen(): SSL operation failed with code 1. OpenSSL Error messages:
+error:0A000086:SSL routines::certificate verify failed in C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\Email\Email.php:1897
+Stack trace:
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'fsockopen(): SS...', 'C:\\xampp\\htdocs...', 1897)
+#1 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\Email\Email.php(1897): fsockopen('ssl://smtp.gmai...', 465, NULL, NULL, 5)
+#2 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\Email\Email.php(1810): CodeIgniter\Email\Email->SMTPConnect()
+#3 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\Email\Email.php(1695): CodeIgniter\Email\Email->sendWithSmtp()
+#4 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\Email\Email.php(1587): CodeIgniter\Email\Email->spoolEmail()
+#5 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\app\Controllers\ConsultaController.php(171): CodeIgniter\Email\Email->send()
+#6 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\CodeIgniter.php(941): App\Controllers\ConsultaController->procesar_respuesta()
+#7 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ConsultaController))
+#8 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\index.php(79): CodeIgniter\CodeIgniter->run()
+#10 {main}
+ERROR - 2026-06-09 00:46:51 --> Email: Unable to send email using SMTP. Your server might not be configured to send mail using this method.
+ERROR - 2026-06-09 00:46:51 --> 
+INFO - 2026-06-09 00:46:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-06-09 00:53:01 --> ParseError: syntax error, unexpected variable "$email"
+in APPPATH\Controllers\ConsultaController.php on line 161.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(290): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs\\Proyecto_ingII\\proyecto_bys_cardozo\\app\\Controllers\\ConsultaController.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(266): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Controllers\\ConsultaController')
+ 3 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Controllers\\ConsultaController')
+ 4 SYSTEMPATH\CodeIgniter.php(899): class_exists('\\App\\Controllers\\ConsultaController', true)
+ 5 SYSTEMPATH\CodeIgniter.php(489): CodeIgniter\CodeIgniter->startController()
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-06-09 00:56:41 --> ParseError: syntax error, unexpected variable "$email"
+in APPPATH\Controllers\ConsultaController.php on line 161.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(290): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs\\Proyecto_ingII\\proyecto_bys_cardozo\\app\\Controllers\\ConsultaController.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(266): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Controllers\\ConsultaController')
+ 3 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Controllers\\ConsultaController')
+ 4 SYSTEMPATH\CodeIgniter.php(899): class_exists('\\App\\Controllers\\ConsultaController', true)
+ 5 SYSTEMPATH\CodeIgniter.php(489): CodeIgniter\CodeIgniter->startController()
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-06-09 00:57:06 --> ParseError: syntax error, unexpected variable "$email"
+in APPPATH\Controllers\ConsultaController.php on line 161.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(290): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs\\Proyecto_ingII\\proyecto_bys_cardozo\\app\\Controllers\\ConsultaController.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(266): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Controllers\\ConsultaController')
+ 3 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Controllers\\ConsultaController')
+ 4 SYSTEMPATH\CodeIgniter.php(899): class_exists('\\App\\Controllers\\ConsultaController', true)
+ 5 SYSTEMPATH\CodeIgniter.php(489): CodeIgniter\CodeIgniter->startController()
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2026-06-09 00:57:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-06-09 00:57:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-06-09 00:57:39 --> ParseError: syntax error, unexpected variable "$email"
+in APPPATH\Controllers\ConsultaController.php on line 161.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(290): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs\\Proyecto_ingII\\proyecto_bys_cardozo\\app\\Controllers\\ConsultaController.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(266): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Controllers\\ConsultaController')
+ 3 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Controllers\\ConsultaController')
+ 4 SYSTEMPATH\CodeIgniter.php(899): class_exists('\\App\\Controllers\\ConsultaController', true)
+ 5 SYSTEMPATH\CodeIgniter.php(489): CodeIgniter\CodeIgniter->startController()
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2026-06-09 00:57:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-06-09 00:58:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-06-09 00:58:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-06-09 00:58:39 --> Email: sendWithSmtp throwed ErrorException: fsockopen(): SSL operation failed with code 1. OpenSSL Error messages:
+error:0A000086:SSL routines::certificate verify failed in C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\Email\Email.php:1897
+Stack trace:
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'fsockopen(): SS...', 'C:\\xampp\\htdocs...', 1897)
+#1 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\Email\Email.php(1897): fsockopen('ssl://smtp.gmai...', 465, NULL, NULL, 5)
+#2 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\Email\Email.php(1810): CodeIgniter\Email\Email->SMTPConnect()
+#3 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\Email\Email.php(1695): CodeIgniter\Email\Email->sendWithSmtp()
+#4 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\Email\Email.php(1587): CodeIgniter\Email\Email->spoolEmail()
+#5 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\app\Controllers\ConsultaController.php(173): CodeIgniter\Email\Email->send()
+#6 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\CodeIgniter.php(941): App\Controllers\ConsultaController->procesar_respuesta()
+#7 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ConsultaController))
+#8 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\index.php(79): CodeIgniter\CodeIgniter->run()
+#10 {main}
+ERROR - 2026-06-09 00:58:39 --> Email: Unable to send email using SMTP. Your server might not be configured to send mail using this method.
+ERROR - 2026-06-09 00:58:39 --> 
+INFO - 2026-06-09 00:58:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-06-09 01:10:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-06-09 01:10:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-06-09 01:10:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-06-09 01:10:42 --> Email: sendWithSmtp throwed ErrorException: fsockopen(): SSL operation failed with code 1. OpenSSL Error messages:
+error:0A000086:SSL routines::certificate verify failed in C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\Email\Email.php:1897
+Stack trace:
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'fsockopen(): SS...', 'C:\\xampp\\htdocs...', 1897)
+#1 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\Email\Email.php(1897): fsockopen('ssl://smtp.gmai...', 465, NULL, NULL, 5)
+#2 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\Email\Email.php(1810): CodeIgniter\Email\Email->SMTPConnect()
+#3 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\Email\Email.php(1695): CodeIgniter\Email\Email->sendWithSmtp()
+#4 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\Email\Email.php(1587): CodeIgniter\Email\Email->spoolEmail()
+#5 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\app\Controllers\ConsultaController.php(173): CodeIgniter\Email\Email->send()
+#6 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\CodeIgniter.php(941): App\Controllers\ConsultaController->procesar_respuesta()
+#7 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ConsultaController))
+#8 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\index.php(79): CodeIgniter\CodeIgniter->run()
+#10 {main}
+ERROR - 2026-06-09 01:10:42 --> Email: Unable to send email using SMTP. Your server might not be configured to send mail using this method.
+ERROR - 2026-06-09 01:10:42 --> 
+INFO - 2026-06-09 01:10:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-06-09 01:15:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-06-09 01:15:37 --> Email: sendWithSmtp throwed ErrorException: fsockopen(): SSL operation failed with code 1. OpenSSL Error messages:
+error:0A000086:SSL routines::certificate verify failed in C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\Email\Email.php:1897
+Stack trace:
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'fsockopen(): SS...', 'C:\\xampp\\htdocs...', 1897)
+#1 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\Email\Email.php(1897): fsockopen('ssl://smtp.gmai...', 465, NULL, NULL, 5)
+#2 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\Email\Email.php(1810): CodeIgniter\Email\Email->SMTPConnect()
+#3 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\Email\Email.php(1695): CodeIgniter\Email\Email->sendWithSmtp()
+#4 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\Email\Email.php(1587): CodeIgniter\Email\Email->spoolEmail()
+#5 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\app\Controllers\ConsultaController.php(173): CodeIgniter\Email\Email->send()
+#6 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\CodeIgniter.php(941): App\Controllers\ConsultaController->procesar_respuesta()
+#7 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ConsultaController))
+#8 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\index.php(79): CodeIgniter\CodeIgniter->run()
+#10 {main}
+ERROR - 2026-06-09 01:15:38 --> Email: Unable to send email using SMTP. Your server might not be configured to send mail using this method.
+ERROR - 2026-06-09 01:15:38 --> 
+INFO - 2026-06-09 01:15:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-06-09 01:16:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-06-09 01:16:20 --> Email: sendWithSmtp throwed ErrorException: fsockopen(): SSL operation failed with code 1. OpenSSL Error messages:
+error:0A000086:SSL routines::certificate verify failed in C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\Email\Email.php:1897
+Stack trace:
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'fsockopen(): SS...', 'C:\\xampp\\htdocs...', 1897)
+#1 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\Email\Email.php(1897): fsockopen('ssl://smtp.gmai...', 465, NULL, NULL, 5)
+#2 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\Email\Email.php(1810): CodeIgniter\Email\Email->SMTPConnect()
+#3 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\Email\Email.php(1695): CodeIgniter\Email\Email->sendWithSmtp()
+#4 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\Email\Email.php(1587): CodeIgniter\Email\Email->spoolEmail()
+#5 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\app\Controllers\ConsultaController.php(173): CodeIgniter\Email\Email->send()
+#6 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\CodeIgniter.php(941): App\Controllers\ConsultaController->procesar_respuesta()
+#7 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ConsultaController))
+#8 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\index.php(79): CodeIgniter\CodeIgniter->run()
+#10 {main}
+ERROR - 2026-06-09 01:16:20 --> Email: Unable to send email using SMTP. Your server might not be configured to send mail using this method.
+ERROR - 2026-06-09 01:16:20 --> 
+ERROR - 2026-06-09 01:16:20 --> Unable to send email using SMTP. Your server might not be configured to send mail using this method.<br><pre>Date: Tue, 9 Jun 2026 01:16:18 +0000
+To: sofia.f88@gmail.com
+Subject: =?UTF-8?Q?Respuesta=20a=20su=20consulta:=20Recomendaci=C3=B3n?=
+From: =?UTF-8?Q?Librer=C3=ADa=20M&amp;P=20-=20Soporte?= &lt;myp.libros@gmail.com&gt;
+Return-Path: &lt;myp.libros@gmail.com&gt;
+Reply-To: &lt;myp.libros@gmail.com&gt;
+User-Agent: CodeIgniter
+X-Sender: myp.libros@gmail.com
+X-Mailer: CodeIgniter
+X-Priority: 3 (Normal)
+Message-ID: &lt;6a2769620b1c90.77065492@gmail.com&gt;
+Mime-Version: 1.0
+
+
+Content-Type: multipart/alternative; boundary=&quot;B_ALT_6a2769620b1fe6.43556444&quot;
+
+This is a multi-part message in MIME format.
+Your email application may not support this format.
+
+--B_ALT_6a2769620b1fe6.43556444
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Hola Sofia Torres,
+
+Hemos respondido a su consulta sobre: &quot;Recomendación&quot;
+
+Respuesta:
+Te recomendamos la saga de &quot;Harry Potter&quot; de J.K. Rowling
+
+Atentamente,
+El equipo de M&amp;P.
+
+
+--B_ALT_6a2769620b1fe6.43556444
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+Hola Sofia Torres,=0A=0AHemos respondido a su consulta sobre: &quot;Recomendaci=
+=C3=B3n&quot;=0A=0ARespuesta:=0ATe recomendamos la saga de &quot;Harry Potter&quot; de J.K=
+. Rowling=0A=0AAtentamente,=0AEl equipo de M&amp;P.
+
+--B_ALT_6a2769620b1fe6.43556444--</pre>
+INFO - 2026-06-09 01:16:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-06-09 01:23:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-06-09 01:23:38 --> Email: sendWithSmtp throwed ErrorException: fsockopen(): SSL operation failed with code 1. OpenSSL Error messages:
+error:0A000086:SSL routines::certificate verify failed in C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\Email\Email.php:1897
+Stack trace:
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'fsockopen(): SS...', 'C:\\xampp\\htdocs...', 1897)
+#1 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\Email\Email.php(1897): fsockopen('ssl://smtp.gmai...', 465, NULL, NULL, 5)
+#2 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\Email\Email.php(1810): CodeIgniter\Email\Email->SMTPConnect()
+#3 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\Email\Email.php(1695): CodeIgniter\Email\Email->sendWithSmtp()
+#4 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\Email\Email.php(1587): CodeIgniter\Email\Email->spoolEmail()
+#5 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\app\Controllers\ConsultaController.php(173): CodeIgniter\Email\Email->send()
+#6 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\CodeIgniter.php(941): App\Controllers\ConsultaController->procesar_respuesta()
+#7 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ConsultaController))
+#8 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\index.php(79): CodeIgniter\CodeIgniter->run()
+#10 {main}
+ERROR - 2026-06-09 01:23:38 --> Email: Unable to send email using SMTP. Your server might not be configured to send mail using this method.
+ERROR - 2026-06-09 01:23:38 --> 
+INFO - 2026-06-09 01:23:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-06-09 01:28:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-06-09 01:28:03 --> Email: sendWithSmtp throwed ErrorException: fsockopen(): SSL operation failed with code 1. OpenSSL Error messages:
+error:0A000086:SSL routines::certificate verify failed in C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\Email\Email.php:1897
+Stack trace:
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'fsockopen(): SS...', 'C:\\xampp\\htdocs...', 1897)
+#1 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\Email\Email.php(1897): fsockopen('ssl://smtp.gmai...', 465, NULL, NULL, 5)
+#2 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\Email\Email.php(1810): CodeIgniter\Email\Email->SMTPConnect()
+#3 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\Email\Email.php(1695): CodeIgniter\Email\Email->sendWithSmtp()
+#4 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\Email\Email.php(1587): CodeIgniter\Email\Email->spoolEmail()
+#5 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\app\Controllers\ConsultaController.php(173): CodeIgniter\Email\Email->send()
+#6 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\CodeIgniter.php(941): App\Controllers\ConsultaController->procesar_respuesta()
+#7 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ConsultaController))
+#8 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\index.php(79): CodeIgniter\CodeIgniter->run()
+#10 {main}
+ERROR - 2026-06-09 01:28:03 --> Email: Unable to send email using SMTP. Your server might not be configured to send mail using this method.
+ERROR - 2026-06-09 01:28:03 --> 
+ERROR - 2026-06-09 01:28:03 --> Unable to send email using SMTP. Your server might not be configured to send mail using this method.<br><pre>Date: Tue, 9 Jun 2026 01:28:01 +0000
+To: sofia.f88@gmail.com
+Subject: =?UTF-8?Q?Respuesta=20a=20su=20consulta:=20Recomendaci=C3=B3n?=
+From: =?UTF-8?Q?Librer=C3=ADa=20M&amp;P=20-=20Soporte?= &lt;myp.libros@gmail.com&gt;
+Return-Path: &lt;myp.libros@gmail.com&gt;
+Reply-To: &lt;myp.libros@gmail.com&gt;
+User-Agent: CodeIgniter
+X-Sender: myp.libros@gmail.com
+X-Mailer: CodeIgniter
+X-Priority: 3 (Normal)
+Message-ID: &lt;6a276c215f6ac6.03779752@gmail.com&gt;
+Mime-Version: 1.0
+
+
+Content-Type: multipart/alternative; boundary=&quot;B_ALT_6a276c215f6f18.75392197&quot;
+
+This is a multi-part message in MIME format.
+Your email application may not support this format.
+
+--B_ALT_6a276c215f6f18.75392197
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Hola Sofia Torres,
+
+Hemos respondido a su consulta sobre: &quot;Recomendación&quot;
+
+Respuesta:
+Te recomendamos la saga de &quot;Harry Potter&quot; de J.K. Rowling
+
+Atentamente,
+El equipo de M&amp;P.
+
+
+--B_ALT_6a276c215f6f18.75392197
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+Hola Sofia Torres,=0A=0AHemos respondido a su consulta sobre: &quot;Recomendaci=
+=C3=B3n&quot;=0A=0ARespuesta:=0ATe recomendamos la saga de &quot;Harry Potter&quot; de J.K=
+. Rowling=0A=0AAtentamente,=0AEl equipo de M&amp;P.
+
+--B_ALT_6a276c215f6f18.75392197--</pre>
+INFO - 2026-06-09 01:28:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-06-09 01:30:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-06-09 01:30:51 --> Email: sendWithSmtp throwed ErrorException: fsockopen(): SSL operation failed with code 1. OpenSSL Error messages:
+error:0A000086:SSL routines::certificate verify failed in C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\Email\Email.php:1897
+Stack trace:
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'fsockopen(): SS...', 'C:\\xampp\\htdocs...', 1897)
+#1 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\Email\Email.php(1897): fsockopen('ssl://smtp.gmai...', 465, NULL, NULL, 5)
+#2 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\Email\Email.php(1810): CodeIgniter\Email\Email->SMTPConnect()
+#3 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\Email\Email.php(1695): CodeIgniter\Email\Email->sendWithSmtp()
+#4 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\Email\Email.php(1587): CodeIgniter\Email\Email->spoolEmail()
+#5 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\app\Controllers\ConsultaController.php(173): CodeIgniter\Email\Email->send()
+#6 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\CodeIgniter.php(941): App\Controllers\ConsultaController->procesar_respuesta()
+#7 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ConsultaController))
+#8 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\index.php(79): CodeIgniter\CodeIgniter->run()
+#10 {main}
+ERROR - 2026-06-09 01:30:51 --> Email: Unable to send email using SMTP. Your server might not be configured to send mail using this method.
+ERROR - 2026-06-09 01:30:51 --> 
+INFO - 2026-06-09 01:30:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-06-09 01:31:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-06-09 01:31:03 --> Email: sendWithSmtp throwed ErrorException: fsockopen(): SSL operation failed with code 1. OpenSSL Error messages:
+error:0A000086:SSL routines::certificate verify failed in C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\Email\Email.php:1897
+Stack trace:
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'fsockopen(): SS...', 'C:\\xampp\\htdocs...', 1897)
+#1 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\Email\Email.php(1897): fsockopen('ssl://smtp.gmai...', 465, NULL, NULL, 5)
+#2 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\Email\Email.php(1810): CodeIgniter\Email\Email->SMTPConnect()
+#3 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\Email\Email.php(1695): CodeIgniter\Email\Email->sendWithSmtp()
+#4 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\Email\Email.php(1587): CodeIgniter\Email\Email->spoolEmail()
+#5 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\app\Controllers\ConsultaController.php(173): CodeIgniter\Email\Email->send()
+#6 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\CodeIgniter.php(941): App\Controllers\ConsultaController->procesar_respuesta()
+#7 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ConsultaController))
+#8 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\index.php(79): CodeIgniter\CodeIgniter->run()
+#10 {main}
+ERROR - 2026-06-09 01:31:03 --> Email: Unable to send email using SMTP. Your server might not be configured to send mail using this method.
+ERROR - 2026-06-09 01:31:03 --> 
+INFO - 2026-06-09 01:31:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-06-09 01:31:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-06-09 01:31:37 --> Email: sendWithSmtp throwed ErrorException: fsockopen(): SSL operation failed with code 1. OpenSSL Error messages:
+error:0A000086:SSL routines::certificate verify failed in C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\Email\Email.php:1897
+Stack trace:
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'fsockopen(): SS...', 'C:\\xampp\\htdocs...', 1897)
+#1 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\Email\Email.php(1897): fsockopen('ssl://smtp.gmai...', 465, NULL, NULL, 5)
+#2 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\Email\Email.php(1810): CodeIgniter\Email\Email->SMTPConnect()
+#3 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\Email\Email.php(1695): CodeIgniter\Email\Email->sendWithSmtp()
+#4 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\Email\Email.php(1587): CodeIgniter\Email\Email->spoolEmail()
+#5 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\app\Controllers\ConsultaController.php(173): CodeIgniter\Email\Email->send()
+#6 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\CodeIgniter.php(941): App\Controllers\ConsultaController->procesar_respuesta()
+#7 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ConsultaController))
+#8 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\index.php(79): CodeIgniter\CodeIgniter->run()
+#10 {main}
+ERROR - 2026-06-09 01:31:37 --> Email: Unable to send email using SMTP. Your server might not be configured to send mail using this method.
+ERROR - 2026-06-09 01:31:37 --> 
+ERROR - 2026-06-09 01:31:37 --> Unable to send email using SMTP. Your server might not be configured to send mail using this method.<br><pre>Date: Tue, 9 Jun 2026 01:31:35 +0000
+To: sofia.f88@gmail.com
+Subject: =?UTF-8?Q?Respuesta=20a=20su=20consulta:=20Recomendaci=C3=B3n?=
+From: =?UTF-8?Q?Librer=C3=ADa=20M&amp;P=20-=20Soporte?= &lt;myp.libros@gmail.com&gt;
+Return-Path: &lt;myp.libros@gmail.com&gt;
+Reply-To: &lt;myp.libros@gmail.com&gt;
+User-Agent: CodeIgniter
+X-Sender: myp.libros@gmail.com
+X-Mailer: CodeIgniter
+X-Priority: 3 (Normal)
+Message-ID: &lt;6a276cf7c04471.24808882@gmail.com&gt;
+Mime-Version: 1.0
+
+
+Content-Type: multipart/alternative; boundary=&quot;B_ALT_6a276cf7c04890.92619910&quot;
+
+This is a multi-part message in MIME format.
+Your email application may not support this format.
+
+--B_ALT_6a276cf7c04890.92619910
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Hola Sofia Torres,
+
+Hemos respondido a su consulta sobre: &quot;Recomendación&quot;
+
+Respuesta:
+Te recomendamos la saga de &quot;Harry Potter&quot; de J.K. Rowling
+
+Atentamente,
+El equipo de M&amp;P.
+
+
+--B_ALT_6a276cf7c04890.92619910
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+Hola Sofia Torres,=0A=0AHemos respondido a su consulta sobre: &quot;Recomendaci=
+=C3=B3n&quot;=0A=0ARespuesta:=0ATe recomendamos la saga de &quot;Harry Potter&quot; de J.K=
+. Rowling=0A=0AAtentamente,=0AEl equipo de M&amp;P.
+
+--B_ALT_6a276cf7c04890.92619910--</pre>
+INFO - 2026-06-09 01:31:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-06-09 01:34:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-06-09 01:34:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-06-09 01:36:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-06-09 01:45:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-06-09 01:46:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-06-09 01:46:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-06-09 01:48:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-06-09 01:48:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-06-09 01:48:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-06-09 01:48:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-06-09 01:48:42 --> Cart Class Initialized
+INFO - 2026-06-09 01:48:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-06-09 01:48:43 --> Cart Class Initialized
+INFO - 2026-06-09 01:51:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-06-09 01:51:38 --> Cart Class Initialized
+INFO - 2026-06-09 01:51:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-06-09 01:51:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-06-09 01:51:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-06-09 01:52:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-06-09 01:54:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-06-09 01:54:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-06-09 01:54:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-06-09 01:54:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-06-09 02:03:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-06-09 02:05:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-06-09 02:11:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-06-09 02:14:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-06-09 02:19:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-06-09 02:21:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-06-09 02:24:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-06-09 02:24:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-06-09 02:25:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-06-09 02:25:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-06-09 02:36:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-06-09 02:42:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-06-09 02:42:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-06-09 02:42:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-06-09 02:42:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-06-09 02:42:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-06-09 02:43:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-06-09 02:43:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-06-09 03:07:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-06-09 04:52:41 --> mysqli_sql_exception: Table 'autores' already exists in C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\Database\MySQLi\Connection.php(306): mysqli->query('CREATE TABLE `a...', 0)
+#1 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('CREATE TABLE `a...')
+#2 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('CREATE TABLE `a...')
+#3 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\Database\Forge.php(555): CodeIgniter\Database\BaseConnection->query('CREATE TABLE `a...')
+#4 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\app\Database\Migrations\2026-06-09-025851_CreateAutoresTable.php(32): CodeIgniter\Database\Forge->createTable('autores')
+#5 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\Database\MigrationRunner.php(865): App\Database\Migrations\CreateAutoresTable->up()
+#6 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\Database\MigrationRunner.php(181): CodeIgniter\Database\MigrationRunner->migrate('up', Object(stdClass))
+#7 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\Commands\Database\Migrate.php(84): CodeIgniter\Database\MigrationRunner->latest(NULL)
+#8 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\CLI\Commands.php(65): CodeIgniter\Commands\Database\Migrate->run(Array)
+#9 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\CLI\Console.php(46): CodeIgniter\CLI\Commands->run('migrate', Array)
+#10 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\spark(102): CodeIgniter\CLI\Console->run()
+#11 {main}
+ERROR - 2026-06-09 05:15:49 --> mysqli_sql_exception: Table 'autores' already exists in C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\Database\MySQLi\Connection.php(306): mysqli->query('CREATE TABLE `a...', 0)
+#1 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('CREATE TABLE `a...')
+#2 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('CREATE TABLE `a...')
+#3 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\Database\Forge.php(555): CodeIgniter\Database\BaseConnection->query('CREATE TABLE `a...')
+#4 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\app\Database\Migrations\2026-06-09-025851_CreateAutoresTable.php(32): CodeIgniter\Database\Forge->createTable('autores')
+#5 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\Database\MigrationRunner.php(865): App\Database\Migrations\CreateAutoresTable->up()
+#6 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\Database\MigrationRunner.php(181): CodeIgniter\Database\MigrationRunner->migrate('up', Object(stdClass))
+#7 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\Commands\Database\Migrate.php(84): CodeIgniter\Database\MigrationRunner->latest(NULL)
+#8 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\CLI\Commands.php(65): CodeIgniter\Commands\Database\Migrate->run(Array)
+#9 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\system\CLI\Console.php(46): CodeIgniter\CLI\Commands->run('migrate', Array)
+#10 C:\xampp\htdocs\Proyecto_ingII\proyecto_bys_cardozo\spark(102): CodeIgniter\CLI\Console->run()
+#11 {main}
