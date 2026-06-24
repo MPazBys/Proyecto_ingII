@@ -58,7 +58,7 @@
             <?php echo form_input([
                 'name'        => 'precio',
                 'id'          => 'precio',
-                'type'        => 'number',
+                'type'        => 'DECIMAL',
                 'class'       => 'form-control',
                 'autofocus'   => 'autofocus',
                 'value'       => set_value('precio') ?: $libro['precioLibro']

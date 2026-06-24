@@ -220,7 +220,7 @@ class CarritoController extends BaseController {
             // 3. PROCESAMIENTO DE DIRECCIÓN (Si aplica)
             $idDireccion = !empty($persona['idDireccion']) ? (int)$persona['idDireccion'] : null;
             if ($formaEnvio === '2') {
-                $idDireccion = $this->guardar_o_actualizar_direccion($this->request->getPost(), $idDireccion);
+                $idDireccion = $this->guardar_direccion($this->request->getPost());
             }
 
             // 4. ACTUALIZACIÓN DEL CLIENTE
@@ -310,7 +310,7 @@ class CarritoController extends BaseController {
         $rules = [
             'selectedFormaEnvio' => ['rules' => 'required|in_list[1,2]', 'errors' => ['required' => 'Debe seleccionar una forma de envío.', 'in_list' => 'La forma de envío no es válida.']],
             'selectedFormaPago'  => ['rules' => 'required|in_list[1,2]', 'errors' => ['required' => 'Debe seleccionar una forma de pago.', 'in_list' => 'La forma de pago no es válida.']],
-            'telefono'           => ['rules' => 'required|regex_match[/^\d{10,15}$/]', 'errors' => ['required' => 'El teléfono es obligatorio.', 'regex_match' => 'El teléfono debe tener entre 10 y 15 dígitos numéricos sin 0 ni 15.']],
+            'telefono'           => ['rules' => 'required|regex_match[/^\d{10,15}$/]', 'errors' => ['required' => 'El teléfono es obligatorio.', 'regex_match[^[0-9]{10,15}$]' => 'El teléfono debe tener entre 10 y 15 dígitos numéricos sin 0 ni 15.']],
             'dni'                => ['rules' => 'required|regex_match[/^\d{7,9}$/]', 'errors' => ['required' => 'El DNI es obligatorio.', 'regex_match' => 'El DNI debe tener entre 7 y 9 dígitos numéricos.']]
         ];
 
@@ -334,9 +334,9 @@ class CarritoController extends BaseController {
     }
 
     /**
-     * Gestiona de forma inteligente el guardado o la actualización del domicilio del cliente.
+     * Gestiona de forma inteligente el guardado del domicilio del cliente.
      */
-    private function guardar_o_actualizar_direccion(array $postData, ?int $idDireccionExistente): int {
+    private function guardar_direccion(array $postData): int {
         $direccionData = [
             'calle'           => $postData['calle'],
             'altura'          => intval($postData['altura']),
@@ -345,10 +345,6 @@ class CarritoController extends BaseController {
             'idLocalidad'     => intval($postData['idLocalidad']),
         ];
 
-        if ($idDireccionExistente !== null && $idDireccionExistente > 0) {
-            $this->direccionModel->update($idDireccionExistente, $direccionData);
-            return $idDireccionExistente;
-        }
 
         $insertedId = $this->direccionModel->insert($direccionData);
         if ($insertedId === false) {

@@ -67,7 +67,7 @@
                     <?php echo form_input([
                         'name'        => 'precio',
                         'id'          => 'precio',
-                        'type'        => 'number',
+                        'type'        => 'DECIMAL',
                         'class'       => 'form-control',
                         'placeholder' => 'Ingrese el precio del libro',
                         'value'       => set_value('precio')

@@ -24,7 +24,7 @@
             </thead>
             <tbody>
                 <?php
-                    $total = 0;
+                    $total = 0.0;
                     $i = 1;
                     foreach ($cart1 as $item): ?>
 
@@ -128,7 +128,7 @@
                         </div>
                         <div class="col-md-6 mb-3">
                             <label for="modal_telefono" class="form-label">Teléfono <span class="text-danger">*</span></label>
-                            <input type="text" name="telefono" id="modal_telefono" class="form-control <?= session('errors.telefono') ? 'is-invalid' : '' ?>" placeholder="Ej: 3794123456" value="<?= old('telefono', $persona['telefono'] ?? '') ?>" required>
+                            <input type="text" name="telefono" id="modal_telefono" class="form-control <?= session('errors.telefono') ? 'is-invalid' : '' ?>" placeholder="Ej: 3794123456" value="<?= old('telefono', $persona['telefono'] ?? '') ?>" <?= !empty($persona['telefono']) ? 'readonly' : '' ?> required>
                             <?php if (session('errors.telefono')): ?>
                                 <div class="invalid-feedback"><?= session('errors.telefono') ?></div>
                             <?php endif; ?>
@@ -142,14 +142,6 @@
                     <!-- Recuadro para Dirección (se muestra sólo si es envío a domicilio) -->
                     <div id="domicilioFields" style="display: none;">
                         <p class="mt-4 texto-seccion text-primary border-bottom pb-2">Información de domicilio</p>
-
-                        <?php if (!empty($direccion)): ?>
-                            <div class="mb-3 text-end">
-                                <button type="button" id="btnCambiarDireccion" class="btn btn-outline-primary btn-sm">
-                                    Cambiar dirección
-                                </button>
-                            </div>
-                        <?php endif; ?>
 
                         <div class="row">
                             <div class="col-md-8 mb-3">
@@ -359,7 +351,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const alturaInput = document.getElementById('modal_altura');
     const pisoDeptoInput = document.getElementById('modal_pisoDepto');
     const consideracionesInput = document.getElementById('modal_consideraciones');
-    const btnCambiarDireccion = document.getElementById('btnCambiarDireccion');
 
     const tarjetaFields = document.getElementById('tarjetaFields');
     const tarjetaInput = document.getElementById('tarjeta');
@@ -511,21 +502,6 @@ document.addEventListener('DOMContentLoaded', function() {
         const modal = new bootstrap.Modal(document.getElementById('confirmarCompraModal'));
         modal.show();
     });
-
-    // Cambiar dirección (habilitar campos)
-    if (btnCambiarDireccion) {
-        btnCambiarDireccion.addEventListener('click', function() {
-            calleInput.removeAttribute('readonly');
-            alturaInput.removeAttribute('readonly');
-            pisoDeptoInput.removeAttribute('readonly');
-            consideracionesInput.removeAttribute('readonly');
-            
-            provinciaInput.removeAttribute('disabled');
-            ciudadInput.removeAttribute('disabled');
-            
-            btnCambiarDireccion.style.display = 'none';
-        });
-    }
 
     // Habilitar campos selectores antes de enviar el formulario para que viajen por POST
     const finalizarCompraForm = document.getElementById('finalizarCompraForm');
