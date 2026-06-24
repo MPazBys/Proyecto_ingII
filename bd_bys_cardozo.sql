@@ -75,6 +75,60 @@ END$$
 
 DELIMITER ;
 
+DELIMITER $$
+--
+-- Procedimientos
+--
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_obtener_consultas_completas` ()   BEGIN
+    SELECT c.*, 
+           CONCAT(p.nombrePersona, ' ', p.apellidoPersona) AS nombreApellido, 
+           p.correoPersona AS correo, 
+           CONCAT(a.nombrePersona, ' ', a.apellidoPersona) AS adminNombreApellido
+    FROM consultas c
+    INNER JOIN persona p ON p.idPersona = c.idPersona
+    LEFT JOIN persona a ON a.idPersona = c.idAdminResponde
+    ORDER BY c.respondido ASC, 
+             CASE WHEN c.respondido = 0 THEN c.created_at END ASC, 
+             CASE WHEN c.respondido = 1 THEN c.created_at END DESC;
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_obtener_consulta_por_id` (IN `p_idConsulta` INT)   BEGIN
+    SELECT c.*, 
+           CONCAT(p.nombrePersona, ' ', p.apellidoPersona) AS nombreApellido, 
+           p.correoPersona AS correo, 
+           CONCAT(a.nombrePersona, ' ', a.apellidoPersona) AS adminNombreApellido
+    FROM consultas c
+    INNER JOIN persona p ON p.idPersona = c.idPersona
+    LEFT JOIN persona a ON a.idPersona = c.idAdminResponde
+    WHERE c.idConsulta = p_idConsulta;
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_obtener_ventas_por_estado` (IN `p_estado` VARCHAR(50), IN `p_orden` VARCHAR(4))   BEGIN
+    -- 1. Validamos para prevenir SQL Injection
+    IF p_orden NOT IN ('ASC', 'DESC') THEN
+        SET p_orden = 'ASC'; -- Valor por defecto seguro
+    END IF;
+
+    -- 2. Construimos la consulta base
+    SET @sql = CONCAT('
+        SELECT v.*, fp.*, p.*, d.*, loc.nombreLocalidad, prov.nombreProvincia
+        FROM venta v
+        INNER JOIN persona p ON p.idPersona = v.idCliente
+        INNER JOIN formapago fp ON fp.idPago = v.idPago
+        LEFT JOIN direccion d ON d.idDireccion = p.idDireccion
+        LEFT JOIN localidades loc ON loc.idLocalidad = d.idLocalidad
+        LEFT JOIN provincias prov ON prov.idProvincia = loc.idProvincia
+        WHERE v.estado = ''', p_estado, '''
+        ORDER BY v.idVenta ', p_orden);
+
+    -- 3. Ejecutamos la cadena construida
+    PREPARE stmt FROM @sql;
+    EXECUTE stmt;
+    DEALLOCATE PREPARE stmt;
+END$$
+
+DELIMITER ;
+
 -- --------------------------------------------------------
 
 --
@@ -212,6 +266,19 @@ CREATE TABLE `consultas` (
 --
 
 INSERT INTO `consultas` (`idConsulta`, `asunto`, `mensaje`, `respondido`, `created_at`, `idPersona`, `respuestaText`, `idAdminResponde`) VALUES
+(27, 'Consulta sobre stock', '¿Tienen stock disponible de \"El cielo es azul, la tierra blanca\"?', 1, '2026-05-10 13:30:00', 4, 'Hola, sí, nos quedan las últimas unidades.', 2),
+(28, 'Estado de envío', 'Mi pedido #26 aún no llega, ¿podrían verificar?', 0, '2026-06-01 17:15:00', 6, NULL, NULL),
+(29, 'Busqueda de autor', '¿Tienen libros de Stephen King?', 1, '2026-05-15 12:00:00', 8, 'Contamos con varios libros del autor, revisa el catálogo.', 3),
+(30, 'Problema con el pago', 'Intenté pagar con transferencia y me dio error.', 1, '2026-05-20 21:45:00', 16, 'Por favor, intenta limpiar la caché y reintentar.', 2),
+(31, 'Consulta técnica', '¿El sitio es compatible con pagos internacionales?', 0, '2026-06-05 14:20:00', 15, NULL, NULL),
+(32, 'Descuentos', '¿Tienen promociones por comprar más de 3 libros?', 1, '2026-05-22 15:10:00', 20, 'Al momento, no tenemos ningun descuento vigente.', 3),
+(33, 'Devolución', 'El libro llegó con la tapa dañada.', 0, '2026-06-07 19:30:00', 23, NULL, NULL),
+(34, 'Pedido especial', '¿Pueden conseguir un libro agotado?', 0, '2026-06-06 11:40:00', 24, NULL, NULL),
+(35, 'Facturación', 'Necesito la factura A de mi compra.', 1, '2026-05-30 14:50:00', 17, 'Te la enviamos por correo electrónico.', 2),
+(36, 'Consulta sobre stock', '¿Traerán más ejemplares de \"Harry Potter\"?', 1, '2026-05-18 18:20:00', 18, 'Estamos esperando reposición para el próximo mes.', 3),
+(37, 'Horarios', '¿Cuál es el horario de atención para consultas?', 1, '2026-05-25 12:30:00', 22, 'Estamos de lunes a viernes de 9 a 18 hs. Y sábados de 9 a 13 hs', 2),
+(38, 'Envío', '¿Hacen envíos a Corrientes Capital?', 1, '2026-06-02 16:10:00', 21, 'Sí, llegamos a todo el país vía correo privado.', 3),
+(39, 'Recomendación', '¿Alguna saga de fantasía similar a \"Percy Jackson\"?', 1, '2026-06-08 13:00:00', 19, 'Te recomendamos la saga de \"Harry Potter\" de J.K. Rowling', 2);
 (27, 'Consulta sobre stock', '¿Tienen stock disponible de \"El cielo es azul, la tierra blanca\"?', 1, '2026-05-10 13:30:00', 4, 'Hola, sí, nos quedan las últimas unidades.', 2),
 (28, 'Estado de envío', 'Mi pedido #26 aún no llega, ¿podrían verificar?', 0, '2026-06-01 17:15:00', 6, NULL, NULL),
 (29, 'Busqueda de autor', '¿Tienen libros de Stephen King?', 1, '2026-05-15 12:00:00', 8, 'Contamos con varios libros del autor, revisa el catálogo.', 3),
@@ -781,6 +848,7 @@ ALTER TABLE `categorias`
 --
 ALTER TABLE `consultas`
   MODIFY `idConsulta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+  MODIFY `idConsulta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 
 --
 -- AUTO_INCREMENT de la tabla `detalleventa`
@@ -822,6 +890,7 @@ ALTER TABLE `localidades`
 -- AUTO_INCREMENT de la tabla `persona`
 --
 ALTER TABLE `persona`
+  MODIFY `idPersona` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
   MODIFY `idPersona` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
