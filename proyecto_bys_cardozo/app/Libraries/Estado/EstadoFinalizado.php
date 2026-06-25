@@ -9,7 +9,7 @@ namespace App\Libraries\Estado;
  * la notificación de entrega o retiro definitivo de la compra.
  */
 
-class EstadoFinalizado implements EstadoVentaInterface 
+class EstadoFinalizado extends EstadoVenta
 {
     public function getNombre(): string { return 'Finalizado'; }
 

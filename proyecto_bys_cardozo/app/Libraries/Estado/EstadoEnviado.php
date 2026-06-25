@@ -9,7 +9,7 @@ namespace App\Libraries\Estado;
  * encargándose de gestionar la transición hacia el cierre definitivo y de despachar 
  * las alertas de seguimiento en camino para el comprador.
  */
-class EstadoEnviado implements EstadoVentaInterface 
+class EstadoEnviado extends EstadoVenta
 {
     public function getNombre(): string { return 'Enviado'; }
 

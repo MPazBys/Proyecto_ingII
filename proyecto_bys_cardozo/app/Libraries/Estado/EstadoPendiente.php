@@ -9,7 +9,7 @@ namespace App\Libraries\Estado;
  * avance secuencial hacia el despacho o el salto directo al cierre de la venta, 
  * según la modalidad de entrega seleccionada por el cliente.
  */
-class EstadoPendiente implements EstadoVentaInterface 
+class EstadoPendiente extends EstadoVenta
 {
     public function getNombre(): string { return 'Pendiente'; }
 

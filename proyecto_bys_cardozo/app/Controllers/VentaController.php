@@ -3,7 +3,7 @@
 namespace App\Controllers;
 
 use CodeIgniter\HTTP\RedirectResponse;
-use App\Libraries\Estado\EstadoVentaInterface; // importación de la interfaz del patrón Estado
+use App\Libraries\Estado\EstadoVenta; // importación de la interfaz del patrón Estado
 use App\Models\venta_model;
 use App\Models\detalle_venta_model;
 use App\Models\persona_model;
@@ -106,20 +106,23 @@ class VentaController extends BaseController {
             return redirect()->route('gestionar_ventas')->with('msj', 'Cliente no encontrado.');
         }
 
-        $nuevoEstado  = ucfirst(strtolower($nuevoEstado));
-        $formaEnvio   = (int)$venta['formaEnvio'];
+        $nuevoEstadoKey = strtolower($nuevoEstado);
+        $estadoActualKey = strtolower($venta['estado']);
+        $formaEnvio     = (int)$venta['formaEnvio'];
 
         try {
-            // 1. Instanciar el objeto del estado actual de forma dinámica
-            $claseEstadoActual = 'App\\Libraries\\Estado\\Estado' . ucfirst(strtolower($venta['estado']));
-            if (!class_exists($claseEstadoActual)) {
-                throw new \InvalidArgumentException("Estado no válido: " . $venta['estado']);
+            // Validar e Instanciar el objeto del estado actual desde la Clase Abstracta
+            if (!isset(EstadoVenta::MAPA[$estadoActualKey])) {
+                throw new \InvalidArgumentException("Estado actual registrado en la BD no es válido: " . $venta['estado']);
             }
-            /** @var EstadoVentaInterface $estadoActualObj */
+
+            $claseEstadoActual = EstadoVenta::MAPA[$estadoActualKey];
+            /** @var EstadoVenta $estadoActualObj */
             $estadoActualObj = new $claseEstadoActual();
 
-            // 2. Delegar la validación lógica de la transición al objeto de estado
-            if (!$estadoActualObj->cambiarEstado($venta, $nuevoEstado, $formaEnvio)) {
+            // Delegar la validación lógica de la transición al objeto de estado
+            $nuevoEstadoFormateado = ucfirst($nuevoEstadoKey); // Se asegura el formato CamelCase para guardar en BD
+            if (!$estadoActualObj->cambiarEstado($venta, $nuevoEstadoFormateado, $formaEnvio)) {
                 return redirect()->route('gestionar_ventas')->with('msj', 'Transición de estado denegada por reglas de negocio del despacho.');
             }
 
@@ -127,23 +130,27 @@ class VentaController extends BaseController {
             $db = \Config\Database::connect();
             $db->transBegin();
 
-            // 3. Actualizar el registro string en la base de datos
-            $this->ventaModel->update($idVenta, ['estado' => $nuevoEstado]);
+            // Actualizar el registro string en la base de datos
+            $this->ventaModel->update($idVenta, ['estado' => $nuevoEstadoFormateado]);
 
-            // 4. Instanciar el nuevo estado de forma dinámica para disparar automáticamente sus efectos secundarios (ej. enviar mail)
-            $claseEstadoNuevo = 'App\\Libraries\\Estado\\Estado' . $nuevoEstado;
-            if (!class_exists($claseEstadoNuevo)) {
-                throw new \InvalidArgumentException("Estado no válido: " . $nuevoEstado);
+            // Validar e Instanciar el nuevo estado para disparar sus efectos secundarios
+            if (!isset(EstadoVenta::MAPA[$nuevoEstadoKey])) {
+                throw new \InvalidArgumentException("El nuevo estado solicitado no es válido: " . $nuevoEstado);
             }
-            /** @var EstadoVentaInterface $estadoNuevoObj */
+            $claseEstadoNuevo = EstadoVenta::MAPA[$nuevoEstadoKey];
+            /** @var EstadoVenta $estadoNuevoObj */
             $estadoNuevoObj = new $claseEstadoNuevo();
+            
             $estadoNuevoObj->ejecutarAccionPostTransicion($venta, $cliente);
 
             $db->transCommit();
-            return redirect()->route('gestionar_ventas')->with('mensaje', 'El pedido #' . $idVenta . ' cambió a ' . $nuevoEstado . ' con éxito.');
+            return redirect()->route('gestionar_ventas')->with('mensaje', 'El pedido #' . $idVenta . ' cambió a ' . $nuevoEstadoFormateado . ' con éxito.');
             
         } catch (\Exception $e) {
-            $db->transRollback();
+            // Aseguramos que $db exista antes de intentar el rollback en caso de fallar antes de la transacción
+            if (isset($db)) {
+                $db->transRollback();
+            }
             return redirect()->route('gestionar_ventas')->with('msj', 'Error crítico al alterar estado: ' . $e->getMessage());
         }
     }
