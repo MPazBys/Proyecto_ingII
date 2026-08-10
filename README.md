@@ -23,6 +23,7 @@ El proyecto se construyó bajo estándares formales de ingeniería de software, 
 ### 📂 Estructura del Repositorio
 
     > ## Proyecto_ingII
+    - README.md (documento principal de presentación)
     - proyecto_bys_cardozo/ (Directorio principal con el código fuente y MVC)
     - Trabajo de Campo G29.pdf (Documentación integral del proceso del proyecto siguiendo los lineamientos de Ingería de software, Manual de Instalación y Configuración (Guía de despliegue local) y Manual de Usuario (Guía de operación del sistema))
     - bd_bys_cardozo.sql (Script de creación y lote de datos MySQL)
