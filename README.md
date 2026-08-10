@@ -28,7 +28,3 @@ El proyecto se construyó bajo estándares formales de ingeniería de software, 
     - bd_bys_cardozo.sql (Script de creación y lote de datos MySQL)
     - diagrama de clases.png (Modelado UML del sistema)
     - proyecto_bys_cardozo.txt (Documento de credenciales de prueba y comandos)
-
-
-# Prueba de procesamiento y finalización de compras
-vendor\bin\phpunit tests/Controllers/ProcesarFinalizarCompraTest.php
